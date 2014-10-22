@@ -2,7 +2,9 @@ NAME = ft_printf
 INCLUDE_PATH = -I./include/
 SRC_PATH = ./src/
 SRC_FILES =	main.c ft_printf.c ft_printf_str.c \
-			ft_type.c ft_int.c ft_params_check.c
+			ft_type.c ft_int.c ft_params_check.c \
+			ft_params_get.c ft_params_get2.c ft_params.c \
+			ft_printf_tools.c ft_printf_str2.c ft_printf_put.c
 BASE_FILES = $(addprefix $(SRC_PATH),$(SRC_FILES))
 SRC = $(BASE_FILES)
 

@@ -17,7 +17,7 @@ int		ft_is_format_valid(char *str)
 		while (*str >= '0' && *str <= '9')
 			str++;
 	if (*str == '.' && *(str + 1) != '*' && *str >= '0' && *str <= '9')
-	str++;
+		str++;
 	return (valid);
 }
 
@@ -49,28 +49,44 @@ int		ft_has_width(char *str)
 		while (*str >= '0' && *str <= '9')
 		{
 			str++;
-			has_width = 1;
+			has_width++;
 		}
 	return (has_width);
 }
 
 int		ft_has_precision(char *str)
 {
-	int	has_precision;
+	int		has_precision;
+	char	*tmp;
 
-	(void)str;
 	has_precision = 0;
+	tmp = str + 1;
+	tmp += ft_has_flag(str);
+	tmp += ft_has_width(str);
+	if (*tmp == '.')
+	{
+		tmp++;
+			has_precision++;
+		if (*tmp == '*')
+		{
+			has_precision++;
+			tmp++;
+		}
+		else
+			while (ft_printf_isdigit(*tmp))
+			{
+				has_precision++;
+				tmp++;
+			}
+	}
 	return (has_precision);
 }
 
-int		ft_is_valid_flag(char c)
+int		ft_is_valid_specifier(char c)
 {
-	static char	*valid;
 	int			isvalid;
 
 	isvalid = 0;
-	if (!valid)
-		valid = ft_printf_strdup("diuoxXfFeEgGaAcspn%");
-	isvalid = ft_printf_strchr(valid, c);
+	isvalid = ft_printf_strchr(VALID_SPECIFIER, c);
 	return (isvalid);
 }

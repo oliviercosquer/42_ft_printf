@@ -27,7 +27,7 @@ int		ft_printf_strchr(char *str, char c)
 	while (*str)
 	{
 		if (*str == c)
-			return (0);
+			return (1);
 		str++;
 	}
 	return (0);
@@ -54,4 +54,23 @@ char	*ft_printf_strdup(char *str)
 		}
 	}
 	return (str_dup);
+}
+
+char	*ft_printf_strsub(char *s, int start, int len)
+{
+	char	*str;
+	int		i;
+
+	i = 0;
+	str = (char *)malloc(sizeof(char) * len + 1);
+	if (str)
+	{
+		while (str && s[i] && i < len)
+		{
+			str[i] = s[start + i];
+			i++;
+		}
+		str[len] = '\0';
+	}
+	return (str);
 }

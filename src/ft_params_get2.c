@@ -1,0 +1,78 @@
+#include <ft_printf.h>
+
+char	ft_get_flag(char *str)
+{
+	char	flag;
+
+	flag = '\0';
+	str++;
+	if (ft_printf_strchr(VALID_FLAGS, *str))
+		flag = *str;
+	return (flag);
+}
+
+char	*ft_get_width(char **str)
+{
+	char	*tmp;
+	char	*width;
+	int		len;
+
+	len = 0;
+	tmp = *str + 1;
+	width = NULL;
+	tmp += ft_has_flag(*str);
+	len = ft_has_width(*str);
+	if (len)
+		width = ft_printf_strsub(tmp, 0, len);
+	return (width);
+}
+
+char	*ft_get_precision(char **str)
+{
+	char	*tmp;
+	int		len;
+	char	*precision;
+
+	len = 0;
+	precision = NULL;
+	tmp = *str + 1;
+	tmp += ft_has_flag(*str);
+	tmp += ft_has_width(*str);
+	if (*tmp == '.')
+	{
+		tmp++;
+		if (*tmp == '*')
+			len = 1;
+		else
+			while (ft_printf_isdigit(tmp[len]))
+				len++;
+		precision = ft_printf_strsub(tmp, 0, len);
+	}
+	return (precision);
+}
+
+char	*ft_get_specifier(char **str, t_param *param)
+{
+	char	*tmp;
+	char	*specifier;
+	int		len;
+
+	len = 0;
+	tmp = *str + 1;
+	specifier = NULL;
+	tmp += ft_has_flag(*str);
+	tmp += ft_has_width(*str);
+	tmp += ft_has_precision(*str);
+	while (ft_printf_strchr(VALID_LENGTH, tmp[len]))
+		len++;
+	if (len)
+		param->specifier_length = ft_printf_strsub(tmp, 0, len);
+	tmp += len;
+	len = 0;
+	if (ft_printf_strchr(VALID_SPECIFIER, tmp[len]))
+	{
+		len++;
+		specifier = ft_printf_strsub(tmp, 0, len);
+	}
+	return (specifier);
+}
