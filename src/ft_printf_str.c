@@ -18,7 +18,9 @@ int		ft_printf_strlen(char *str)
 
 	len = 0;
 	while (str && str[len])
+	{
 		len++;
+	}
 	return (len);
 }
 

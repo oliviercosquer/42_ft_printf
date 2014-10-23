@@ -16,15 +16,14 @@ int		ft_printf(const char *str, ...)
 	t_param	*params;
 
 	params = ft_get_params((char *)str);
+	va_start(list, str);
 	while (params)
 	{
-		params->value = "test";
+		ft_printf_get_arg(&list, params);
 		ft_display_param(params);
-		ft_printf_put(params);
 		params = params->next;
 	}
 	write(1, "\n", 1);
-	va_start(list, str);
-	(void)str;
+	va_end(list);
 	return (0);
 }

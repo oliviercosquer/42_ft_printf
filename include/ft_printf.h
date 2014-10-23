@@ -63,10 +63,20 @@ t_func			ft_get_type(char c);
 
 //ft_printf_tools
 int				ft_printf_isdigit(char c);
+char			*ft_printf_itoa(int n);
+void			ft_printf_reversestr(char *str);
+int				ft_printf_getintlength(int n);
 
 //ft_printf_put
-void			ft_printf_put(t_param *param);
-void			ft_printf_put_di(t_param *param);
-void			ft_printf_put_s(t_param *param);
-void			ft_printf_put_c(t_param *param);
+void			ft_printf_put(va_list *l, t_param *param);
+void			ft_printf_put_di(va_list *l, t_param *param);
+void			ft_printf_put_s(va_list *l, t_param *param);
+void			ft_printf_put_c(va_list *l, t_param *param);
+
+//ft_printf_put_int
+void			ft_printf_put_int(t_param *param, int nbr);
+
+//ft_arg_get
+void			ft_printf_get_arg(va_list *l, t_param *param);
+void			ft_printf_get_arg_value(va_list *l, t_param *param);
 #endif

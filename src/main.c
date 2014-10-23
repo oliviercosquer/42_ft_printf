@@ -4,6 +4,6 @@ int		main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
-	ft_printf("%s\n", "1234\n");
+	ft_printf("%d%i\n", -1, 1234);
 	return (0);
 }
