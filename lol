@@ -1,2 +1,0 @@
-compilation of ft_printf
-gcc  -I./include/ -Wall -Werror -Wextra ./src/main.c ./src/ft_printf.c ./src/ft_printf_str.c ./src/ft_type.c ./src/ft_int.c ./src/ft_params_check.c ./src/ft_params_get.c ./src/ft_params_get2.c ./src/ft_params.c ./src/ft_printf_tools.c ./src/ft_printf_str2.c ./src/ft_printf_put.c ./src/ft_arg_get.c ./src/ft_printf_put_int.c ./src/ft_printf_tools_unsigned.c ./src/ft_printf_tools2.c -o ft_printf
