@@ -9,7 +9,7 @@ t_param	*ft_get_params(char *str)
 	tmp = NULL;
 	while (*str)
 	{
-		if (*str == '%' && *(str + 1) == '%')
+		if (*str == '%' && *(str + 1) != '%')
 		{
 			if (first)
 			{
@@ -20,8 +20,10 @@ t_param	*ft_get_params(char *str)
 				first = ft_get_next_param(&str);
 			str++;
 		}
-		else
+		else if (*(str + 1) != '%')
 			str += 2;
+		else
+			str += 1;
 	}
 	return (first);
 }

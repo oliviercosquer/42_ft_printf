@@ -1,27 +1,33 @@
 #include <ft_printf.h>
 
-void	ft_printf_string(char **s, t_param *param)
+int		ft_printf_string(char **s, t_param *param)
 {
 	int		pos_percent;
 	char	*str;
+	char	nb_char;
 
 	pos_percent = 0;
 	str = *s;
+	nb_char = 0;
 	while (str[pos_percent] && str[pos_percent] != '%')
 		pos_percent++;
 	write(1, str, pos_percent);
 	str += pos_percent + ft_printf_get_format_length(param) + 1;
 	*s = str;
-	ft_printf_padding(param);
+	nb_char += ft_printf_padding(param) + pos_percent;
+	nb_char += ft_printf_strlen(param->value);
+	return (nb_char);
 }
 
-void	ft_printf_padding(t_param *param)
+int		ft_printf_padding(t_param *param)
 {
 	int		width;
 	int		len_value;
+	int		nb_char;
 
 	width = ft_printf_atoi(param->width);
 	len_value = ft_printf_strlen(param->value);
+	nb_char = 0;
 	if (param->flag == '-')
 	{
 		write(1, param->value, len_value);
@@ -29,6 +35,7 @@ void	ft_printf_padding(t_param *param)
 		{
 			write(1, " ", 1);
 			width--;
+			nb_char++;
 		}
 	}
 	else
@@ -40,9 +47,11 @@ void	ft_printf_padding(t_param *param)
 			else
 				write(1, " ", 1);			
 			width--;
+			nb_char++;
 		}
 		write(1, param->value, len_value);
 	}
+	return (nb_char);
 }
 
 char	*ft_printf_strjoin(char *s1, char *s2)
