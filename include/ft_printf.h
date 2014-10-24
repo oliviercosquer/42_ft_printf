@@ -70,6 +70,8 @@ char			*ft_printf_itoa(int n);
 void			ft_printf_reversestr(char *str);
 int				ft_printf_getintlength(int n);
 int				ft_printf_get_format_length(t_param *param);
+
+//ft_printf_tools2
 int				ft_printf_atoi(const char *str);
 
 //ft_printf_put

@@ -7,19 +7,6 @@ int		ft_printf_isdigit(char c)
 	return (0);
 }
 
-int		ft_printf_atoi(const char *str)
-{
-	int	value;
-
-	value = 0;
-	while (str && *str)
-	{
-		value = (value * 10) + (*str - '0');
-		str++;
-	}
-	return (value);
-}
-
 char	*ft_printf_itoa(int n)
 {
 	char	*nbr;
