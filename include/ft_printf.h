@@ -53,6 +53,7 @@ char			*ft_printf_strsub(char *s, int start, int len);
 //ft_printf_str2
 void			ft_printf_string(char **s, t_param *param);
 char			*ft_printf_strjoin(char *s1, char *s2);
+void			ft_printf_padding(t_param *param);
 
 //ft_putint
 void			ft_putint(void *n, t_param *param);
