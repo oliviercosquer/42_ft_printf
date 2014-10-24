@@ -1,6 +1,6 @@
 #include <ft_printf.h>
 
-void	ft_printf_get_arg(va_list *l, t_param *param)
+char	*ft_printf_get_arg(va_list *l, t_param *param)
 {
 	char	*tmp;
 
@@ -16,5 +16,5 @@ void	ft_printf_get_arg(va_list *l, t_param *param)
 		tmp = ft_printf_itoa(va_arg(*l, int));
 		param->precision = tmp;
 	}	
-	ft_printf_put(l, param);
+	return (ft_printf_put(l, param));
 }

@@ -7,6 +7,19 @@ int		ft_printf_isdigit(char c)
 	return (0);
 }
 
+int		ft_printf_atoi(const char *str)
+{
+	int	value;
+
+	value = 0;
+	while (str && *str)
+	{
+		value = (value * 10) + (*str - '0');
+		str++;
+	}
+	return (value);
+}
+
 char	*ft_printf_itoa(int n)
 {
 	char	*nbr;
@@ -51,5 +64,26 @@ int		ft_printf_getintlength(int n)
 		else
 			tmp = -1;
 	}
+	return (len);
+}
+
+int		ft_printf_get_format_length(t_param *param)
+{
+	int	len;
+
+	len = 0;
+	if (param->flag)
+		len++;
+	if (param->width)
+	{
+		if (*(param->width) == '*')
+			len++;
+		else
+			len += ft_printf_strlen(param->width);
+	}
+	if (param->specifier)
+		len++;
+	if (param->specifier_length)
+		len += ft_printf_strlen(param->specifier_length);
 	return (len);
 }

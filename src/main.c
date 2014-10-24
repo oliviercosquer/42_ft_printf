@@ -4,6 +4,14 @@ int		main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
-	ft_printf("%d%i\n", -1, 1234);
+	printf("TEST printf:\n");
+	printf("Avant % 6d Après %ilol \n", 1024, 2048);
+	printf("Avant %+6d Après %ilol \n", 1024, 2048);
+	printf("Avant %06d Après %ilol \n", 1024, 2048);
+	printf("TEST ft_printf:\n");
+	ft_printf("Avant % 6d Après %ilol \n", 1024, 2048);
+	ft_printf("Avant %+6d Après %ilol \n", 1024, 2048);
+	ft_printf("Avant %06d Après %ilol \n", 1024, 2048);
+	ft_printf("Sans rien\n");
 	return (0);
 }

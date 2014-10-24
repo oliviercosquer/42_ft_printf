@@ -51,6 +51,8 @@ char			*ft_printf_strdup(char *str);
 char			*ft_printf_strsub(char *s, int start, int len);
 
 //ft_printf_str2
+void			ft_printf_string(char **s, t_param *param);
+char			*ft_printf_strjoin(char *s1, char *s2);
 
 //ft_putint
 void			ft_putint(void *n, t_param *param);
@@ -66,17 +68,26 @@ int				ft_printf_isdigit(char c);
 char			*ft_printf_itoa(int n);
 void			ft_printf_reversestr(char *str);
 int				ft_printf_getintlength(int n);
+int				ft_printf_get_format_length(t_param *param);
+int				ft_printf_atoi(const char *str);
 
 //ft_printf_put
-void			ft_printf_put(va_list *l, t_param *param);
-void			ft_printf_put_di(va_list *l, t_param *param);
-void			ft_printf_put_s(va_list *l, t_param *param);
-void			ft_printf_put_c(va_list *l, t_param *param);
+char			*ft_printf_put(va_list *l, t_param *param);
+char			*ft_printf_get_di(va_list *l, t_param *param);
+char			*ft_printf_get_s(va_list *l, t_param *param);
+char			*ft_printf_get_c(va_list *l, t_param *param);
 
 //ft_printf_put_int
-void			ft_printf_put_int(t_param *param, int nbr);
+char			*ft_printf_get_signed_int(t_param *param,int nbr);
+char			*ft_printf_get_unsigned_int(t_param *param,unsigned int nbr);
+char			*ft_printf_get_signed_long_int(t_param *param,long int nbr);
+char			*ft_printf_get_unsigned_long_int(t_param *param,unsigned long int nbr);
+
+//ft_printf_tools_unsigned
+char			*ft_printf_unsigned_itoa(unsigned int n);
+int				ft_printf_get_unsigned_intlength(unsigned int n);
 
 //ft_arg_get
-void			ft_printf_get_arg(va_list *l, t_param *param);
+char			*ft_printf_get_arg(va_list *l, t_param *param);
 void			ft_printf_get_arg_value(va_list *l, t_param *param);
 #endif

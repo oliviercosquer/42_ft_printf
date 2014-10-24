@@ -7,7 +7,7 @@ t_param	*ft_new_param(void)
 	params = (t_param *)malloc(sizeof(t_param));
 	if (params)
 	{
-		params->flag = '0';
+		params->flag = '\0';
 		params->width = NULL;
 		params->precision = NULL;
 		params->next = NULL;
