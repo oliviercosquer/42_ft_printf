@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_tools.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ocosquer <ocosquer@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/10/26 02:51:56 by ocosquer          #+#    #+#             */
+/*   Updated: 2014/10/26 02:14:21 by ocosquer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ft_printf.h>
 
 int		ft_printf_isdigit(char c)
@@ -14,12 +26,13 @@ char	*ft_printf_itoa(int n)
 	int		rest;
 	int		negative;
 
-	len = ft_printf_getintlength(n);
 	negative = (n < 0) ? 1 : 0;
 	n = (n < 0) ? -n : n;
+	len = ft_printf_getintlength(n) + negative;
 	nbr = (char *)malloc(sizeof(char) * len + 1);
 	if (nbr)
 	{
+		nbr[len] = '\0';
 		while (len >= 0)
 		{
 			rest = n % 10;
@@ -27,7 +40,6 @@ char	*ft_printf_itoa(int n)
 			n = n / 10;
 			len--;
 		}
-		nbr[len] = '\0';
 		if (negative)
 			nbr[0] = '-';
 	}
@@ -35,7 +47,7 @@ char	*ft_printf_itoa(int n)
 }
 
 int		ft_printf_getintlength(int n)
-{	
+{
 	int		len;
 	int		tmp;
 

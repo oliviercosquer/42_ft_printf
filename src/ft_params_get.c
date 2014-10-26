@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_params_get.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ocosquer <ocosquer@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/10/26 02:51:55 by ocosquer          #+#    #+#             */
+/*   Updated: 2014/10/26 02:11:50 by ocosquer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ft_printf.h>
 
 t_param	*ft_get_params(char *str)
@@ -20,14 +32,14 @@ t_param	*ft_get_params(char *str)
 				first = ft_get_next_param(&str);
 			str++;
 		}
-		else if (*(str + 1) != '%')
+		else if (*(str + 1) == '%' && *str == '%')
 			str += 2;
 		else
 			str += 1;
 	}
 	return (first);
 }
-	
+
 t_param	*ft_get_next_param(char **str)
 {
 	char	*tmp;
@@ -41,7 +53,7 @@ t_param	*ft_get_next_param(char **str)
 			param->flag = ft_get_flag(tmp);
 		if (ft_has_width(tmp))
 			param->width = ft_get_width(&tmp);
-		if (ft_has_precision(tmp	))
+		if (ft_has_precision(tmp))
 			param->precision = ft_get_precision(&tmp);
 		param->specifier = ft_get_specifier(&tmp, param);
 	}

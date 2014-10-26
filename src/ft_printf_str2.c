@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_str2.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ocosquer <ocosquer@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/10/26 02:51:56 by ocosquer          #+#    #+#             */
+/*   Updated: 2014/10/26 02:14:14 by ocosquer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ft_printf.h>
 
 int		ft_printf_string(char **s, t_param *param)
@@ -5,14 +17,17 @@ int		ft_printf_string(char **s, t_param *param)
 	int		pos_percent;
 	char	*str;
 	char	nb_char;
+	int		len;
 
 	pos_percent = 0;
 	str = *s;
+	len = ft_printf_strlen(str);
 	nb_char = 0;
 	while (str[pos_percent] && str[pos_percent] != '%')
 		pos_percent++;
 	write(1, str, pos_percent);
 	str += pos_percent + ft_printf_get_format_length(param) + 1;
+	(void)len;
 	*s = str;
 	nb_char += ft_printf_padding(param) + pos_percent;
 	nb_char += ft_printf_strlen(param->value);
@@ -45,7 +60,7 @@ int		ft_printf_padding(t_param *param)
 			if (param->flag == '0')
 				write(1, &param->flag, 1);
 			else
-				write(1, " ", 1);			
+				write(1, " ", 1);
 			width--;
 			nb_char++;
 		}
@@ -77,6 +92,7 @@ char	*ft_printf_strjoin(char *s1, char *s2)
 			str[i + j] = s2[j];
 			j++;
 		}
+		str[len] = '\0';
 	}
 	return (str);
 }

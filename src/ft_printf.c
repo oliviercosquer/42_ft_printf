@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ocosquer <ocosquer@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/10/26 02:51:56 by ocosquer          #+#    #+#             */
+/*   Updated: 2014/10/26 02:08:22 by ocosquer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ft_printf.h>
 
 void	ft_display_param(t_param *param)
@@ -18,10 +30,9 @@ int		ft_printf(const char *s, ...)
 	int		nb_char;
 
 	str = (char *)s;
+	params = NULL;
 	if (ft_printf_strlen(str) > 2)
 		params = ft_get_params(str);
-	else
-		params = NULL;
 	nb_char = 0;
 	va_start(list, s);
 	while (params)
@@ -31,7 +42,8 @@ int		ft_printf(const char *s, ...)
 		params = params->next;
 	}
 	nb_char += ft_printf_strlen(str);
-	write(1, str, ft_printf_strlen(str));
+	if (ft_printf_strlen(str) > 0)
+		write(1, str, ft_printf_strlen(str));
 	va_end(list);
 	return (nb_char);
 }

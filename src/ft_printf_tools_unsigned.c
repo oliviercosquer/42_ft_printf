@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_tools_unsigned.c                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ocosquer <ocosquer@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/10/26 02:51:56 by ocosquer          #+#    #+#             */
+/*   Updated: 2014/10/26 02:14:40 by ocosquer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ft_printf.h>
 
 char	*ft_printf_unsigned_itoa(unsigned int n)
@@ -23,7 +35,7 @@ char	*ft_printf_unsigned_itoa(unsigned int n)
 }
 
 int		ft_printf_get_unsigned_intlength(unsigned int n)
-{	
+{
 	int				len;
 	unsigned int	tmp;
 

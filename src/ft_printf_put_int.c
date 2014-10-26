@@ -1,7 +1,20 @@
-# include <ft_printf.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_put_int.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ocosquer <ocosquer@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/10/26 02:51:56 by ocosquer          #+#    #+#             */
+/*   Updated: 2014/10/26 02:13:15 by ocosquer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <ft_printf.h>
 
 char	*ft_printf_get_signed_int(t_param *param, int n)
-{	char	*nbr;
+{
+	char	*nbr;
 
 	nbr = ft_printf_itoa(n);
 	if (param->flag == '+')

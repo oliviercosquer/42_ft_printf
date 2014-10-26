@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_params_check.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ocosquer <ocosquer@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/10/26 02:51:55 by ocosquer          #+#    #+#             */
+/*   Updated: 2014/10/26 02:11:32 by ocosquer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ft_printf.h>
 
 int		ft_is_format_valid(char *str)
@@ -6,11 +18,9 @@ int		ft_is_format_valid(char *str)
 
 	valid = (*str == '%') ? 1 : 0;
 	str++;
-	//flag
 	valid = (valid && (*str == '-' || *str == '+' || *str == ' ')) ? 1 : 0;
 	valid = (valid && (*str == '#' || *str == '0')) ? 1 : 0;
 	str++;
-	//width
 	if (*str == '*')
 		str++;
 	else
@@ -46,11 +56,13 @@ int		ft_has_width(char *str)
 	if (*str == '*')
 		has_width = 1;
 	else
+	{
 		while (*str >= '0' && *str <= '9')
 		{
 			str++;
 			has_width++;
 		}
+	}
 	return (has_width);
 }
 
@@ -61,23 +73,24 @@ int		ft_has_precision(char *str)
 
 	has_precision = 0;
 	tmp = str + 1;
-	tmp += ft_has_flag(str);
-	tmp += ft_has_width(str);
+	tmp += ft_has_flag(str) + ft_has_width(str);
 	if (*tmp == '.')
 	{
 		tmp++;
-			has_precision++;
+		has_precision++;
 		if (*tmp == '*')
 		{
 			has_precision++;
 			tmp++;
 		}
 		else
+		{
 			while (ft_printf_isdigit(*tmp))
 			{
 				has_precision++;
 				tmp++;
 			}
+		}
 	}
 	return (has_precision);
 }

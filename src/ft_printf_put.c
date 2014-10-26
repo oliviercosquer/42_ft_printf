@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_put.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ocosquer <ocosquer@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/10/26 02:51:56 by ocosquer          #+#    #+#             */
+/*   Updated: 2014/10/26 02:08:25 by ocosquer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ft_printf.h>
 
 char	*ft_printf_put(va_list *l, t_param *param)
@@ -6,7 +18,7 @@ char	*ft_printf_put(va_list *l, t_param *param)
 	char	*tmp;
 
 	tmp = NULL;
-	if (param)
+	if (param && param->specifier)
 	{
 		specifier = *(param->specifier);
 		if (specifier == 'd' || specifier == 'i')

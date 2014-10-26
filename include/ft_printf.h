@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ocosquer <ocosquer@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/10/26 02:51:55 by ocosquer          #+#    #+#             */
+/*   Updated: 2014/10/26 02:21:45 by ocosquer         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # define MSG_NULL_POINTER "(null)"
@@ -10,7 +22,7 @@
 #include <stdio.h> // TO DELETE
 typedef struct	s_param
 {
-	void			*value;
+	char			*value;
 	char			flag;
 	char			*width;
 	char			*precision;
