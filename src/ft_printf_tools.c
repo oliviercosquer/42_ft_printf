@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_tools.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ocosquer <ocosquer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:56 by ocosquer          #+#    #+#             */
-/*   Updated: 2014/10/26 02:14:21 by ocosquer         ###   ########.fr       */
+/*   Updated: 2014/10/27 12:57:04 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,21 @@ char	*ft_printf_itoa(int n)
 	int		rest;
 	int		negative;
 
-	negative = (n < 0) ? 1 : 0;
-	n = (n < 0) ? -n : n;
-	len = ft_printf_getintlength(n) + negative;
+	negative = (n < 0) ? -1 : 1;
+	len = ft_printf_getintlength(n);
+	len += (negative == -1) ? 1 : 0;
 	nbr = (char *)malloc(sizeof(char) * len + 1);
 	if (nbr)
 	{
 		nbr[len] = '\0';
 		while (len >= 0)
 		{
-			rest = n % 10;
-			nbr[len] = '0' + rest;
-			n = n / 10;
+			rest = (n % 10);
+			nbr[len] = (negative == -1) ? '0' + (rest * negative) : '0' + rest;
+			n = (n / 10);
 			len--;
 		}
-		if (negative)
+		if (negative == -1)
 			nbr[0] = '-';
 	}
 	return (nbr);
@@ -50,18 +50,18 @@ int		ft_printf_getintlength(int n)
 {
 	int		len;
 	int		tmp;
+	int		negative;
 
 	len = 0;
 	tmp = n;
-	if (n < 0)
-		len = 1;
-	while (tmp >= 10)
+	negative = (n < 0) ? -1 : 1;
+	while (tmp >= 10 || tmp <= -10)
 	{
 		len++;
-		if (tmp >= 10)
-			tmp = tmp / 10;
+		if (tmp >= 10 || tmp <= -10)
+			tmp = (tmp / 10) * negative;
 		else
-			tmp = -1;
+			tmp = -negative;
 	}
 	return (len);
 }

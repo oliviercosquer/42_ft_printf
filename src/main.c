@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ocosquer <ocosquer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:56 by ocosquer          #+#    #+#             */
-/*   Updated: 2014/10/26 02:08:54 by ocosquer         ###   ########.fr       */
+/*   Updated: 2014/10/27 12:28:36 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_printf(const char *, ...);
 #	define PRINTF_MACRO ft_printf
 #endif
 
-static void	print_test(char *str)
+/*static void	print_test(char *str)
 {
 #ifdef _FT_USER__
 	write(1, str, my_strlen(str));
@@ -27,7 +27,7 @@ static void	print_test(char *str)
 #else
 	printf("%s : ", str);
 #endif
-}
+}*/
 
 /*static void	print_ret(int ret)
 {
@@ -42,6 +42,7 @@ static void	print_test(char *str)
 
 int	main(void)
 {
+	//ft_printf("TEST %d\n", 12);
 	#include "test.c"
 	return (0);
 }
