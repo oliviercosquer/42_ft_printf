@@ -6,12 +6,11 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:56 by ocosquer          #+#    #+#             */
-/*   Updated: 2014/10/27 12:28:36 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/03 21:15:52 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
-int	ft_printf(const char *, ...);
 
 #ifdef _FT_USER__
 #	define PRINTF_MACRO ft_printf
@@ -42,7 +41,7 @@ int	ft_printf(const char *, ...);
 
 int	main(void)
 {
-	//ft_printf("TEST %d\n", 12);
+	ft_printf("TEST %d", -12);
 	#include "test.c"
 	return (0);
 }

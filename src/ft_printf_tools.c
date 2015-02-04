@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:56 by ocosquer          #+#    #+#             */
-/*   Updated: 2014/10/27 12:57:04 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/04 02:39:43 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,13 @@ char	*ft_printf_itoa(int n)
 	int		negative;
 
 	negative = (n < 0) ? -1 : 1;
-	len = ft_printf_getintlength(n);
+	len = ft_printf_getintlength(n) + 1;
 	len += (negative == -1) ? 1 : 0;
-	nbr = (char *)malloc(sizeof(char) * len + 1);
+	nbr = (char *)malloc(sizeof(char) * (len + 1));
 	if (nbr)
 	{
 		nbr[len] = '\0';
+		len--;
 		while (len >= 0)
 		{
 			rest = (n % 10);

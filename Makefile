@@ -14,7 +14,7 @@ all: ${NAME}
 
 ${NAME}:
 	@echo compilation of $(NAME)
-	gcc $(OPTI) $(INCLUDE_PATH) -Wall -Werror -Wextra $(SRC) -o $(NAME)
+	gcc -g $(INCLUDE_PATH) -Wall -Werror -Wextra $(SRC) -o $(NAME)
 	@echo Compilation done!
 
 clean:

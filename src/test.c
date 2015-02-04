@@ -21,8 +21,8 @@ PRINTF_MACRO("Bla bla %c\n", 'a');
 PRINTF_MACRO("Bla bla %c\n", 'b');
 PRINTF_MACRO("Bla bla %c\n", '9');
 PRINTF_MACRO("Bla bla %c\n", 227);
-PRINTF_MACRO("Bla bla %s\n", 0);
-PRINTF_MACRO("Bla bla %s\n", "\n");
+//PRINTF_MACRO("Bla bla %s\n", 0);
+//PRINTF_MACRO("Bla bla %s\n", "\n");
 PRINTF_MACRO("Bla bla %s\n", "LoL\n");
 PRINTF_MACRO("Bla bla %s\n", "chaussette\n");
 PRINTF_MACRO("Bla bla %s\n", "Un gros test qui marche!\n");
@@ -53,13 +53,14 @@ PRINTF_MACRO("Bla bla %x\n", -1);
 PRINTF_MACRO("Bla bla %x\n", 1);
 PRINTF_MACRO("Bla bla %x\n", -2147483647 - 1);
 PRINTF_MACRO("Bla bla %x\n", 2147483647);
-PRINTF_MACRO("Bla bla %p\n", 0);
+//PRINTF_MACRO("Bla bla %p\n", 0);
 PRINTF_MACRO("Bla bla %p\n", (void*)-1);
 PRINTF_MACRO("Bla bla %p\n", (void*)30);
 PRINTF_MACRO("Bla bla %p\n", (void*)14785478);
 PRINTF_MACRO("Bla bla %%\n");
-PRINTF_MACRO("Bla bla %Z\n", 123);
-PRINTF_MACRO("Bla bla %BLABLABLABLA\n");/*
+//PRINTF_MACRO("Bla bla %Z\n", 123);
+//PRINTF_MACRO("Bla bla %BLABLABLABLA\n");
+/*
 PRINTF_MACRO("Bla bla % d\n", 0);
 PRINTF_MACRO("Bla bla %#d\n", 0);
 PRINTF_MACRO("Bla bla %-d\n", 0);

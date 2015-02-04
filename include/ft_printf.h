@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ocosquer <ocosquer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:55 by ocosquer          #+#    #+#             */
-/*   Updated: 2014/10/26 02:21:45 by ocosquer         ###   ########.fr       */
+/*   Updated: 2014/11/16 16:42:06 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
-#include <stdio.h> // TO DELETE
+# include <stdio.h> // TO DELETE
 typedef struct	s_param
 {
 	char			*value;
@@ -85,6 +85,7 @@ int				ft_printf_get_format_length(t_param *param);
 
 //ft_printf_tools2
 int				ft_printf_atoi(const char *str);
+int				ft_printf_strequ(char *s1, char *s2);
 
 //ft_printf_put
 char			*ft_printf_put(va_list *l, t_param *param);

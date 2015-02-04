@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_put.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ocosquer <ocosquer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:56 by ocosquer          #+#    #+#             */
-/*   Updated: 2014/10/26 02:08:25 by ocosquer         ###   ########.fr       */
+/*   Updated: 2015/02/04 02:20:26 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,10 @@ char	*ft_printf_get_di(va_list *l, t_param *param)
 	}
 	else
 	{
-		if (*(param->specifier_length) == 'h')
+		if (ft_printf_strequ(param->specifier_length, "h"))
 			tmp = ft_printf_get_signed_int(param, va_arg(l, int));
+		if (ft_printf_strequ(param->specifier_length, "l"))
+			tmp = ft_printf_get_signed_int(param, va_arg(l,long int));
 	}
 	return (tmp);
 }
@@ -54,7 +56,7 @@ char	*ft_printf_get_s(va_list *l, t_param *param)
 
 	str = va_arg(*l, char *);
 	(void)param;
-	return (str);
+	return (ft_printf_strdup(str));
 }
 
 char	*ft_printf_get_c(va_list *l, t_param *param)

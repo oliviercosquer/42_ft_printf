@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ocosquer <ocosquer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:56 by ocosquer          #+#    #+#             */
-/*   Updated: 2014/10/26 02:08:22 by ocosquer         ###   ########.fr       */
+/*   Updated: 2015/02/04 02:09:11 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,25 @@ void	ft_display_param(t_param *param)
 	}
 }
 
+void	ft_printf_del_params(t_param **params)
+{
+	t_param	*tmp;
+
+	tmp = *params;
+	if (tmp->value)
+		free(tmp->value);
+	if (tmp->width)
+		free(tmp->width);
+	if (tmp->precision)
+		free(tmp->precision);
+	if (tmp->specifier)
+		free(tmp->specifier);
+	if (tmp->specifier_length)
+		free(tmp->specifier_length);
+	*params = tmp->next;
+	free(tmp);
+}
+
 int		ft_printf(const char *s, ...)
 {
 	va_list	list;
@@ -29,6 +48,8 @@ int		ft_printf(const char *s, ...)
 	char	*str;
 	int		nb_char;
 
+	if (!*s)
+		return (0);
 	str = (char *)s;
 	params = NULL;
 	if (ft_printf_strlen(str) > 2)
@@ -39,7 +60,7 @@ int		ft_printf(const char *s, ...)
 	{
 		params->value = ft_printf_get_arg(&list, params);
 		nb_char += ft_printf_string(&str, params);
-		params = params->next;
+		ft_printf_del_params(&params);
 	}
 	nb_char += ft_printf_strlen(str);
 	if (ft_printf_strlen(str) > 0)
@@ -47,3 +68,4 @@ int		ft_printf(const char *s, ...)
 	va_end(list);
 	return (nb_char);
 }
+
