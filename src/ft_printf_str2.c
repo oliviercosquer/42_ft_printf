@@ -68,31 +68,3 @@ int		ft_printf_padding(t_param *param)
 	}
 	return (nb_char);
 }
-
-char	*ft_printf_strjoin(char *s1, char *s2)
-{
-	int		len;
-	char	*str;
-	int		i;
-	int		j;
-
-	len = ft_strlen(s1) + ft_strlen(s2);
-	str = (char *)malloc(sizeof(char) * len + 1);
-	i = 0;
-	j = 0;
-	if (str)
-	{
-		while (s1[i])
-		{
-			str[i] = s1[i];
-			i++;
-		}
-		while (s2[j])
-		{
-			str[i + j] = s2[j];
-			j++;
-		}
-		str[len] = '\0';
-	}
-	return (str);
-}

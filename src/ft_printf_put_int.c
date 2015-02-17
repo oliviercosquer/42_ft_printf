@@ -20,10 +20,10 @@ char	*ft_printf_get_signed_int(t_param *param, int n)
 	if (param->flag == '+')
 	{
 		if (n >= 0)
-			nbr = ft_printf_strjoin("+", nbr);
+			nbr = ft_strjoin("+", nbr);
 	}
 	if (param->flag == ' ' && n > 0)
-		nbr = ft_printf_strjoin(" ", nbr);
+		nbr = ft_strjoin(" ", nbr);
 	return (nbr);
 }
 

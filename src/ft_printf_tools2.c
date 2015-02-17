@@ -24,20 +24,3 @@ int		ft_printf_atoi(const char *str)
 	}
 	return (value);
 }
-
-int		ft_printf_strequ(char *s1, char *s2)
-{
-	int	equal;
-	unsigned char	a;
-	unsigned char	b;
-
-	equal = 1;
-	while (*s1 && *s2 && *s1 == *s2)
-	{
-
-	}
-	a = (unsigned char)*s1;
-	b = (unsigned char)*s2;
-	equal = (a - b) == 0 ? 1 : 0;
-	return (equal);
-}

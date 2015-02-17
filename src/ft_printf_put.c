@@ -42,9 +42,9 @@ char	*ft_printf_get_di(va_list *l, t_param *param)
 	}
 	else
 	{
-		if (ft_printf_strequ(param->specifier_length, "h"))
+		if (ft_strequ(param->specifier_length, "h"))
 			tmp = ft_printf_get_signed_int(param, va_arg(l, int));
-		if (ft_printf_strequ(param->specifier_length, "l"))
+		if (ft_strequ(param->specifier_length, "l"))
 			tmp = ft_printf_get_signed_int(param, va_arg(l,long int));
 	}
 	return (tmp);
@@ -58,7 +58,7 @@ char	*ft_printf_get_s(va_list *l, t_param *param)
 	(void)param;
 	if (!str)
 		return (ft_strdup("(null)"));
-	return (ft_printf_strdup(str));
+	return (ft_strdup(str));
 }
 
 char	*ft_printf_get_c(va_list *l, t_param *param)

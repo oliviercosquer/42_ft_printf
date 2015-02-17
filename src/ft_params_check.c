@@ -85,7 +85,7 @@ int		ft_has_precision(char *str)
 		}
 		else
 		{
-			while (ft_printf_isdigit(*tmp))
+			while (ft_isdigit(*tmp))
 			{
 				has_precision++;
 				tmp++;
@@ -100,6 +100,6 @@ int		ft_is_valid_specifier(char c)
 	int			isvalid;
 
 	isvalid = 0;
-	isvalid = ft_printf_strchr(VALID_SPECIFIER, c);
+	isvalid = VALID_SPECIFIER - ft_strchr(VALID_SPECIFIER, c);
 	return (isvalid);
 }
