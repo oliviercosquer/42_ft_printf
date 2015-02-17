@@ -79,11 +79,11 @@ int		ft_printf_get_format_length(t_param *param)
 		if (*(param->width) == '*')
 			len++;
 		else
-			len += ft_printf_strlen(param->width);
+			len += ft_strlen(param->width);
 	}
 	if (param->specifier)
 		len++;
 	if (param->specifier_length)
-		len += ft_printf_strlen(param->specifier_length);
+		len += ft_strlen(param->specifier_length);
 	return (len);
 }

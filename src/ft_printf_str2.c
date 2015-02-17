@@ -21,7 +21,7 @@ int		ft_printf_string(char **s, t_param *param)
 
 	pos_percent = 0;
 	str = *s;
-	len = ft_printf_strlen(str);
+	len = ft_strlen(str);
 	nb_char = 0;
 	while (str[pos_percent] && str[pos_percent] != '%')
 		pos_percent++;
@@ -30,7 +30,7 @@ int		ft_printf_string(char **s, t_param *param)
 	(void)len;
 	*s = str;
 	nb_char += ft_printf_padding(param) + pos_percent;
-	nb_char += ft_printf_strlen(param->value);
+	nb_char += ft_strlen(param->value);
 	return (nb_char);
 }
 
@@ -41,7 +41,7 @@ int		ft_printf_padding(t_param *param)
 	int		nb_char;
 
 	width = ft_printf_atoi(param->width);
-	len_value = ft_printf_strlen(param->value);
+	len_value = ft_strlen(param->value);
 	nb_char = 0;
 	if (param->flag == '-')
 	{
@@ -76,7 +76,7 @@ char	*ft_printf_strjoin(char *s1, char *s2)
 	int		i;
 	int		j;
 
-	len = ft_printf_strlen(s1) + ft_printf_strlen(s2);
+	len = ft_strlen(s1) + ft_strlen(s2);
 	str = (char *)malloc(sizeof(char) * len + 1);
 	i = 0;
 	j = 0;

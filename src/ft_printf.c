@@ -52,7 +52,7 @@ int		ft_printf(const char *s, ...)
 		return (0);
 	str = (char *)s;
 	params = NULL;
-	if (ft_printf_strlen(str) > 2)
+	if (ft_strlen(str) > 2)
 		params = ft_get_params(str);
 	nb_char = 0;
 	va_start(list, s);
@@ -62,9 +62,9 @@ int		ft_printf(const char *s, ...)
 		nb_char += ft_printf_string(&str, params);
 		ft_printf_del_params(&params);
 	}
-	nb_char += ft_printf_strlen(str);
-	if (ft_printf_strlen(str) > 0)
-		write(1, str, ft_printf_strlen(str));
+	nb_char += ft_strlen(str);
+	if (ft_strlen(str) > 0)
+		write(1, str, ft_strlen(str));
 	va_end(list);
 	return (nb_char);
 }

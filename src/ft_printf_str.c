@@ -19,21 +19,9 @@ void	ft_printf_putstr(void *s, t_param *param)
 	(void)param;
 	str = (char *)s;
 	if (str)
-		write(1, str, ft_printf_strlen(str));
+		write(1, str, ft_strlen(str));
 	else
-		write(1, MSG_NULL_POINTER, ft_printf_strlen(MSG_NULL_POINTER));
-}
-
-int		ft_printf_strlen(char *str)
-{
-	int	len;
-
-	len = 0;
-	while (str && str[len] != '\0')
-	{
-		len++;
-	}
-	return (len);
+		write(1, MSG_NULL_POINTER, ft_strlen(MSG_NULL_POINTER));
 }
 
 int		ft_printf_strchr(char *str, char c)
@@ -52,7 +40,7 @@ char	*ft_printf_strdup(char *str)
 	char	*str_dup;
 	int		len;
 
-	len = ft_printf_strlen(str);
+	len = ft_strlen(str);
 	str_dup = NULL;
 	if (len)
 	{

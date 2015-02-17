@@ -56,6 +56,8 @@ char	*ft_printf_get_s(va_list *l, t_param *param)
 
 	str = va_arg(*l, char *);
 	(void)param;
+	if (!str)
+		return (ft_strdup("(null)"));
 	return (ft_printf_strdup(str));
 }
 

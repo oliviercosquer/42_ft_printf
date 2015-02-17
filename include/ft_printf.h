@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include <libft.h>
 # include <stdio.h> // TO DELETE
 typedef struct	s_param
 {
@@ -57,7 +58,6 @@ char			*ft_get_specifier(char **str, t_param *param);
 
 //ft_printf_str
 void			ft_printf_putstr(void *s, t_param *param);
-int				ft_printf_strlen(char *str);
 int				ft_printf_strchr(char *str, char c);
 char			*ft_printf_strdup(char *str);
 char			*ft_printf_strsub(char *s, int start, int len);
