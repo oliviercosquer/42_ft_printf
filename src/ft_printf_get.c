@@ -12,7 +12,7 @@
 
 #include <ft_printf.h>
 
-char	*ft_printf_put(va_list *l, t_param *param)
+char	*ft_printf_get(va_list *l, t_param *param)
 {
 	char	specifier;
 	char	*tmp;

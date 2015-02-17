@@ -58,8 +58,6 @@ char			*ft_get_specifier(char **str, t_param *param);
 
 //ft_printf_str
 void			ft_printf_putstr(void *s, t_param *param);
-
-//ft_printf_str2
 int				ft_printf_string(char **s, t_param *param);
 int				ft_printf_padding(t_param *param);
 
@@ -76,12 +74,10 @@ t_func			ft_get_type(char c);
 void			ft_printf_reversestr(char *str);
 int				ft_printf_getintlength(int n);
 int				ft_printf_get_format_length(t_param *param);
-
-//ft_printf_tools2
 int				ft_printf_atoi(const char *str);
 
-//ft_printf_put
-char			*ft_printf_put(va_list *l, t_param *param);
+//ft_printf_get
+char			*ft_printf_get(va_list *l, t_param *param);
 char			*ft_printf_get_di(va_list *l, t_param *param);
 char			*ft_printf_get_s(va_list *l, t_param *param);
 char			*ft_printf_get_c(va_list *l, t_param *param);

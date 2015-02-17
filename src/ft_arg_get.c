@@ -26,5 +26,5 @@ char	*ft_printf_get_arg(va_list *l, t_param *param)
 		tmp = ft_itoa(va_arg(*l, int));
 		param->precision = tmp;
 	}
-	return (ft_printf_put(l, param));
+	return (ft_printf_get(l, param));
 }
