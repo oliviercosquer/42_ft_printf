@@ -18,12 +18,12 @@ char	*ft_printf_get_arg(va_list *l, t_param *param)
 
 	if (param->width && *(param->width) == '*')
 	{
-		tmp = ft_printf_itoa(va_arg(*l, int));
+		tmp = ft_itoa(va_arg(*l, int));
 		param->width = tmp;
 	}
 	if (param->precision && *(param->precision) == '*')
 	{
-		tmp = ft_printf_itoa(va_arg(*l, int));
+		tmp = ft_itoa(va_arg(*l, int));
 		param->precision = tmp;
 	}
 	return (ft_printf_put(l, param));

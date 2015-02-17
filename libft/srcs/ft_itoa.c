@@ -12,48 +12,50 @@
 
 #include <libft.h>
 
-char	*ft_reversestr(char *str)
+int		ft_getintlength(int n)
 {
-	char	*new_str;
-	int		len_str;
-	int		index;
+	int		len;
+	int		tmp;
+	int		negative;
 
-	len_str = ft_strlen(str) - 1;
-	new_str = ft_strnew(len_str);
-	index = 0;
-	while (index <= len_str)
+	len = 0;
+	tmp = n;
+	negative = (n < 0) ? -1 : 1;
+	while (tmp >= 10 || tmp <= -10)
 	{
-		new_str[index] = str[len_str - index];
-		index++;
+		len++;
+		if (tmp >= 10 || tmp <= -10)
+			tmp = (tmp / 10) * negative;
+		else
+			tmp = -negative;
 	}
-	return (new_str);
+	return (len);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*s;
+	char	*nbr;
+	int		len;
+	int		rest;
 	int		negative;
-	int		tmp_n;
-	int		length;
-	int		index;
 
 	negative = (n < 0) ? -1 : 1;
-	tmp_n = n;
-	length = 0;
-	index = 0;
-	while (tmp_n != 0)
+	len = ft_getintlength(n) + 1;
+	len += (negative == -1) ? 1 : 0;
+	nbr = (char *)malloc(sizeof(char) * (len + 1));
+	if (nbr)
 	{
-		length++;
-		tmp_n /= 10;
+		nbr[len] = '\0';
+		len--;
+		while (len >= 0)
+		{
+			rest = (n % 10);
+			nbr[len] = (negative == -1) ? '0' + (rest * negative) : '0' + rest;
+			n = (n / 10);
+			len--;
+		}
+		if (negative == -1)
+			nbr[0] = '-';
 	}
-	s = ft_strnew(length + 1);
-	while (index < length)
-	{
-		s[index] = n % 10 * negative + '0';
-		index++;
-		n /= 10;
-	}
-	s[index] = (negative == -1) ? '-' : s[index];
-	s[index] = (length == 0) ? '0' : s[index];
-	return (ft_reversestr(s));
+	return (nbr);
 }

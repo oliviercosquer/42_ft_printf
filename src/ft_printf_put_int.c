@@ -16,7 +16,7 @@ char	*ft_printf_get_signed_int(t_param *param, int n)
 {
 	char	*nbr;
 
-	nbr = ft_printf_itoa(n);
+	nbr = ft_itoa(n);
 	if (param->flag == '+')
 	{
 		if (n >= 0)

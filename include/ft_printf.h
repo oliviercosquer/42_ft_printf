@@ -78,7 +78,6 @@ t_func			ft_get_type(char c);
 
 //ft_printf_tools
 int				ft_printf_isdigit(char c);
-char			*ft_printf_itoa(int n);
 void			ft_printf_reversestr(char *str);
 int				ft_printf_getintlength(int n);
 int				ft_printf_get_format_length(t_param *param);
