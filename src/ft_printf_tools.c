@@ -32,3 +32,16 @@ int		ft_printf_get_format_length(t_param *param)
 		len += ft_strlen(param->specifier_length);
 	return (len);
 }
+
+int		ft_printf_atoi(const char *str)
+{
+	int	value;
+
+	value = 0;
+	while (str && *str)
+	{
+		value = (value * 10) + (*str - '0');
+		str++;
+	}
+	return (value);
+}
