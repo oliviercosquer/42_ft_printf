@@ -53,14 +53,13 @@ PRINTF_MACRO("Bla bla %x\n", -1);
 PRINTF_MACRO("Bla bla %x\n", 1);
 PRINTF_MACRO("Bla bla %x\n", -2147483647 - 1);
 PRINTF_MACRO("Bla bla %x\n", 2147483647);
-//PRINTF_MACRO("Bla bla %p\n", 0);
+PRINTF_MACRO("Bla bla %p\n", 0);
 PRINTF_MACRO("Bla bla %p\n", (void*)-1);
 PRINTF_MACRO("Bla bla %p\n", (void*)30);
 PRINTF_MACRO("Bla bla %p\n", (void*)14785478);
 PRINTF_MACRO("Bla bla %%\n");
-//PRINTF_MACRO("Bla bla %Z\n", 123);
-//PRINTF_MACRO("Bla bla %BLABLABLABLA\n");
-/*
+PRINTF_MACRO("Bla bla %Z\n", 123);
+PRINTF_MACRO("Bla bla %BLABLABLABLA\n");
 PRINTF_MACRO("Bla bla % d\n", 0);
 PRINTF_MACRO("Bla bla %#d\n", 0);
 PRINTF_MACRO("Bla bla %-d\n", 0);
@@ -98,7 +97,7 @@ PRINTF_MACRO("Bla bla %.10d\n", 123);
 PRINTF_MACRO("Bla bla %.*d\n", 0, 123);
 PRINTF_MACRO("Bla bla %.*d\n", 3, 123);
 PRINTF_MACRO("Bla bla %.*d\n", 10, 123);
-PRINTF_MACRO("Bla bla %.*d\n", -15, 123);
+PRINTF_MACRO("Bla bla %.*d\n", -15, 123);/*
 PRINTF_MACRO("Bla bla % d\n", 12345678);
 PRINTF_MACRO("Bla bla %#d\n", 12345678);
 PRINTF_MACRO("Bla bla %-d\n", 12345678);

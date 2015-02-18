@@ -52,7 +52,7 @@ int		ft_printf(const char *s, ...)
 		return (0);
 	str = (char *)s;
 	params = NULL;
-	if (ft_strlen(str) > 2)
+	if (ft_strlen(str) >= 2)
 		params = ft_get_params(str);
 	nb_char = 0;
 	va_start(list, s);

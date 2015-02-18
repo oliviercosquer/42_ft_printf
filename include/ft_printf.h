@@ -82,6 +82,9 @@ char			*ft_printf_get_di(va_list *l, t_param *param);
 char			*ft_printf_get_s(va_list *l, t_param *param);
 char			*ft_printf_get_c(va_list *l, t_param *param);
 
+//ft_printf_get_float
+char			*ft_printf_get_float(va_list *l, t_param *param);
+
 //ft_printf_put_int
 char			*ft_printf_get_signed_int(t_param *param,int nbr);
 char			*ft_printf_get_unsigned_int(t_param *param,unsigned int nbr);

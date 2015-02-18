@@ -29,18 +29,14 @@ int		ft_printf_string(char **s, t_param *param)
 	int		pos_percent;
 	char	*str;
 	char	nb_char;
-	int		len;
 
 	pos_percent = 0;
 	str = *s;
-	len = ft_strlen(str);
 	nb_char = 0;
 	while (str[pos_percent] && str[pos_percent] != '%')
 		pos_percent++;
 	write(1, str, pos_percent);
-	str += pos_percent + ft_printf_get_format_length(param) + 1;
-	(void)len;
-	*s = str;
+	*s += pos_percent + ft_printf_get_format_length(param) + 1;
 	nb_char += ft_printf_padding(param) + pos_percent;
 	nb_char += ft_strlen(param->value);
 	return (nb_char);

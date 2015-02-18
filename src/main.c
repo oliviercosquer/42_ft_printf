@@ -13,9 +13,9 @@
 #include <ft_printf.h>
 
 #ifdef _FT_USER__
-#	define PRINTF_MACRO ft_printf
+#	define PRINTF_MACRO printf
 #else
-#	define PRINTF_MACRO ft_printf
+#	define PRINTF_MACRO printf
 #endif
 
 /*static void	print_test(char *str)
@@ -41,8 +41,14 @@
 
 int	main(void)
 {
-	ft_printf("TEST %d", -12);
-	#include "test.c"
+	//#include "test.c"
+	int	i = 0;
+	/*i = printf("%d\n", "abc");
+	printf("%d\n", i);*/
+	i = ft_printf("%c\n", 0);
+	ft_printf("%d\n", i);
+	i = printf("%c\n", 0);
+	printf("%d\n", i);
 	return (0);
 }
 /*

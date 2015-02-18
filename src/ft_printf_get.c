@@ -27,6 +27,10 @@ char	*ft_printf_get(va_list *l, t_param *param)
 			tmp = ft_printf_get_s(l, param);
 		if (specifier == 'c')
 			tmp = ft_printf_get_c(l, param);
+		if (ft_strchr("feEgG", specifier))
+			tmp = ft_printf_get_float(l, param);
+		/*if (specifier == 'u')
+			tmp = ft_printf_get_u(l, param);*/
 	}
 	return (tmp);
 }
@@ -38,14 +42,14 @@ char	*ft_printf_get_di(va_list *l, t_param *param)
 	tmp = NULL;
 	if (!param->specifier_length)
 	{
-		tmp = ft_printf_get_signed_int(param, va_arg(l, int));
+		tmp = ft_printf_get_signed_int(param, va_arg(*l, int));
 	}
 	else
 	{
 		if (ft_strequ(param->specifier_length, "h"))
-			tmp = ft_printf_get_signed_int(param, va_arg(l, int));
+			tmp = ft_printf_get_signed_int(param, va_arg(*l, int));
 		if (ft_strequ(param->specifier_length, "l"))
-			tmp = ft_printf_get_signed_int(param, va_arg(l,long int));
+			tmp = ft_printf_get_signed_int(param, va_arg(*l,long int));
 	}
 	return (tmp);
 }
@@ -63,7 +67,7 @@ char	*ft_printf_get_s(va_list *l, t_param *param)
 
 char	*ft_printf_get_c(va_list *l, t_param *param)
 {
-	char	c;
+	int		c;
 	char	*tmp;
 
 	(void)param;
@@ -71,7 +75,7 @@ char	*ft_printf_get_c(va_list *l, t_param *param)
 	tmp = (char *)malloc(sizeof(char) * 2);
 	if (tmp)
 	{
-		tmp[0] = c;
+		tmp[0] = (char)c;
 		tmp[1] = '\0';
 	}
 	return (tmp);
