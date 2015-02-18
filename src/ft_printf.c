@@ -22,25 +22,6 @@ void	ft_display_param(t_param *param)
 	}
 }
 
-void	ft_printf_del_params(t_param **params)
-{
-	t_param	*tmp;
-
-	tmp = *params;
-	if (tmp->value)
-		free(tmp->value);
-	if (tmp->width)
-		free(tmp->width);
-	if (tmp->precision)
-		free(tmp->precision);
-	if (tmp->specifier)
-		free(tmp->specifier);
-	if (tmp->specifier_length)
-		free(tmp->specifier_length);
-	*params = tmp->next;
-	free(tmp);
-}
-
 int		ft_printf(const char *s, ...)
 {
 	va_list	list;
@@ -53,12 +34,12 @@ int		ft_printf(const char *s, ...)
 	str = (char *)s;
 	params = NULL;
 	if (ft_strlen(str) >= 2)
-		params = ft_get_params(str);
+		params = ft_printf_get_params(str);
 	nb_char = 0;
 	va_start(list, s);
 	while (params)
 	{
-		ft_display_param(params);
+		//ft_display_param(params);
 		params->value = ft_printf_get_arg(&list, params);
 		nb_char += ft_printf_string(&str, params);
 		ft_printf_del_params(&params);

@@ -36,8 +36,11 @@ typedef void (*t_func)(void *, t_param *param);
 int				ft_printf(const char *str, ...);
 
 //ft_params
-t_param			*ft_new_param(void);
-void			ft_add_param(t_param *first, t_param *new_param);
+t_param			*ft_printf_new_param(void);
+void			ft_printf_add_param(t_param *first, t_param *new_param);
+t_param			*ft_printf_get_next_param(char **str);
+t_param			*ft_printf_get_params(char *str);
+void			ft_printf_del_params(t_param **params);
 
 //ft_params_check
 int				ft_is_format_valid(char *str);
@@ -45,10 +48,6 @@ int				ft_has_flag(char *str);
 int				ft_has_width(char *str);
 int				ft_has_precision(char *str);
 int				ft_is_valid_specifier(char c);
-
-//ft_params_get
-t_param			*ft_get_next_param(char **str);
-t_param			*ft_get_params(char *str);
 
 //ft_params_get2
 char			ft_get_flag(char *str);

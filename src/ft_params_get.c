@@ -25,11 +25,11 @@ t_param	*ft_get_params(char *str)
 		{
 			if (first)
 			{
-				tmp = ft_get_next_param(&str);
-				ft_add_param(first, tmp);
+				tmp = ft_printf_get_next_param(&str);
+				ft_printf_add_param(first, tmp);
 			}
 			else
-				first = ft_get_next_param(&str);
+				first = ft_printf_get_next_param(&str);
 			str++;
 		}
 		else if (*(str + 1) == '%' && *str == '%')
@@ -46,7 +46,7 @@ t_param	*ft_get_next_param(char **str)
 	t_param	*param;
 
 	tmp = *str;
-	param = ft_new_param();
+	param = ft_printf_new_param();
 	if (param)
 	{
 		if (ft_has_flag(tmp))

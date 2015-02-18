@@ -30,6 +30,24 @@ int		ft_printf_uint_length(unsigned int n)
 	return (len);
 }
 
+int		ft_printf_ulint_length(unsigned long int n)
+{
+	unsigned long int	len;
+	unsigned long int	tmp;
+
+	len = 0;
+	tmp = n;
+	while (tmp >= 10)
+	{
+		len++;
+		if (tmp >= 10)
+			tmp = tmp / 10;
+		else
+			tmp = -1;
+	}
+	return (len);
+}
+
 char	*ft_printf_unsigned_itoa(unsigned int n)
 {
 	char			*nbr;
@@ -50,24 +68,6 @@ char	*ft_printf_unsigned_itoa(unsigned int n)
 		nbr[len] = '\0';
 	}
 	return (nbr);
-}
-
-int		ft_printf_ulint_length(unsigned long int n)
-{
-	unsigned long int	len;
-	unsigned long int	tmp;
-
-	len = 0;
-	tmp = n;
-	while (tmp >= 10)
-	{
-		len++;
-		if (tmp >= 10)
-			tmp = tmp / 10;
-		else
-			tmp = -1;
-	}
-	return (len);
 }
 
 char	*ft_printf_ulint_itoa(unsigned long int n)
