@@ -50,6 +50,8 @@ int		ft_printf_padding(t_param *param)
 
 	width = ft_printf_atoi(param->width);
 	len_value = ft_strlen(param->value);
+	if (param->flag == 'c')
+		len_value = 1;
 	nb_char = 0;
 	if (param->flag == '-')
 	{

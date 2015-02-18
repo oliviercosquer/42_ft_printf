@@ -71,16 +71,25 @@ void			ft_init_base_func(t_func *types);
 t_func			ft_get_type(char c);
 
 //ft_printf_tools
-void			ft_printf_reversestr(char *str);
-int				ft_printf_getintlength(int n);
 int				ft_printf_get_format_length(t_param *param);
 int				ft_printf_atoi(const char *str);
+
+//ft_printf_tools_signed
+int				ft_printf_lint_length(long int n);
+char			*ft_printf_lint_itoa(long int n);
+
+//ft_printf_tools_unsigned
+int				ft_printf_uint_length(unsigned int n);
+char			*ft_printf_unsigned_itoa(unsigned int n);
+int				ft_printf_ulint_length(unsigned long int n);
+char			*ft_printf_ulint_itoa(unsigned long int n);
 
 //ft_printf_get
 char			*ft_printf_get(va_list *l, t_param *param);
 char			*ft_printf_get_di(va_list *l, t_param *param);
 char			*ft_printf_get_s(va_list *l, t_param *param);
 char			*ft_printf_get_c(va_list *l, t_param *param);
+char			*ft_printf_get_p(va_list *l, t_param *param);
 
 //ft_printf_get_float
 char			*ft_printf_get_float(va_list *l, t_param *param);
@@ -90,10 +99,6 @@ char			*ft_printf_get_signed_int(t_param *param,int nbr);
 char			*ft_printf_get_unsigned_int(t_param *param,unsigned int nbr);
 char			*ft_printf_get_signed_long_int(t_param *param,long int nbr);
 char			*ft_printf_get_unsigned_long_int(t_param *param,unsigned long int nbr);
-
-//ft_printf_tools_unsigned
-char			*ft_printf_unsigned_itoa(unsigned int n);
-int				ft_printf_get_unsigned_intlength(unsigned int n);
 
 //ft_arg_get
 char			*ft_printf_get_arg(va_list *l, t_param *param);

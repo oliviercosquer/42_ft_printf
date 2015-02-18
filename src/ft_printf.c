@@ -58,6 +58,7 @@ int		ft_printf(const char *s, ...)
 	va_start(list, s);
 	while (params)
 	{
+		ft_display_param(params);
 		params->value = ft_printf_get_arg(&list, params);
 		nb_char += ft_printf_string(&str, params);
 		ft_printf_del_params(&params);

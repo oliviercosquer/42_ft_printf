@@ -25,10 +25,12 @@ char	*ft_printf_get(va_list *l, t_param *param)
 			tmp = ft_printf_get_di(l, param);
 		if (specifier == 's')
 			tmp = ft_printf_get_s(l, param);
-		if (specifier == 'c')
+		if (specifier == 'c' || specifier == 'C')
 			tmp = ft_printf_get_c(l, param);
 		if (ft_strchr("feEgG", specifier))
 			tmp = ft_printf_get_float(l, param);
+		if (specifier == 'p')
+			tmp = ft_printf_get_p(l, param);
 		/*if (specifier == 'u')
 			tmp = ft_printf_get_u(l, param);*/
 	}
@@ -49,7 +51,7 @@ char	*ft_printf_get_di(va_list *l, t_param *param)
 		if (ft_strequ(param->specifier_length, "h"))
 			tmp = ft_printf_get_signed_int(param, va_arg(*l, int));
 		if (ft_strequ(param->specifier_length, "l"))
-			tmp = ft_printf_get_signed_int(param, va_arg(*l,long int));
+			tmp = ft_printf_lint_itoa((long int)va_arg(*l,long int));
 	}
 	return (tmp);
 }
@@ -78,5 +80,18 @@ char	*ft_printf_get_c(va_list *l, t_param *param)
 		tmp[0] = (char)c;
 		tmp[1] = '\0';
 	}
+	return (tmp);
+}
+
+char	*ft_printf_get_p(va_list *l, t_param *param)
+{
+	char				*tmp;
+	void				*ptr;
+	unsigned long int	p;
+
+	ptr = (void *)va_arg(*l, void *);
+	p = (unsigned long int)ptr;
+	tmp = ft_printf_ulint_itoa(p);
+	(void)param;
 	return (tmp);
 }

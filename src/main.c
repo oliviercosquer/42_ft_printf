@@ -42,12 +42,12 @@
 int	main(void)
 {
 	//#include "test.c"
-	int	i = 0;
+	int	i = 42;
 	/*i = printf("%d\n", "abc");
 	printf("%d\n", i);*/
-	i = ft_printf("%c\n", 0);
-	ft_printf("%d\n", i);
-	i = printf("%c\n", 0);
+	/*i = ft_printf("ft:%.4d\n", 42);
+	ft_printf("%d\n", i);*/
+	i = printf("%.5d\n", 1234);
 	printf("%d\n", i);
 	return (0);
 }
