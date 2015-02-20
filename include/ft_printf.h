@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:55 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/20 09:15:16 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/20 23:08:20 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ typedef struct	s_param
 	char			*specifier_length;
 	struct s_param	*next;
 }				t_param;
-typedef void	(*t_print_func)(t_param *p, int *i, va_list *list);
-typedef void	(t_call_func)(t_param *p, int *i, va_list *list);
+typedef char	*(*t_print_func)(int *i, va_list *list);
+typedef void	(*t_call_func)(t_param *p, int *i, va_list *list);
 
 //ft_params
 t_param			*ft_printf_get_params(char **str, int *total_char);
@@ -59,25 +59,29 @@ int				ft_printf(const char *str, ...);
 void			ft_printf_call(t_param *param, int *total_char, va_list *l);
 
 //ft_printf_double
-void			ft_printf_print_double_default(t_param *param, int *total_char, va_list *l);
-void			ft_printf_print_long_double(t_param *param, int *total_char, va_list *l);
+char			*ft_printf_print_double_default(int *total_char, va_list *l);
+char			*ft_printf_print_long_double(int *total_char, va_list *l);
+
+//ft_printf_flag
+void			ft_printf_flag_numeric(t_param *param, int *total_char, char *str);
 
 //ft_printf_print_integer
-void			ft_printf_print_integer_default(t_param *param, int *total_char, va_list *l);
-void			ft_printf_print_long_integer(t_param *param, int *total_char, va_list *l);
-void			ft_printf_print_long_long_integer(t_param *param, int *total_char, va_list *l);
-void			ft_printf_print_short_integer_default(t_param *param, int *total_char, va_list *list);
-void			ft_printf_print_ushort_integer(t_param *param, int *total_char, va_list *list);
+char			*ft_printf_print_integer_default(int *total_char, va_list *l);
+char			*ft_printf_print_long_integer(int *total_char, va_list *l);
+char			*ft_printf_print_long_long_integer(int *total_char, va_list *l);
+char			*ft_printf_print_short_integer_default(int *total_char, va_list *list);
+char			*ft_printf_print_ushort_integer(int *total_char, va_list *list);
 
 //ft_printf_integer_signed
 char			*ft_printf_lint_itoa(long int n);
+char			*ft_printf_long_lint_itoa(long int n);
 
 //ft_printf_integer_unsigned
 char			*ft_printf_unsigned_itoa(unsigned int n);
 char			*ft_printf_ulong_itoa(unsigned long int n);
 
 //ft_printf_string
-int				ft_printf_padding(t_param *param);
+void			ft_printf_print_pointer(t_param *param, int *total_char, va_list *l);
 
 //ft_printf_tools
 int				ft_printf_atoi(const char *str);

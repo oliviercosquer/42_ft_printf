@@ -6,16 +6,14 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/20 06:23:37 by olivier           #+#    #+#             */
-/*   Updated: 2015/02/20 09:07:42 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/20 22:59:29 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-void	ft_printf_print_double_default(t_param *param,
-	int *total_char, va_list *list)
+char	*ft_printf_print_double_default(int *total_char, va_list *list)
 {
-	(void)param;
 	double	n;
 	int		i;
 	char	*str;
@@ -35,13 +33,15 @@ void	ft_printf_print_double_default(t_param *param,
 	ft_strdel(&tmp2);
 	ft_putstr(str);
 	*total_char += ft_strlen(str);
-	ft_strdel(&str);
+	return (str);
 }
 
-void			ft_printf_print_long_double(t_param *param,
-	int *total_char, va_list *list)
+char	*		ft_printf_print_long_double(int *total_char, va_list *list)
 {
-	(void)param;
+	char	*str;
+
+	str = NULL;
 	(void)total_char;
 	(void)list;
+	return (str);
 }
