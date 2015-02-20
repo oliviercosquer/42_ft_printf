@@ -6,6 +6,8 @@ SRC_FILES =	ft_printf.c \
 			ft_printf_call.c \
 			ft_printf_str.c \
 			ft_params_check.c \
+			ft_printf_integer.c \
+			ft_printf_double.c \
 			ft_params_get.c ft_params_get2.c ft_params.c \
 			ft_printf_tools.c ft_printf_get.c ft_printf_get_float.c \
 			ft_arg_get.c ft_printf_put_int.c ft_printf_tools_unsigned.c

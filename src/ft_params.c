@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:55 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/20 05:41:04 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/20 07:40:31 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ void	ft_printf_add_param(t_param *first, t_param *new_param)
 	}
 }
 
-t_param	*ft_printf_get_next_param(char **str)
+t_param	*ft_printf_get_next_param(char *str)
 {
 	char	*tmp;
 	t_param	*param;
 
-	tmp = *str;
+	tmp = str;
 	param = ft_printf_new_param();
 	if (param)
 	{
@@ -81,18 +81,35 @@ void	ft_printf_del_params(t_param **params)
 	*params = NULL;
 }
 
-t_param	*ft_printf_get_params(char *str, int *total_char)
+t_param	*ft_printf_get_params(char **str, int *total_char)
 {
 	t_param	*param;
+	char	*s;
+	int		len;
 	int		format_length;
-	param = NULL;
 
-	if (ft_strchr(VALID_SPECIFIER, *str))
+	param = NULL;
+	len = 0;
+	s = *str;
+	while (s[len] && s[len] != '%')
 	{
-		param = ft_printf_get_next_param(&str);
-		format_length = ft_printf_get_format_length(param);
-		//str += format_length;
-		*total_char += format_length;
+		len++;
+		*total_char += 1;
 	}
+	if (s[len] && s[len + 1] == '%')
+	{
+		*total_char += 1;
+		len++;
+		s++;
+	}
+	write(1, s, len);
+	s += len;
+	if (s && *s && ft_strchr(VALID_SPECIFIER, *s))
+	{
+		param = ft_printf_get_next_param(s);
+		format_length = ft_printf_get_format_length(param);
+		s += format_length + 1;
+	}
+	*str = s;
 	return (param);
 }

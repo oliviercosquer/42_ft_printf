@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:55 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/20 05:36:25 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/20 07:36:16 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,29 @@ typedef struct	s_param
 	char			*specifier_length;
 	struct s_param	*next;
 }				t_param;
-typedef void	(*t_print_func)(void *, t_param *param);
-
 //NEW
+typedef void	(*t_print_func)(t_param *p, int *i, va_list *list);
 typedef void	(t_call_func)(t_param *p, int *i, va_list *list);
 
 int				ft_printf(const char *str, ...);
 
+//ft_printf_call
+void			ft_printf_call(t_param *param, int *total_char, va_list *l);
+
+//ft_printf_integer
+void			ft_print_print_integer_default(t_param *param, int *total_char, va_list *l);
+void			ft_print_print_long_integer_default(t_param *param, int *total_char, va_list *l);
+void			ft_print_print_long_long_integer_default(t_param *param, int *total_char, va_list *l);
+
+//ft_printf_double
+void			ft_print_print_double_default(t_param *param, int *total_char, va_list *l);
+
+
 //ft_params
 t_param			*ft_printf_new_param(void);
 void			ft_printf_add_param(t_param *first, t_param *new_param);
-t_param			*ft_printf_get_next_param(char **str);
-t_param			*ft_printf_get_params(char *str, int *total_char);
+t_param			*ft_printf_get_next_param(char *str);
+t_param			*ft_printf_get_params(char **str, int *total_char);
 void			ft_printf_del_params(t_param **params);
 
 //ft_params_check
