@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:55 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/20 07:52:34 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/20 08:27:08 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,37 +58,50 @@ int				ft_printf_get_format_length(t_param *param);
 int				ft_printf(const char *str, ...);
 
 //ft_printf_call
+void			ft_printf_print_integer(t_param *param, int *total_char, va_list *l);
+void			ft_printf_print_double(t_param *param, int *total_char, va_list *l);
+void			ft_printf_print_string(t_param *param, int *total_char, va_list *l);
 void			ft_printf_call(t_param *param, int *total_char, va_list *l);
 
 //ft_printf_double
-void			ft_print_print_double_default(t_param *param, int *total_char, va_list *l);
+void			ft_printf_print_double_default(t_param *param, int *total_char, va_list *l);
+void			ft_printf_print_long_double(t_param *param, int *total_char, va_list *l);
+void			ft_printf_print_long_long_double(t_param *param, int *total_char, va_list *l);
 
+//TO DELETE
 //ft_printf_get_float
 char			*ft_printf_get_float(va_list *l, t_param *param);
 
-//ft_printf_integer
-void			ft_print_print_integer_default(t_param *param, int *total_char, va_list *l);
-void			ft_print_print_long_integer_default(t_param *param, int *total_char, va_list *l);
-void			ft_print_print_long_long_integer_default(t_param *param, int *total_char, va_list *l);
+//ft_printf_print_integer
+void			ft_printf_print_integer_default(t_param *param, int *total_char, va_list *l);
+void			ft_printf_print_long_integer(t_param *param, int *total_char, va_list *l);
+void			ft_printf_print_long_long_integer(t_param *param, int *total_char, va_list *l);
+void			ft_printf_print_short_integer_default(t_param *param, int *total_char, va_list *list);
+void			ft_printf_print_ushort_integer(t_param *param, int *total_char, va_list *list);
 
+//TO DELETE
 //ft_printf_put_int
 char			*ft_printf_get_signed_int(t_param *param,int nbr);
 char			*ft_printf_get_unsigned_int(t_param *param,unsigned int nbr);
 char			*ft_printf_get_signed_long_int(t_param *param,long int nbr);
 char			*ft_printf_get_unsigned_long_int(t_param *param,unsigned long int nbr);
 
+//TO DELETE
 //ft_printf_str
 void			ft_printf_putstr(void *s, t_param *param);
 int				ft_printf_string(char **s, t_param *param);
 int				ft_printf_padding(t_param *param);
 
+//TO DELETE
 //ft_printf_tools
 int				ft_printf_atoi(const char *str);
 
+//TO DELETE
 //ft_printf_tools_signed
 int				ft_printf_lint_length(long int n);
 char			*ft_printf_lint_itoa(long int n);
 
+//TO DELETE
 //ft_printf_tools_unsigned
 int				ft_printf_uint_length(unsigned int n);
 char			*ft_printf_unsigned_itoa(unsigned int n);

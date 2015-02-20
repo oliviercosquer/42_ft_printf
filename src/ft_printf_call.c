@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/20 04:12:38 by olivier           #+#    #+#             */
-/*   Updated: 2015/02/20 07:38:19 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/20 08:27:44 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,25 @@ void	ft_printf_print_integer(t_param *param, int *total_char, va_list *l)
 {
 	static t_print_func	functions[256];
 	t_print_func 		func;
-	int					modifier;
+	unsigned int		modifier;
 
-	modifier = *(param->specifier_length);
-	if(!functions['l'])
+	modifier = 0;
+	if(!functions[0])
 	{
-		if (ft_strlen(param->specifier_length) == 2)
-			modifier = *(param->specifier_length + 65);
-		func = functions[modifier];
+		functions[0] = &ft_printf_print_integer_default;
+		functions['l'] = &ft_printf_print_long_integer;
+		functions['L'] = &ft_printf_print_long_long_integer;
+		functions['h'] = &ft_printf_print_short_integer_default;
+		functions['H'] = &ft_printf_print_ushort_integer;
 	}
-	if (func)
-		func(param, total_char, l);
-	else
-		ft_print_print_integer_default(param, total_char, l);
-	(void)total_char;
+	if (param->specifier_length)
+	{
+		modifier = *(param->specifier_length);
+		if (ft_strlen(param->specifier_length) == 2)
+			modifier -= 32;
+	}
+	func = functions[modifier];
+	func(param, total_char, l);
 }
 
 void	ft_printf_print_double(t_param *param, int *total_char, va_list *l)
@@ -44,7 +49,7 @@ void	ft_printf_print_double(t_param *param, int *total_char, va_list *l)
 	if (func)
 		func(param, total_char, l);
 	else
-		ft_print_print_double_default(param, total_char, l);
+		ft_printf_print_double_default(param, total_char, l);
 	(void)total_char;
 }
 

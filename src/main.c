@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:56 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/20 07:39:45 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/20 08:28:31 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,12 @@
 int	main(void)
 {
 	//#include "test.c"
-	ft_printf("avant%saprès\n", "lol");
-	ft_printf("%s\n", "lol");
-	ft_printf("%%\n");
+	ft_printf("Integer: %d\n", 42);
+	ft_printf("Integer: %d\n", -42);
+	ft_printf("Integer: %ld\n", (long int)42);
+	ft_printf("Integer: %lld\n", (long long int)42);
+	ft_printf("Integer: %hd\n", (unsigned long int)42);
+	ft_printf("Integer: %hhd\n", (unsigned long long int)42);
 	//ft_printf("%i%d%li%ld%lli%lld", 1, 2, 3, 4, 5, 6, 7);
 	return (0);
 }
