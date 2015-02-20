@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:55 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/20 08:56:52 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/20 09:07:46 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void			ft_printf_call(t_param *param, int *total_char, va_list *l);
 //ft_printf_double
 void			ft_printf_print_double_default(t_param *param, int *total_char, va_list *l);
 void			ft_printf_print_long_double(t_param *param, int *total_char, va_list *l);
-void			ft_printf_print_long_long_double(t_param *param, int *total_char, va_list *l);
 
 //TO DELETE
 //ft_printf_get_float
