@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:56 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/20 08:28:31 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/20 08:51:23 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@
 int	main(void)
 {
 	//#include "test.c"
+	ft_printf("String: %s\n", "42");
+	ft_printf("String: %s\n", NULL);
+	ft_printf("String: %s\n", "");
 	ft_printf("Integer: %d\n", 42);
 	ft_printf("Integer: %d\n", -42);
 	ft_printf("Integer: %ld\n", (long int)42);

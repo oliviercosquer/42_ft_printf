@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/20 04:12:38 by olivier           #+#    #+#             */
-/*   Updated: 2015/02/20 08:27:44 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/20 08:51:10 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,15 @@ void	ft_printf_print_string(t_param *param, int *total_char, va_list *l)
 	else
 	{
 		str = va_arg(*l, char *);
-		*total_char += ft_strlen(str);
-		ft_putstr(str);
+		if (str)
+		{
+			str = ft_strdup(str);
+			*total_char += ft_strlen(str);
+			ft_putstr(str);
+			ft_strdel(&str);
+		}
+		else
+			ft_putstr(MSG_NULL_POINTER);
 	}
 }
 

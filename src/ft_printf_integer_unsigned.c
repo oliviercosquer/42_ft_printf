@@ -6,13 +6,13 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:56 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/20 05:07:56 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/20 08:56:36 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-int		ft_printf_uint_length(unsigned int n)
+int		ft_printf_unsigned_length(unsigned int n)
 {
 	int				len;
 	unsigned int	tmp;
@@ -30,7 +30,7 @@ int		ft_printf_uint_length(unsigned int n)
 	return (len);
 }
 
-int		ft_printf_ulint_length(unsigned long int n)
+int		ft_printf_ulong_length(unsigned long int n)
 {
 	unsigned long int	len;
 	unsigned long int	tmp;
@@ -54,7 +54,7 @@ char	*ft_printf_unsigned_itoa(unsigned int n)
 	unsigned int	len;
 	unsigned int	rest;
 
-	len = ft_printf_uint_length(n);
+	len = ft_printf_unsigned_length(n);
 	nbr = (char *)malloc(sizeof(char) * len + 1);
 	if (nbr)
 	{
@@ -70,13 +70,13 @@ char	*ft_printf_unsigned_itoa(unsigned int n)
 	return (nbr);
 }
 
-char	*ft_printf_ulint_itoa(unsigned long int n)
+char	*ft_printf_ulong_itoa(unsigned long int n)
 {
 	char				*nbr;
 	unsigned long int	len;
 	unsigned long int	rest;
 
-	len = ft_printf_ulint_length(n);
+	len = ft_printf_ulong_length(n);
 	nbr = (char *)malloc(sizeof(char) * len + 1);
 	if (nbr)
 	{
