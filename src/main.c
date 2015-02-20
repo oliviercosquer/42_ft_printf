@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:56 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/03 21:15:52 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/20 05:17:50 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,7 @@
 int	main(void)
 {
 	//#include "test.c"
-	int	i = 42;
-	(void)i;
-	ft_printf("str:%s\n", "abcdef");
+	ft_printf("%i%d%li%ld%lli%lld", 1, 2, 3, 4, 5, 6, 7);
 	return (0);
 }
 /*

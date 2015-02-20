@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:56 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/20 05:07:19 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/20 05:40:05 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_display_param(t_param *param)
 			param->specifier_length);
 	}
 }
-
+/*
 int		ft_printf(const char *s, ...)
 {
 	va_list	list;
@@ -49,8 +49,8 @@ int		ft_printf(const char *s, ...)
 		write(1, str, ft_strlen(str));
 	va_end(list);
 	return (nb_char);
-}
-/*
+}*/
+
 int		ft_printf(const char *s, ...)
 {
 	va_list	list;
@@ -66,4 +66,4 @@ int		ft_printf(const char *s, ...)
 		ft_printf_del_params(&param);
 	}
 	return (total_char);
-}*/
+}

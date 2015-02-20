@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:55 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/20 04:33:10 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/20 05:41:04 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,16 +84,15 @@ void	ft_printf_del_params(t_param **params)
 t_param	*ft_printf_get_params(char *str, int *total_char)
 {
 	t_param	*param;
-
+	int		format_length;
 	param = NULL;
-	while (*str && !param)
+
+	if (ft_strchr(VALID_SPECIFIER, *str))
 	{
-		if (ft_strchr(VALID_SPECIFIER, *str))
-		{
-			param = ft_printf_get_next_param(&str);
-			str += ft_printf_get_format_length(param);
-		}
-		str++;
+		param = ft_printf_get_next_param(&str);
+		format_length = ft_printf_get_format_length(param);
+		//str += format_length;
+		*total_char += format_length;
 	}
 	return (param);
 }
