@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
+/*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:55 by ocosquer          #+#    #+#             */
-/*   Updated: 2014/11/16 16:42:06 by anonymous        ###   ########.fr       */
+/*   Updated: 2015/02/20 05:10:06 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ typedef struct	s_param
 	char			*specifier_length;
 	struct s_param	*next;
 }				t_param;
-typedef void (*t_func)(void *, t_param *param);
+typedef void	(*t_func)(void *, t_param *param);
+
+//THIS
+typedef void	(t_call_func)(t_param *p, int *i, va_list *list);
 
 int				ft_printf(const char *str, ...);
 
@@ -39,7 +42,7 @@ int				ft_printf(const char *str, ...);
 t_param			*ft_printf_new_param(void);
 void			ft_printf_add_param(t_param *first, t_param *new_param);
 t_param			*ft_printf_get_next_param(char **str);
-t_param			*ft_printf_get_params(char *str);
+t_param			*ft_printf_get_params(char *str);//, int *total_char);
 void			ft_printf_del_params(t_param **params);
 
 //ft_params_check

@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:56 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/04 02:09:11 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/20 05:07:19 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		ft_printf(const char *s, ...)
 	va_start(list, s);
 	while (params)
 	{
-		//ft_display_param(params);
+		ft_display_param(params);
 		params->value = ft_printf_get_arg(&list, params);
 		nb_char += ft_printf_string(&str, params);
 		ft_printf_del_params(&params);
@@ -50,4 +50,20 @@ int		ft_printf(const char *s, ...)
 	va_end(list);
 	return (nb_char);
 }
+/*
+int		ft_printf(const char *s, ...)
+{
+	va_list	list;
+	t_param	*param;
+	char	*str;
+	int		total_char;
 
+	str = (char *str);
+	total_char = 0;
+	while ((param = ft_printf_get_params(&str, &total_char)))
+	{
+		ft_printf_call(param, &total_char, &list);
+		ft_printf_del_params(&param);
+	}
+	return (total_char);
+}*/
