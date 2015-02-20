@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:55 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/20 07:40:31 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/20 07:52:26 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,6 @@ t_param	*ft_printf_new_param(void)
 		return (params);
 	}
 	return (NULL);
-}
-
-void	ft_printf_add_param(t_param *first, t_param *new_param)
-{
-	if (first)
-	{
-		while (first->next)
-			first = first->next;
-		first->next = new_param;
-	}
 }
 
 t_param	*ft_printf_get_next_param(char *str)
