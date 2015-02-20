@@ -3,10 +3,11 @@ INCLUDE_PATH = -I./include/ -I./libft/includes
 LIBFT_DIR = ./libft
 SRC_PATH = ./src/
 SRC_FILES =	ft_printf.c ft_printf_str.c \
-			ft_type.c ft_int.c ft_params_check.c \
+			ft_type.c ft_params_check.c \
 			ft_params_get.c ft_params_get2.c ft_params.c \
 			ft_printf_tools.c ft_printf_get.c ft_printf_get_float.c \
-			ft_arg_get.c ft_printf_put_int.c ft_printf_tools_unsigned.c
+			ft_arg_get.c ft_printf_put_int.c ft_printf_tools_unsigned.c \
+			ft_printf_tools_signed.c
 BASE_FILES = $(addprefix $(SRC_PATH),$(SRC_FILES))
 SRC = $(BASE_FILES)
 
