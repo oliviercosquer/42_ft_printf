@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:56 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/20 05:18:13 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/21 22:34:37 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,29 +25,20 @@ void	ft_display_param(t_param *param)
 int		ft_printf(const char *s, ...)
 {
 	va_list	list;
-	t_param	*params;
+	t_param	*param;
 	char	*str;
-	int		nb_char;
+	int		total_char;
 
-	if (!*s)
-		return (0);
-	str = (char *)s;
-	params = NULL;
-	if (ft_strlen(str) >= 2)
-		params = ft_printf_get_params(str);
-	nb_char = 0;
 	va_start(list, s);
-	while (params)
+	str = (char *)s;
+	total_char = 0;
+	while ((param = ft_printf_get_params(&str, &total_char)))
 	{
-		ft_display_param(params);
-		params->value = ft_printf_get_arg(&list, params);
-		nb_char += ft_printf_string(&str, params);
-		ft_printf_del_params(&params);
+		// ft_display_param(param);
+		ft_printf_call(param, &total_char, &list);
+		ft_printf_del_params(&param);
 	}
-	nb_char += ft_strlen(str);
-	if (ft_strlen(str) > 0)
-		write(1, str, ft_strlen(str));
+	write(1, str, ft_strlen(str));
+	return (total_char);
 	va_end(list);
-	return (nb_char);
 }
-

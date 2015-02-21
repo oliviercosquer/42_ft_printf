@@ -1,61 +1,111 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_params_get.c                                    :+:      :+:    :+:   */
+/*   ft_params_get2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:55 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/04 02:02:48 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/20 07:47:00 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-t_param	*ft_get_params(char *str)
+char	ft_get_flag(char *str)
 {
-	t_param	*first;
-	t_param	*tmp;
+	char	flag;
 
-	first = NULL;
-	tmp = NULL;
-	while (*str)
-	{
-		if (*str == '%' && *(str + 1) != '%')
-		{
-			if (first)
-			{
-				tmp = ft_printf_get_next_param(&str);
-				ft_printf_add_param(first, tmp);
-			}
-			else
-				first = ft_printf_get_next_param(&str);
-			str++;
-		}
-		else if (*(str + 1) == '%' && *str == '%')
-			str += 2;
-		else
-			str += 1;
-	}
-	return (first);
+	flag = '\0';
+	str++;
+	if (ft_strchr(VALID_FLAGS, *str))
+		flag = *str;
+	return (flag);
 }
 
-t_param	*ft_get_next_param(char **str)
+char	*ft_get_width(char **str)
 {
 	char	*tmp;
-	t_param	*param;
+	char	*width;
+	int		len;
 
-	tmp = *str;
-	param = ft_printf_new_param();
-	if (param)
+	len = 0;
+	tmp = *str + 1;
+	width = NULL;
+	tmp += ft_has_flag(*str);
+	len = ft_has_width(*str);
+	if (len)
+		width = ft_strsub(tmp, 0, len);
+	return (width);
+}
+
+char	*ft_get_precision(char **str)
+{
+	char	*tmp;
+	int		len;
+	char	*precision;
+
+	len = 0;
+	precision = NULL;
+	tmp = *str + 1;
+	tmp += ft_has_flag(*str);
+	tmp += ft_has_width(*str);
+	if (*tmp == '.')
 	{
-		if (ft_has_flag(tmp))
-			param->flag = ft_get_flag(tmp);
-		if (ft_has_width(tmp))
-			param->width = ft_get_width(&tmp);
-		if (ft_has_precision(tmp))
-			param->precision = ft_get_precision(&tmp);
-		param->specifier = ft_get_specifier(&tmp, param);
+		tmp++;
+		if (*tmp == '*')
+			len = 1;
+		else
+			while (ft_isdigit(tmp[len]))
+				len++;
+		precision = ft_strsub(tmp, 0, len);
 	}
-	return (param);
+	return (precision);
+}
+
+char	*ft_get_specifier(char **str, t_param *param)
+{
+	char	*tmp;
+	char	*specifier;
+	int		len;
+
+	len = 0;
+	tmp = *str + 1;
+	specifier = NULL;
+	tmp += ft_has_flag(*str);
+	tmp += ft_has_width(*str);
+	tmp += ft_has_precision(*str);
+	while (ft_strchr(VALID_LENGTH, tmp[len]))
+		len++;
+	if (len)
+		param->specifier_length = ft_strsub(tmp, 0, len);
+	tmp += len;
+	len = 0;
+	if (ft_strchr(VALID_SPECIFIER, tmp[len]))
+	{
+		len++;
+		specifier = ft_strsub(tmp, 0, len);
+	}
+	return (specifier);
+}
+
+int		ft_printf_get_format_length(t_param *param)
+{
+	int	len;
+
+	len = 0;
+	if (param->flag)
+		len++;
+	if (param->width)
+	{
+		if (*(param->width) == '*')
+			len++;
+		else
+			len += ft_strlen(param->width);
+	}
+	if (param->specifier)
+		len++;
+	if (param->specifier_length)
+		len += ft_strlen(param->specifier_length);
+	return (len);
 }

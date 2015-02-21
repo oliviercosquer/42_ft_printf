@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_get_float.c                              :+:      :+:    :+:   */
+/*   ft_printf_double.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ocosquer <ocosquer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/17 23:33:36 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/17 23:33:38 by ocosquer         ###   ########.fr       */
+/*   Created: 2015/02/20 06:23:37 by olivier           #+#    #+#             */
+/*   Updated: 2015/02/20 22:59:29 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-static	char	*ft_printf_get_float_simple(double f)
+char	*ft_printf_print_double_default(int *total_char, va_list *list)
 {
 	double	n;
 	int		i;
@@ -20,7 +20,7 @@ static	char	*ft_printf_get_float_simple(double f)
 	char	*tmp;
 	char	*tmp2;
 
-	n = (double)f;
+	n = va_arg(*list, double);
 	i = (int)n;	
 	str = ft_itoa((int)n);
 	tmp = str;
@@ -31,19 +31,17 @@ static	char	*ft_printf_get_float_simple(double f)
 	str = ft_strjoin(str, tmp);
 	ft_strdel(&tmp);
 	ft_strdel(&tmp2);
+	ft_putstr(str);
+	*total_char += ft_strlen(str);
 	return (str);
 }
-/*
-static	char	*ft_printf_get_float_double(double d)
+
+char	*		ft_printf_print_long_double(int *total_char, va_list *list)
 {
+	char	*str;
 
-}*/
-
-char	*ft_printf_get_float(va_list *l, t_param *param)
-{
-	char	*specifier;
-
-	specifier = param->specifier;
-	(void)specifier;
-	return (ft_printf_get_float_simple(va_arg(*l, double)));
+	str = NULL;
+	(void)total_char;
+	(void)list;
+	return (str);
 }

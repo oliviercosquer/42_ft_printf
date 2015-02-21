@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_params.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ocosquer <ocosquer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:55 by ocosquer          #+#    #+#             */
-/*   Updated: 2014/10/26 02:09:33 by ocosquer         ###   ########.fr       */
+/*   Updated: 2015/02/20 07:52:26 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,50 +31,12 @@ t_param	*ft_printf_new_param(void)
 	return (NULL);
 }
 
-void	ft_printf_add_param(t_param *first, t_param *new_param)
-{
-	if (first)
-	{
-		while (first->next)
-			first = first->next;
-		first->next = new_param;
-	}
-}
-
-t_param	*ft_printf_get_params(char *str)
-{
-	t_param	*first;
-	t_param	*tmp;
-
-	first = NULL;
-	tmp = NULL;
-	while (*str)
-	{
-		if (*str == '%' && *(str + 1) != '%')
-		{
-			if (first)
-			{
-				tmp = ft_printf_get_next_param(&str);
-				ft_printf_add_param(first, tmp);
-			}
-			else
-				first = ft_printf_get_next_param(&str);
-			str++;
-		}
-		else if (*(str + 1) == '%' && *str == '%')
-			str += 2;
-		else
-			str += 1;
-	}
-	return (first);
-}
-
-t_param	*ft_printf_get_next_param(char **str)
+t_param	*ft_printf_get_next_param(char *str)
 {
 	char	*tmp;
 	t_param	*param;
 
-	tmp = *str;
+	tmp = str;
 	param = ft_printf_new_param();
 	if (param)
 	{
@@ -106,4 +68,38 @@ void	ft_printf_del_params(t_param **params)
 		free(tmp->specifier_length);
 	*params = tmp->next;
 	free(tmp);
+	*params = NULL;
+}
+
+t_param	*ft_printf_get_params(char **str, int *total_char)
+{
+	t_param	*param;
+	char	*s;
+	int		len;
+	int		format_length;
+
+	param = NULL;
+	len = 0;
+	s = *str;
+	while (s[len] && s[len] != '%')
+	{
+		len++;
+		*total_char += 1;
+	}
+	if (s[len] && s[len + 1] == '%')
+	{
+		*total_char += 1;
+		len++;
+		s++;
+	}
+	write(1, s, len);
+	s += len;
+	if (s && *s && ft_strchr(VALID_SPECIFIER, *s))
+	{
+		param = ft_printf_get_next_param(s);
+		format_length = ft_printf_get_format_length(param);
+		s += format_length + 1;
+	}
+	*str = s;
+	return (param);
 }

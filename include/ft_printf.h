@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
+/*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:55 by ocosquer          #+#    #+#             */
-/*   Updated: 2014/11/16 16:42:06 by anonymous        ###   ########.fr       */
+/*   Updated: 2015/02/21 03:42:14 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,11 @@ typedef struct	s_param
 	char			*specifier_length;
 	struct s_param	*next;
 }				t_param;
-typedef void (*t_func)(void *, t_param *param);
-
-int				ft_printf(const char *str, ...);
+typedef char	*(*t_print_func)(int *i, va_list *list);
+typedef void	(*t_call_func)(t_param *p, int *i, va_list *list);
 
 //ft_params
-t_param			*ft_printf_new_param(void);
-void			ft_printf_add_param(t_param *first, t_param *new_param);
-t_param			*ft_printf_get_next_param(char **str);
-t_param			*ft_printf_get_params(char *str);
+t_param			*ft_printf_get_params(char **str, int *total_char);
 void			ft_printf_del_params(t_param **params);
 
 //ft_params_check
@@ -49,57 +45,50 @@ int				ft_has_width(char *str);
 int				ft_has_precision(char *str);
 int				ft_is_valid_specifier(char c);
 
-//ft_params_get2
+//ft_params_get
 char			ft_get_flag(char *str);
 char			*ft_get_width(char **str);
 char			*ft_get_precision(char **str);
 char			*ft_get_specifier(char **str, t_param *param);
+int				ft_printf_get_format_length(t_param *param);
 
-//ft_printf_str
-void			ft_printf_putstr(void *s, t_param *param);
-int				ft_printf_string(char **s, t_param *param);
-int				ft_printf_padding(t_param *param);
+//ft_printf
+int				ft_printf(const char *str, ...);
 
-//ft_putint
-void			ft_putint(void *n, t_param *param);
-void			ft_putlong(void *n, t_param *param);
-void			ft_putdouble(void *n, t_param *param);
+//ft_printf_call
+void			ft_printf_call(t_param *param, int *total_char, va_list *l);
 
-//ft_type
-void			ft_init_base_func(t_func *types);
-t_func			ft_get_type(char c);
+//ft_printf_double
+char			*ft_printf_print_double_default(int *total_char, va_list *l);
+char			*ft_printf_print_long_double(int *total_char, va_list *l);
+
+//ft_printf_flag
+void			ft_printf_flag_numeric(t_param *param, int *total_char, char *str);
+
+//ft_printf_integer
+char			*ft_printf_print_integer_default(int *total_char, va_list *l);
+char			*ft_printf_print_long_integer(int *total_char, va_list *l);
+char			*ft_printf_print_long_long_integer(int *total_char, va_list *l);
+char			*ft_printf_print_short_integer_default(int *total_char, va_list *list);
+char			*ft_printf_print_ushort_integer(int *total_char, va_list *list);
+
+//ft_printf_integer2
+char			*ft_printf_print_uinteger(int *total_char, va_list *list);
+char			*ft_printf_print_long_uinteger(int *total_char, va_list *list);
+
+//ft_printf_integer_signed
+char			*ft_printf_lint_itoa(long int n);
+char			*ft_printf_long_lint_itoa(long int n);
+
+//ft_printf_integer_unsigned
+char			*ft_printf_unsigned_itoa(unsigned int n);
+char			*ft_printf_ulong_itoa(unsigned long int n);
+
+//ft_printf_string
+void			ft_printf_print_pointer(t_param *param, int *total_char, va_list *l);
+void			ft_printf_print_hex_int(t_param *param, int *total_char, va_list *l);
 
 //ft_printf_tools
-int				ft_printf_get_format_length(t_param *param);
 int				ft_printf_atoi(const char *str);
-
-//ft_printf_tools_signed
-int				ft_printf_lint_length(long int n);
-char			*ft_printf_lint_itoa(long int n);
-
-//ft_printf_tools_unsigned
-int				ft_printf_uint_length(unsigned int n);
-char			*ft_printf_unsigned_itoa(unsigned int n);
-int				ft_printf_ulint_length(unsigned long int n);
-char			*ft_printf_ulint_itoa(unsigned long int n);
-
-//ft_printf_get
-char			*ft_printf_get(va_list *l, t_param *param);
-char			*ft_printf_get_di(va_list *l, t_param *param);
-char			*ft_printf_get_s(va_list *l, t_param *param);
-char			*ft_printf_get_c(va_list *l, t_param *param);
-char			*ft_printf_get_p(va_list *l, t_param *param);
-
-//ft_printf_get_float
-char			*ft_printf_get_float(va_list *l, t_param *param);
-
-//ft_printf_put_int
-char			*ft_printf_get_signed_int(t_param *param,int nbr);
-char			*ft_printf_get_unsigned_int(t_param *param,unsigned int nbr);
-char			*ft_printf_get_signed_long_int(t_param *param,long int nbr);
-char			*ft_printf_get_unsigned_long_int(t_param *param,unsigned long int nbr);
-
-//ft_arg_get
-char			*ft_printf_get_arg(va_list *l, t_param *param);
-void			ft_printf_get_arg_value(va_list *l, t_param *param);
+char			ft_printf_int_to_hex(unsigned int i);
 #endif

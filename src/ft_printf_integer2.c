@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arg_get.c                                       :+:      :+:    :+:   */
+/*   ft_printf_integer2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/10/26 02:51:55 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/04 01:55:35 by olivier          ###   ########.fr       */
+/*   Created: 2015/02/21 00:46:33 by olivier           #+#    #+#             */
+/*   Updated: 2015/02/21 01:04:42 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-char	*ft_printf_get_arg(va_list *l, t_param *param)
+char	*ft_printf_print_uinteger(int *total_char, va_list *list)
 {
-	char	*tmp;
+	char	*n_str;
 
-	if (param->width && *(param->width) == '*')
-	{
-		tmp = ft_itoa(va_arg(*l, int));
-		param->width = tmp;
-	}
-	if (param->precision && *(param->precision) == '*')
-	{
-		tmp = ft_itoa(va_arg(*l, int));
-		param->precision = tmp;
-	}
-	return (ft_printf_get(l, param));
+	n_str = ft_printf_unsigned_itoa(va_arg(list, unsigned int));
+	*total_char += ft_strlen(n_str);
+	return(n_str);
+}
+
+char	*ft_printf_print_long_uinteger(int *total_char, va_list *list)
+{
+	char	*n_str;
+
+	n_str = ft_printf_ulong_itoa(va_arg(list, unsigned long int));
+	*total_char += ft_strlen(n_str);
+	return(n_str);
 }
