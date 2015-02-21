@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/20 04:12:38 by olivier           #+#    #+#             */
-/*   Updated: 2015/02/21 03:45:21 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/21 22:53:27 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ void	ft_printf_call(t_param *param, int *total_char, va_list *l)
 		functions['d'] = &ft_printf_print_integer;
 		functions['D'] = NULL;
 		functions['i'] = &ft_printf_print_integer;
-		functions['o'] = NULL;
+		functions['o'] = &ft_printf_print_octal;
 		functions['O'] = NULL;
 		functions['u'] = &ft_printf_print_unsigned_integer;
 		functions['U'] = NULL;

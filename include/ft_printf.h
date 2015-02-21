@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:55 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/21 03:42:14 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/21 22:53:58 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ char			*ft_printf_unsigned_itoa(unsigned int n);
 char			*ft_printf_ulong_itoa(unsigned long int n);
 
 //ft_printf_string
+void			ft_printf_print_octal(t_param *param, int *total_char, va_list *l);
 void			ft_printf_print_pointer(t_param *param, int *total_char, va_list *l);
 void			ft_printf_print_hex_int(t_param *param, int *total_char, va_list *l);
 

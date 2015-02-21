@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:56 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/21 04:16:59 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/21 23:47:19 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,30 @@ void	ft_printf_print_pointer(t_param *param, int *total_char, va_list *l)
 
 void	ft_printf_print_octal(t_param *param, int *total_char, va_list *l)
 {
-	int		value;
-	char	*str;
+	unsigned int	value;
+	char			*str;
+	int				i;
 
-	value = (int)va_arg(l, int);
-	while (value >> 3)
+	value = (int)va_arg(l,unsigned int);
+	str = ft_strnew(11);
+	i = 11;
+	if (str)
+	{
+		while (--i >= 0)
+		{			
+			str[i] = '0' + ((value << 29) >> 29);
+			value = value >> 3;
+		}
+		i = 0;
+		while (str[i] == '0')
+			i++;
+		ft_memmove(str, str + i, ft_strlen(str) - i);
+		str[(11) - i] = '\0';
+		str[1] = (str[0] == '\0') ? '\0' : str[1];
+		str[0] = (str[0] == '\0') ? '0' : str[0];
+		ft_putstr(str);
+		ft_strdel(&str);
+	}
 	(void)param;
 	(void)str;
 	(void)total_char;
