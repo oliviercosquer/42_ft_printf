@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/20 04:12:38 by olivier           #+#    #+#             */
-/*   Updated: 2015/02/20 23:06:03 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/21 03:45:21 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,28 @@ void	ft_printf_print_integer(t_param *param, int *total_char, va_list *l)
 		if (ft_strlen(param->specifier_length) == 2)
 			modifier -= 32;
 	}
+	func = functions[modifier];
+	str = func(total_char, l);
+	ft_printf_flag_numeric(param, total_char, str);
+	ft_putstr(str);
+	ft_strdel(&str);
+}
+
+void	ft_printf_print_unsigned_integer(t_param *param, int *total_char, va_list *l)
+{
+	static t_print_func	functions[256];
+	t_print_func 		func;
+	unsigned int		modifier;
+	char				*str;
+
+	modifier = 0;
+	if(!functions[0])
+	{
+		functions[0] = &ft_printf_print_uinteger;
+		functions['l'] = &ft_printf_print_long_uinteger;
+	}
+	if (param->specifier_length)
+		modifier = *(param->specifier_length);
 	func = functions[modifier];
 	str = func(total_char, l);
 	ft_printf_flag_numeric(param, total_char, str);
@@ -108,10 +130,10 @@ void	ft_printf_call(t_param *param, int *total_char, va_list *l)
 		functions['i'] = &ft_printf_print_integer;
 		functions['o'] = NULL;
 		functions['O'] = NULL;
-		functions['u'] = NULL;
+		functions['u'] = &ft_printf_print_unsigned_integer;
 		functions['U'] = NULL;
-		functions['x'] = NULL;
-		functions['X'] = NULL;
+		functions['x'] = &ft_printf_print_hex_int;
+		functions['X'] = &ft_printf_print_hex_int;
 		functions['p'] = &ft_printf_print_pointer;
 	}
 	func = functions[format];

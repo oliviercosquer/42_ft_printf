@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:55 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/20 23:08:20 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/21 03:42:14 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,16 @@ char			*ft_printf_print_long_double(int *total_char, va_list *l);
 //ft_printf_flag
 void			ft_printf_flag_numeric(t_param *param, int *total_char, char *str);
 
-//ft_printf_print_integer
+//ft_printf_integer
 char			*ft_printf_print_integer_default(int *total_char, va_list *l);
 char			*ft_printf_print_long_integer(int *total_char, va_list *l);
 char			*ft_printf_print_long_long_integer(int *total_char, va_list *l);
 char			*ft_printf_print_short_integer_default(int *total_char, va_list *list);
 char			*ft_printf_print_ushort_integer(int *total_char, va_list *list);
+
+//ft_printf_integer2
+char			*ft_printf_print_uinteger(int *total_char, va_list *list);
+char			*ft_printf_print_long_uinteger(int *total_char, va_list *list);
 
 //ft_printf_integer_signed
 char			*ft_printf_lint_itoa(long int n);
@@ -82,7 +86,9 @@ char			*ft_printf_ulong_itoa(unsigned long int n);
 
 //ft_printf_string
 void			ft_printf_print_pointer(t_param *param, int *total_char, va_list *l);
+void			ft_printf_print_hex_int(t_param *param, int *total_char, va_list *l);
 
 //ft_printf_tools
 int				ft_printf_atoi(const char *str);
+char			ft_printf_int_to_hex(unsigned int i);
 #endif

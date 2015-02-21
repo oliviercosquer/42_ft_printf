@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_tools.c                                  :+:      :+:    :+:   */
+/*   ft_printf_integer2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/10/26 02:51:56 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/21 03:44:13 by olivier          ###   ########.fr       */
+/*   Created: 2015/02/21 00:46:33 by olivier           #+#    #+#             */
+/*   Updated: 2015/02/21 01:04:42 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-int		ft_printf_atoi(const char *str)
+char	*ft_printf_print_uinteger(int *total_char, va_list *list)
 {
-	int	value;
+	char	*n_str;
 
-	value = 0;
-	while (str && *str)
-	{
-		value = (value * 10) + (*str - '0');
-		str++;
-	}
-	return (value);
+	n_str = ft_printf_unsigned_itoa(va_arg(list, unsigned int));
+	*total_char += ft_strlen(n_str);
+	return(n_str);
 }
 
-char	ft_printf_int_to_hex(unsigned int i)
+char	*ft_printf_print_long_uinteger(int *total_char, va_list *list)
 {
-	if (i <= 9)
-		return ('0' + i);
-	else
-		return ('a' + (i - 10));
+	char	*n_str;
+
+	n_str = ft_printf_ulong_itoa(va_arg(list, unsigned long int));
+	*total_char += ft_strlen(n_str);
+	return(n_str);
 }
