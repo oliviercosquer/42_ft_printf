@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # define MSG_NULL_POINTER "(null)"
