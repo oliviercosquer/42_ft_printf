@@ -33,8 +33,10 @@ void	ft_printf_flag_numeric(t_param *param, int *total_char, char *str)
 	if (c == '+')
 	{
 		if (str[0] != '-')
+		{
 			ft_putchar('+');
-		*total_char += 1;
+			*total_char += 1;
+		}
 	}
 }
 

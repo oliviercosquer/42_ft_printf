@@ -33,7 +33,6 @@ void	ft_printf_print_pointer(t_param *param, int *total_char, va_list *l)
 		i = 2;
 		while (str[i] == '0' && i < 18)
 			i++;
-		//printf("str:%s\ni:%d\n", str, i);
 		ft_memmove(str + 2, str + i, ft_strlen(str + i));
 		str[ft_strlen(str + i) + 2] = '\0';
 		*total_char += ft_strlen(str);
@@ -43,61 +42,31 @@ void	ft_printf_print_pointer(t_param *param, int *total_char, va_list *l)
 	(void)param;
 }
 
-void	ft_printf_print_octal(t_param *param, int *total_char, va_list *l)
-{
-	unsigned int	value;
-	char			*str;
-	int				i;
-
-	value = (int)va_arg(l,unsigned int);
-	str = ft_strnew(11);
-	i = 11;
-	if (str)
-	{
-		while (--i >= 0)
-		{			
-			str[i] = '0' + ((value << 29) >> 29);
-			value = value >> 3;
-		}
-		i = 0;
-		while (str[i] == '0')
-			i++;
-		ft_memmove(str, str + i, ft_strlen(str) - i);
-		str[(11) - i] = '\0';
-		str[1] = (str[0] == '\0') ? '\0' : str[1];
-		str[0] = (str[0] == '\0') ? '0' : str[0];
-		*total_char += ft_strlen(str);
-		ft_putstr(str);
-		ft_strdel(&str);
-	}
-	(void)param;
-	(void)str;
-	(void)total_char;
-}
-
 void	ft_printf_print_hex_int(t_param *param, int *total_char, va_list *l)
 {
 	char			*str;
-	int				n;
-	unsigned int	i;
-	int				j;
+	unsigned int	n;
+	int				i;
+	int				upper;
 
-	str = ft_strnew(4);
+	str = ft_strnew(8);
+	upper = *(param->specifier) == 'X' ? 32 : 0;
 	if (str)
 	{
-		i = 0;
-		j = -1;
+		i = 8;
 		n = va_arg(l, int);
-		while (!(n >> 28) && i++ < 8)
-			n = n << 4;	
-		while (i < 8 && (++j) < 8)
+		while (--i >= 0)
 		{
-			str[j] = ft_printf_int_to_hex((unsigned int)n >> 28);
-			if (*(param->specifier) == 'X' && ft_isalpha(str[j]))
-				str[j] -= 32;
-			i++;
-			n = n << 4;
+			str[i] = ft_printf_int_to_hex(((n << 28) >> 28));
+			if (ft_isalpha(str[i]))
+				str[i] -= upper;
+			n = n >> 4;
 		}
+		i = 0;
+		while (str[i] == '0' && i < 7)
+			i++;
+		ft_memmove(str, str + i, ft_strlen(str + i));
+		str[ft_strlen(str + i)] = '\0';
 		*total_char += ft_strlen(str);
 		ft_putstr(str);
 		ft_strdel(&str);

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <ft_printf.h>
+#include <limits.h>
 
 #ifdef _USER__
 #	define PRINTF_MACRO ft_printf
@@ -41,11 +42,10 @@
 
 int	main(void)
 {
-	int	lol = 24;
+	int	lol;
 
-	ft_printf("simple test\n");
-	ft_printf("% Zooooo\n");
-	printf("% Zooooo");
+	printf("size lo:%lo\n", ULONG_MAX);
+	ft_printf("size lo:%lo\n", ULONG_MAX);
 	return (0);
 	#include "test.c"
 	return (0);

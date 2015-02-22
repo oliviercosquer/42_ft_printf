@@ -58,6 +58,10 @@ int				ft_printf(const char *str, ...);
 //ft_printf_call
 void			ft_printf_call(t_param *param, int *total_char, va_list *l);
 
+//ft_printf_call2
+void			ft_printf_print_wstring(t_param *param, int *total_char, va_list *l);
+void			ft_printf_print_octal(t_param *param, int *total_char, va_list *l);
+
 //ft_printf_double
 char			*ft_printf_print_double_default(int *total_char, va_list *l);
 char			*ft_printf_print_long_double(int *total_char, va_list *l);
@@ -84,8 +88,12 @@ char			*ft_printf_long_lint_itoa(long int n);
 char			*ft_printf_unsigned_itoa(unsigned int n);
 char			*ft_printf_ulong_itoa(unsigned long int n);
 
+//ft_printf_octal
+char			*ft_printf_print_octal_default(int *total_char, va_list *l);
+char			*ft_printf_print_long_octal(int *total_char, va_list *l);
+char			*ft_printf_print_long_long_octal(int *total_char, va_list *l);
+
 //ft_printf_string
-void			ft_printf_print_octal(t_param *param, int *total_char, va_list *l);
 void			ft_printf_print_pointer(t_param *param, int *total_char, va_list *l);
 void			ft_printf_print_hex_int(t_param *param, int *total_char, va_list *l);
 
