@@ -29,7 +29,7 @@ char	*ft_printf_print_octal_default(int *total_char, va_list *l)
 			value = value >> 3;
 		}
 		i = 0;
-		while (str[i] == '0')
+		while (str[i] == '0' && i < 10)
 			i++;
 		ft_memmove(str, str + i, ft_strlen(str) - i);
 		str[(11) - i] = '\0';
@@ -41,6 +41,32 @@ char	*ft_printf_print_octal_default(int *total_char, va_list *l)
 }
 
 char	*ft_printf_print_long_octal(int *total_char, va_list *l)
+{
+	unsigned long int	value;
+	char				*str;
+	int					i;
+
+	value = (int)va_arg(l, unsigned long int);
+	str = ft_strnew(22);
+	i = 22;
+	if (str)
+	{
+		while (--i >= 0)
+		{
+			str[i] = '0' + ((value << 61) >> 61);
+			value = value >> 3;
+		}
+		i = 0;
+		while (str[i] == '0' && i < 21)
+			i++;
+		ft_memmove(str, str + i, ft_strlen(str + i));
+		str[ft_strlen(str + i)] = '\0';
+		*total_char += ft_strlen(str);
+	}
+	return (str);
+}
+
+char	*ft_printf_print_long_octal2(int *total_char, va_list *l)
 {
 	unsigned long int	value;
 	char				*str;
@@ -83,7 +109,7 @@ char	*ft_printf_print_long_long_octal(int *total_char, va_list *l)
 			value = value >> 3;
 		}
 		i = 0;
-		while (str[i] == '0')
+		while (str[i] == '0' && i < 20)
 			i++;
 		ft_memmove(str, str + i, ft_strlen(str) - i);
 		str[(22) - i] = '\0';

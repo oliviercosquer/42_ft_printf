@@ -54,8 +54,8 @@ void	ft_printf_print_o(t_param *param, int *total_char, va_list *l)
 	modifier = 0;
 	if (!functions[0])
 	{
-		functions[0] = &ft_printf_print_long_octal;
-		functions['l'] = &ft_printf_print_long_octal;
+		functions[0] = &ft_printf_print_long_octal2;
+		functions['l'] = &ft_printf_print_long_octal2;
 		functions['L'] = &ft_printf_print_long_long_octal;
 		functions['h'] = NULL;
 		functions['H'] = NULL;

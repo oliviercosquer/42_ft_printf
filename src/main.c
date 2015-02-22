@@ -25,10 +25,14 @@ int	main(void)
 
 	printf("size lx:%ld\n", sizeof(unsigned long int));
 	printf("size llx:%lld\n", sizeof(unsigned long long int));
-	lol = printf("a%Ob%Oc%Od", 0, 55555, 100000);
+	lol = printf("printf\n%lo, %lo", 0, ULONG_MAX);
+	printf("ret:%d\n", lol);
+	lol = ft_printf("ftprin\n%lo, %lo", 0, ULONG_MAX);
+	printf("ret:%d\n", lol);	
+	/*lol = printf("a%Ob%Oc%Od", 0, 55555, 100000);
 	printf("ret:%d\n", lol);
 	lol = ft_printf("a%Ob%Oc%Od", 0, 55555, 100000);
-	printf("ret:%d\n", lol);
+	printf("ret:%d\n", lol);*/
 	return (0);
 	#include "test.c"
 	return (0);
