@@ -36,7 +36,7 @@ int		ft_printf_long_lint_length(long int n)
 {
 	long long int	len;
 	long long int	tmp;
-	int			negative;
+	int				negative;
 
 	len = 0;
 	tmp = n;

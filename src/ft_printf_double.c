@@ -21,7 +21,7 @@ char	*ft_printf_print_double_default(int *total_char, va_list *list)
 	char	*tmp2;
 
 	n = va_arg(*list, double);
-	i = (int)n;	
+	i = (int)n;
 	str = ft_itoa((int)n);
 	tmp = str;
 	str = ft_strjoin(str, ".");
@@ -36,7 +36,7 @@ char	*ft_printf_print_double_default(int *total_char, va_list *list)
 	return (str);
 }
 
-char	*		ft_printf_print_long_double(int *total_char, va_list *list)
+char	*ft_printf_print_long_double(int *total_char, va_list *list)
 {
 	char	*str;
 

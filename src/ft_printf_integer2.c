@@ -18,7 +18,7 @@ char	*ft_printf_print_uinteger(int *total_char, va_list *list)
 
 	n_str = ft_printf_unsigned_itoa(va_arg(list, unsigned int));
 	*total_char += ft_strlen(n_str);
-	return(n_str);
+	return (n_str);
 }
 
 char	*ft_printf_print_long_uinteger(int *total_char, va_list *list)
@@ -27,5 +27,5 @@ char	*ft_printf_print_long_uinteger(int *total_char, va_list *list)
 
 	n_str = ft_printf_ulong_itoa(va_arg(list, unsigned long int));
 	*total_char += ft_strlen(n_str);
-	return(n_str);
+	return (n_str);
 }

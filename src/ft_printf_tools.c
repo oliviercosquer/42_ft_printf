@@ -32,3 +32,18 @@ char	ft_printf_int_to_hex(unsigned int i)
 	else
 		return ('a' + (i - 10));
 }
+
+void	ft_printf_str_toupper(char **str)
+{
+	char	*s;
+
+	if (str)
+	{
+		s = *str;
+		while (*s)
+		{
+			*s = ft_toupper(*s);
+			s++;
+		}
+	}
+}

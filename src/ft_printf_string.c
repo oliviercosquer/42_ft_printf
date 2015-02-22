@@ -41,35 +41,3 @@ void	ft_printf_print_pointer(t_param *param, int *total_char, va_list *l)
 	}
 	(void)param;
 }
-
-void	ft_printf_print_hex_int(t_param *param, int *total_char, va_list *l)
-{
-	char			*str;
-	unsigned int	n;
-	int				i;
-	int				upper;
-
-	str = ft_strnew(8);
-	upper = *(param->specifier) == 'X' ? 32 : 0;
-	if (str)
-	{
-		i = 8;
-		n = va_arg(l, int);
-		while (--i >= 0)
-		{
-			str[i] = ft_printf_int_to_hex(((n << 28) >> 28));
-			if (ft_isalpha(str[i]))
-				str[i] -= upper;
-			n = n >> 4;
-		}
-		i = 0;
-		while (str[i] == '0' && i < 7)
-			i++;
-		ft_memmove(str, str + i, ft_strlen(str + i));
-		str[ft_strlen(str + i)] = '\0';
-		*total_char += ft_strlen(str);
-		ft_putstr(str);
-		ft_strdel(&str);
-	}
-	(void)param;
-}

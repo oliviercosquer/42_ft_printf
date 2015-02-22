@@ -15,12 +15,12 @@
 void	ft_printf_print_integer(t_param *param, int *total_char, va_list *l)
 {
 	static t_print_func	functions[256];
-	t_print_func 		func;
+	t_print_func		func;
 	unsigned int		modifier;
 	char				*str;
 
 	modifier = 0;
-	if(!functions[0])
+	if (!functions[0])
 	{
 		functions[0] = &ft_printf_print_integer_default;
 		functions['l'] = &ft_printf_print_long_integer;
@@ -47,12 +47,12 @@ void	ft_printf_print_integer(t_param *param, int *total_char, va_list *l)
 void	ft_printf_print_unsigned_integer(t_param *param, int *total_char, va_list *l)
 {
 	static t_print_func	functions[256];
-	t_print_func 		func;
+	t_print_func		func;
 	unsigned int		modifier;
 	char				*str;
 
 	modifier = 0;
-	if(!functions[0])
+	if (!functions[0])
 	{
 		functions[0] = &ft_printf_print_uinteger;
 		functions['l'] = &ft_printf_print_long_uinteger;
@@ -69,12 +69,12 @@ void	ft_printf_print_unsigned_integer(t_param *param, int *total_char, va_list *
 void	ft_printf_print_double(t_param *param, int *total_char, va_list *l)
 {
 	static t_print_func	functions[256];
-	t_print_func 		func;
+	t_print_func		func;
 	unsigned int		modifier;
 	char				*str;
 
 	modifier = 0;
-	if(!functions[0])
+	if (!functions[0])
 	{
 		functions[0] = &ft_printf_print_double_default;
 		functions['l'] = &ft_printf_print_long_double;
@@ -138,8 +138,8 @@ void	ft_printf_call(t_param *param, int *total_char, va_list *l)
 		functions['O'] = NULL;
 		functions['u'] = &ft_printf_print_unsigned_integer;
 		functions['U'] = NULL;
-		functions['x'] = &ft_printf_print_hex_int;
-		functions['X'] = &ft_printf_print_hex_int;
+		functions['x'] = &ft_printf_print_hex;
+		functions['X'] = &ft_printf_print_hex;
 		functions['p'] = &ft_printf_print_pointer;
 	}
 	if (format)

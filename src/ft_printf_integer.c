@@ -18,7 +18,7 @@ char	*ft_printf_print_integer_default(int *total_char, va_list *list)
 
 	n_str = ft_itoa(va_arg(list, int));
 	*total_char += ft_strlen(n_str);
-	return(n_str);
+	return (n_str);
 }
 
 char	*ft_printf_print_long_integer(int *total_char, va_list *list)
@@ -27,7 +27,7 @@ char	*ft_printf_print_long_integer(int *total_char, va_list *list)
 
 	n_str = ft_printf_lint_itoa(va_arg(list, long int));
 	*total_char += ft_strlen(n_str);
-	return(n_str);
+	return (n_str);
 }
 
 char	*ft_printf_print_long_long_integer(int *total_char, va_list *list)
@@ -37,7 +37,7 @@ char	*ft_printf_print_long_long_integer(int *total_char, va_list *list)
 	n_str = NULL;
 	n_str = ft_printf_long_lint_itoa(va_arg(list, long long int));
 	*total_char += ft_strlen(n_str);
-	return(n_str);
+	return (n_str);
 }
 
 char	*ft_printf_print_short_integer_default(int *total_char, va_list *list)
@@ -48,7 +48,7 @@ char	*ft_printf_print_short_integer_default(int *total_char, va_list *list)
 	(void)total_char;
 	(void)list;
 	ft_putstr("short integer");
-	return(n_str);
+	return (n_str);
 }
 
 char	*ft_printf_print_ushort_integer(int *total_char, va_list *list)
@@ -59,5 +59,5 @@ char	*ft_printf_print_ushort_integer(int *total_char, va_list *list)
 	(void)total_char;
 	(void)list;
 	ft_putstr("short u integer");
-	return(n_str);
+	return (n_str);
 }
