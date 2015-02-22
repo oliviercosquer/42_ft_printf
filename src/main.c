@@ -41,7 +41,10 @@
 
 int	main(void)
 {
-	
+	int	lol = 24;
+
+	ft_printf("ft_p: '%p'\n", lol);
+	printf("p: '%p'\n", lol);
 ft_printf("Bla bla %o\n", 0);
 ft_printf("Bla bla %o\n", 123);
 printf("Bla bla %o\n", 0);

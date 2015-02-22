@@ -14,29 +14,31 @@
 
 void	ft_printf_print_pointer(t_param *param, int *total_char, va_list *l)
 {
-	char				*adress;
+	char				*str;
 	unsigned long int	pointer;
 	int					i;
-	int					left_padding;
 
 	pointer = (unsigned long int)va_arg(l, void *);
-	adress = ft_strnew(18);
-	left_padding = 0;
-	if (adress)
+	str = ft_strnew(18);
+	if (str)
 	{
-		i = 1;
-		adress[0] = '0';
-		adress[1] = 'x';
-		while ((unsigned int)(pointer >> 60) == 0 && left_padding++ >= 0)
-			pointer = pointer << 4;
-		while (i < (16 + 1 - left_padding) && i++)
+		str[0] = '0';
+		str[1] = 'x';
+		i = 19;
+		while (--i > 1)
 		{
-			adress[i] = ft_printf_int_to_hex((unsigned int)(pointer >> 60));
-			pointer = pointer << 4;
+			str[i] = ft_printf_int_to_hex((unsigned int)((pointer << 60) >> 60));
+			pointer = pointer >> 4;
 		}
-		*total_char += 16 + 2 - left_padding;
-		ft_putstr(adress);
-		ft_strdel(&adress);
+		i = 2;
+		while (str[i] == '0' && i < 18)
+			i++;
+		//printf("str:%s\ni:%d\n", str, i);
+		ft_memmove(str + 2, str + i, ft_strlen(str + i));
+		str[ft_strlen(str + i) + 2] = '\0';
+		*total_char += ft_strlen(str);
+		ft_putstr(str);
+		ft_strdel(&str);
 	}
 	(void)param;
 }
@@ -64,6 +66,7 @@ void	ft_printf_print_octal(t_param *param, int *total_char, va_list *l)
 		str[(11) - i] = '\0';
 		str[1] = (str[0] == '\0') ? '\0' : str[1];
 		str[0] = (str[0] == '\0') ? '0' : str[0];
+		*total_char += ft_strlen(str);
 		ft_putstr(str);
 		ft_strdel(&str);
 	}
