@@ -40,22 +40,22 @@ char	*ft_printf_print_hex_default(int *total_char, va_list *l)
 
 char	*ft_printf_print_long_hex(int *total_char, va_list *l)
 {
-	char			*str;
-	unsigned int	n;
-	int				i;
+	char				*str;
+	unsigned long int	n;
+	int					i;
 
-	str = ft_strnew(8);
+	str = ft_strnew(16);
 	if (str)
 	{
-		i = 8;
+		i = 16;
 		n = va_arg(l, int);
 		while (--i >= 0)
 		{
-			str[i] = ft_printf_int_to_hex(((n << 28) >> 28));
+			str[i] = ft_printf_int_to_hex(((n << 60) >> 60));
 			n = n >> 4;
 		}
 		i = 0;
-		while (str[i] == '0' && i < 7)
+		while (str[i] == '0' && i < 15)
 			i++;
 		ft_memmove(str, str + i, ft_strlen(str + i));
 		str[ft_strlen(str + i)] = '\0';
@@ -66,22 +66,22 @@ char	*ft_printf_print_long_hex(int *total_char, va_list *l)
 
 char	*ft_printf_print_long_long_hex(int *total_char, va_list *l)
 {
-	char			*str;
-	unsigned int	n;
+	char					*str;
+	unsigned long long int	n;
 	int				i;
 
-	str = ft_strnew(8);
+	str = ft_strnew(16);
 	if (str)
 	{
-		i = 8;
+		i = 16;
 		n = va_arg(l, int);
 		while (--i >= 0)
 		{
-			str[i] = ft_printf_int_to_hex(((n << 28) >> 28));
+			str[i] = ft_printf_int_to_hex(((n << 60) >> 60));
 			n = n >> 4;
 		}
 		i = 0;
-		while (str[i] == '0' && i < 7)
+		while (str[i] == '0' && i < 15)
 			i++;
 		ft_memmove(str, str + i, ft_strlen(str + i));
 		str[ft_strlen(str + i)] = '\0';
