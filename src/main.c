@@ -22,11 +22,11 @@
 #define THE_TEST "{%10d}", 42)
 int	main(void)
 {
-	ft_printf("ABC%*.*dDEF", 5, 10, 123);
-	/*lol = printf("a%Ob%Oc%Od", 0, 55555, 100000);
-	printf("ret:%d\n", lol);
-	lol = ft_printf("a%Ob%Oc%Od", 0, 55555, 100000);
-	printf("ret:%d\n", lol);*/
+	int lol;
+	lol = printf("before %i after", 4242);
+	printf("ret:%d", lol);
+	lol = ft_printf("before %i after", 4242);
+	printf("ret:%d", lol);
 	return (0);
 	#include "test.c"
 	return (0);

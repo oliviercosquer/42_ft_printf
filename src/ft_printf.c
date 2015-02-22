@@ -34,11 +34,10 @@ int		ft_printf(const char *s, ...)
 	total_char = 0;
 	while ((param = ft_printf_get_params(&str, &total_char, &list)))
 	{
-		ft_display_param(param);
-		//ft_printf_call(param, &total_char, &list);
-		//ft_printf_del_params(&param);
+		//ft_display_param(param);
+		ft_printf_call(param, &total_char, &list);
+		ft_printf_del_params(&param);
 	}
-	write(1, str, ft_strlen(str));
-	return (total_char);
 	va_end(list);
+	return (total_char);
 }

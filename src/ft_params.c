@@ -77,17 +77,20 @@ void	ft_printf_param_find(char **str, int *total_char)
 
 	len = 0;
 	s = *str;
-	if (s[len] == '%' && !s[len + 1])
+	if (s[len])
 	{
-		*str += 1;
-	}
-	else
-	{
-		while (s[len] && s[len] != '%')
-			len++;
-		*total_char += len;
-		write(1, s, len);
-		*str += len + 1;
+		if (s[len] == '%' && !s[len + 1])
+		{
+			*str += 1;
+		}
+		else
+		{
+			while (s[len] && s[len] != '%')
+				len++;
+			*total_char += len;
+			write(1, s, len);
+			*str += len + 1;
+		}
 	}
 }
 
@@ -115,7 +118,7 @@ t_param	*ft_printf_param_parse(char **str, va_list *list)
 	}
 	else if (**str)
 		*str += 1;
-	*str += format_length;
+	*str += format_length - 1;
 	return (param);
 }
 
