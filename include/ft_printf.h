@@ -21,10 +21,11 @@
 # include <stdarg.h>
 # include <libft.h>
 # include <stdio.h> // TO DELETE
+# define SEGV ft_putstr("segv\n");
 typedef struct	s_param
 {
 	char			*value;
-	char			flag;
+	char			*flag;
 	char			*width;
 	char			*precision;
 	char			*specifier;
@@ -46,7 +47,7 @@ int				ft_has_precision(char *str);
 int				ft_is_valid_specifier(char c);
 
 //ft_params_get
-char			ft_get_flag(char *str);
+char			*ft_get_flag(char *str);
 char			*ft_get_width(char **str);
 char			*ft_get_precision(char **str);
 char			*ft_get_specifier(char **str, t_param *param);

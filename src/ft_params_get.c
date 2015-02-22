@@ -12,14 +12,30 @@
 
 #include <ft_printf.h>
 
-char	ft_get_flag(char *str)
+char	*ft_get_flag(char *str)
 {
-	char	flag;
+	char	*flag;
+	char	*tmp;
+	char	*tmp2;
 
-	flag = '\0';
+	flag = NULL;
+	tmp = NULL;
+	tmp2 = NULL;
 	str++;
-	if (ft_strchr(VALID_FLAGS, *str))
-		flag = *str;
+	while (ft_strchr(VALID_FLAGS, *str))
+	{
+		tmp = flag;
+		tmp2 = ft_strsub(str, 0, 1);
+		if (flag)
+			flag = ft_strjoin(flag, tmp2);
+		else
+			flag = ft_strdup(tmp2);
+		if (tmp)
+			ft_strdel(&tmp);
+		if (tmp2)
+			ft_strdel(&tmp2);
+		str++;
+	}
 	return (flag);
 }
 

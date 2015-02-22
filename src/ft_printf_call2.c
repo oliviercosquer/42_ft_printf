@@ -39,7 +39,6 @@ void	ft_printf_print_d(t_param *param, int *total_char, va_list *l)
 	{
 		str = func(total_char, l);
 		ft_printf_flag_numeric(param, total_char, str);
-		ft_putstr(str);
 		ft_strdel(&str);
 	}
 }
@@ -71,7 +70,6 @@ void	ft_printf_print_o(t_param *param, int *total_char, va_list *l)
 	{
 		str = func(total_char, l);
 		ft_printf_flag_numeric(param, total_char, str);
-		ft_putstr(str);
 		ft_strdel(&str);
 	}
 }
@@ -131,7 +129,6 @@ void	ft_printf_print_octal(t_param *param, int *total_char, va_list *l)
 	{
 		str = func(total_char, l);
 		ft_printf_flag_numeric(param, total_char, str);
-		ft_putstr(str);
 		ft_strdel(&str);
 	}
 }
@@ -162,10 +159,9 @@ void	ft_printf_print_hex(t_param *param, int *total_char, va_list *l)
 	if (func)
 	{
 		str = func(total_char, l);
-		ft_printf_flag_numeric(param, total_char, str);
 		if (*(param->specifier) == 'X')
 			ft_printf_str_toupper(&str);
-		ft_putstr(str);
+		ft_printf_flag_numeric(param, total_char, str);
 		ft_strdel(&str);
 	}
 }

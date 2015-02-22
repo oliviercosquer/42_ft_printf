@@ -19,7 +19,7 @@ t_param	*ft_printf_new_param(void)
 	params = (t_param *)malloc(sizeof(t_param));
 	if (params)
 	{
-		params->flag = '\0';
+		params->flag = NULL;
 		params->width = NULL;
 		params->precision = NULL;
 		params->next = NULL;

@@ -39,7 +39,6 @@ void	ft_printf_print_integer(t_param *param, int *total_char, va_list *l)
 	{
 		str = func(total_char, l);
 		ft_printf_flag_numeric(param, total_char, str);
-		ft_putstr(str);
 		ft_strdel(&str);
 	}
 }
@@ -62,7 +61,6 @@ void	ft_printf_print_unsigned_integer(t_param *param, int *total_char, va_list *
 	func = functions[modifier];
 	str = func(total_char, l);
 	ft_printf_flag_numeric(param, total_char, str);
-	ft_putstr(str);
 	ft_strdel(&str);
 }
 
