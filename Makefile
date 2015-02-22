@@ -4,7 +4,6 @@ LIBFT_DIR = ./libft
 SRC_PATH = ./src/
 SRC_FILES =	ft_params.c \
 			ft_params_check.c \
-			ft_params_get.c \
 			ft_printf.c \
 			ft_printf_call.c \
 			ft_printf_call2.c \
@@ -17,6 +16,7 @@ SRC_FILES =	ft_params.c \
 			ft_printf_integer_signed.c \
 			ft_printf_integer_unsigned.c \
 			ft_printf_octal.c \
+			ft_printf_param_parse.c \
 			ft_printf_string.c \
 			ft_printf_tools.c
 BASE_FILES = $(addprefix $(SRC_PATH),$(SRC_FILES))

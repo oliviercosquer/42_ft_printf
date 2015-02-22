@@ -90,13 +90,13 @@ void	ft_printf_print_string(t_param *param, int *total_char, va_list *l)
 	char	*str;
 	char	c;
 
-	if (*(param->specifier) == 'c')
+	if (param->specifier == 'c')
 	{
 		(*total_char)++;
 		c = va_arg(l, int);
 		write(1, &c, 1);
 	}
-	else if (*(param->specifier) == '%')
+	else if (param->specifier == '%')
 	{
 		c = '%';
 		write(1, &c, 1);
@@ -122,7 +122,7 @@ void	ft_printf_call(t_param *param, int *total_char, va_list *l)
 	unsigned int		format;
 
 	if (param->specifier)
-		format = *(param->specifier);
+		format = param->specifier;
 	if (!functions['s'])
 	{
 		functions['s'] = &ft_printf_print_string;

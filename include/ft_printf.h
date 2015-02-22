@@ -28,15 +28,14 @@ typedef struct	s_param
 	char			*flag;
 	char			*width;
 	char			*precision;
-	char			*specifier;
+	char			specifier;
 	char			*specifier_length;
-	struct s_param	*next;
 }				t_param;
 typedef char	*(*t_print_func)(int *i, va_list *list);
 typedef void	(*t_call_func)(t_param *p, int *i, va_list *list);
 
 //ft_params
-t_param			*ft_printf_get_params(char **str, int *total_char);
+t_param			*ft_printf_get_params(char **str, int *total_char, va_list *list);
 void			ft_printf_del_params(t_param **params);
 
 //ft_params_check
@@ -106,6 +105,13 @@ char			*ft_printf_print_octal_default(int *total_char, va_list *l);
 char			*ft_printf_print_long_octal(int *total_char, va_list *l);
 char			*ft_printf_print_long_octal2(int *total_char, va_list *l);
 char			*ft_printf_print_long_long_octal(int *total_char, va_list *l);
+
+//ft_printf_param_parse
+char			*ft_printf_param_parse_flag(char **str);
+char			*ft_printf_param_parse_width(char **str, va_list *list);
+char			*ft_printf_param_parse_precision(char **str, va_list *list);
+char			*ft_printf_param_parse_specifier_length(char **str);
+char			ft_printf_param_parse_specifier(char **str);
 
 //ft_printf_string
 void			ft_printf_print_pointer(t_param *param, int *total_char, va_list *l);

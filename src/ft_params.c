@@ -22,15 +22,14 @@ t_param	*ft_printf_new_param(void)
 		params->flag = NULL;
 		params->width = NULL;
 		params->precision = NULL;
-		params->next = NULL;
-		params->specifier = NULL;
+		params->specifier = '\0';
 		params->specifier_length = NULL;
 		params->value = NULL;
 		return (params);
 	}
 	return (NULL);
 }
-
+/*
 t_param	*ft_printf_get_next_param(char *str)
 {
 	char	*tmp;
@@ -46,10 +45,10 @@ t_param	*ft_printf_get_next_param(char *str)
 			param->width = ft_get_width(&tmp);
 		if (ft_has_precision(tmp))
 			param->precision = ft_get_precision(&tmp);
-		param->specifier = ft_get_specifier(&tmp, param);
+		//param->specifier = ft_get_specifier(&tmp, param);
 	}
 	return (param);
-}
+}*/
 
 void	ft_printf_del_params(t_param **params)
 {
@@ -64,46 +63,66 @@ void	ft_printf_del_params(t_param **params)
 			free(tmp->width);
 		if (tmp->precision)
 			free(tmp->precision);
-		if (tmp->specifier)
-			free(tmp->specifier);
 		if (tmp->specifier_length)
 			free(tmp->specifier_length);
-		*params = tmp->next;
 		free(tmp);
 		*params = NULL;
 	}
 }
 
-t_param	*ft_printf_get_params(char **str, int *total_char)
+void	ft_printf_param_find(char **str, int *total_char)
 {
-	t_param	*param;
 	char	*s;
 	int		len;
-	int		format_length;
 
-	param = NULL;
 	len = 0;
 	s = *str;
 	if (s[len] == '%' && !s[len + 1])
 	{
 		*str += 1;
-		return (NULL);
 	}
-	while (s[len] && s[len] != '%')
+	else
 	{
-		len++;
-		*total_char += 1;
+		while (s[len] && s[len] != '%')
+			len++;
+		*total_char += len;
+		write(1, s, len);
+		*str += len + 1;
 	}
-	write(1, s, len);
-	s += len;
-	if (s && *s && ft_strchr(VALID_SPECIFIER, *s))
+}
+
+t_param	*ft_printf_param_parse(char **str, va_list *list)
+{
+	int		format_length;
+	char	*start_str;
+	t_param	*param;
+
+	param = NULL;
+	format_length = 0;
+	if (str && *str)
 	{
-		param = ft_printf_get_next_param(s);
-		format_length = ft_printf_get_format_length(param);
-		s += format_length + 1;
+		start_str = *str;
+		param = ft_printf_new_param();
+		if (param)
+		{
+			param->flag = ft_printf_param_parse_flag(str);//DONE
+			param->width = ft_printf_param_parse_width(str, list);//DONE
+			param->precision = ft_printf_param_parse_precision(str, list);//DONE
+			param->specifier_length = ft_printf_param_parse_specifier_length(str);//DONE
+			param->specifier = ft_printf_param_parse_specifier(str);//DONE
+			format_length = *str - start_str;
+		}
 	}
-	else if (*s)
-		s++;
-	*str = s;
+	else if (**str)
+		*str += 1;
+	*str += format_length;
 	return (param);
+}
+
+t_param	*ft_printf_get_params(char **str, int *total_char, va_list *list)
+{
+	ft_printf_param_find(str, total_char);
+	if (str && *str && **str)
+		return (ft_printf_param_parse(str, list));
+	return (NULL);
 }

@@ -22,14 +22,7 @@
 #define THE_TEST "{%10d}", 42)
 int	main(void)
 {
-	int	lol;
-
-	printf("size lx:%ld\n", sizeof(unsigned long int));
-	printf("size llx:%lld\n", sizeof(unsigned long long int));
-	lol = printf("%  --d", -9999);
-	printf("ret:%d\n", lol);
-	lol = ft_printf("% d", -9999);
-	printf("ret:%d\n", lol);	
+	ft_printf("ABC%*.*dDEF", 5, 10, 123);
 	/*lol = printf("a%Ob%Oc%Od", 0, 55555, 100000);
 	printf("ret:%d\n", lol);
 	lol = ft_printf("a%Ob%Oc%Od", 0, 55555, 100000);

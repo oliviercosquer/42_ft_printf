@@ -79,13 +79,13 @@ void	ft_printf_print_wstring(t_param *param, int *total_char, va_list *l)
 	wchar_t	*str;
 	wchar_t	c;
 
-	if (*(param->specifier) == 'C')
+	if (param->specifier == 'C')
 	{
 		(*total_char)++;
 		c = va_arg(l, wchar_t);
 		write(1, &c, 1);
 	}
-	else if (*(param->specifier) == '%')
+	else if (param->specifier == '%')
 	{
 		c = '%';
 		write(1, &c, 1);
@@ -159,7 +159,7 @@ void	ft_printf_print_hex(t_param *param, int *total_char, va_list *l)
 	if (func)
 	{
 		str = func(total_char, l);
-		if (*(param->specifier) == 'X')
+		if (param->specifier == 'X')
 			ft_printf_str_toupper(&str);
 		ft_printf_flag_numeric(param, total_char, str);
 		ft_strdel(&str);
