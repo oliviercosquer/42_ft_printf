@@ -48,7 +48,7 @@ char	*ft_printf_print_long_hex(int *total_char, va_list *l)
 	if (str)
 	{
 		i = 16;
-		n = va_arg(l, int);
+		n = va_arg(l, unsigned long int);
 		while (--i >= 0)
 		{
 			str[i] = ft_printf_int_to_hex(((n << 60) >> 60));
@@ -74,7 +74,7 @@ char	*ft_printf_print_long_long_hex(int *total_char, va_list *l)
 	if (str)
 	{
 		i = 16;
-		n = va_arg(l, int);
+		n = va_arg(l, unsigned long long int);
 		while (--i >= 0)
 		{
 			str[i] = ft_printf_int_to_hex(((n << 60) >> 60));

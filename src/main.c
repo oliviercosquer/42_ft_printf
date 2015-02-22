@@ -46,13 +46,9 @@ int	main(void)
 
 	printf("size lx:%ld\n", sizeof(unsigned long int));
 	printf("size llx:%lld\n", sizeof(unsigned long long int));
-	lol = printf("lx:%lx\n", 0);
+	lol = printf("%llo, %llo", 0, ULLONG_MAX);
 	printf("ret:%d\n", lol);
-	lol = printf("llx:%llx\n", ULLONG_MAX);
-	printf("ret:%d\n", lol);
-	lol = ft_printf("lx:%lx\n", 0);
-	printf("ret:%d\n", lol);
-	lol = ft_printf("llx:%llx\n", ULLONG_MAX);
+	lol = ft_printf("%llo, %llo", 0, ULLONG_MAX);
 	printf("ret:%d\n", lol);
 	return (0);
 	#include "test.c"
