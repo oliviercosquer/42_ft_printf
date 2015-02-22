@@ -34,7 +34,7 @@ int		ft_printf(const char *s, ...)
 	total_char = 0;
 	while ((param = ft_printf_get_params(&str, &total_char)))
 	{
-		//ft_display_param(param);
+		ft_display_param(param);
 		ft_printf_call(param, &total_char, &list);
 		ft_printf_del_params(&param);
 	}

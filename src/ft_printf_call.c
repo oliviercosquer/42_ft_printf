@@ -81,7 +81,8 @@ void	ft_printf_print_double(t_param *param, int *total_char, va_list *l)
 		modifier = *(param->specifier_length);
 	func = functions[modifier];
 	str = func(total_char, l);
-	ft_printf_flag_numeric(param, total_char, str);
+	//ft_printf_flag_numeric(param, total_char, str);
+	(void)str;
 }
 
 void	ft_printf_print_string(t_param *param, int *total_char, va_list *l)
