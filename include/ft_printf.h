@@ -13,7 +13,7 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # define MSG_NULL_POINTER "(null)"
-# define VALID_SPECIFIER "diuoxXfFeEgGaAcspn%"
+# define VALID_SPECIFIER "dDiuUoOxXfFeEgGaAcCsSpn%"
 # define VALID_LENGTH "hllljztL"
 # define VALID_FLAGS "-+ #0"
 # include <stdlib.h>

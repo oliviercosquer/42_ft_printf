@@ -25,8 +25,8 @@ void	ft_printf_print_integer(t_param *param, int *total_char, va_list *l)
 		functions[0] = &ft_printf_print_integer_default;
 		functions['l'] = &ft_printf_print_long_integer;
 		functions['L'] = &ft_printf_print_long_long_integer;
-		functions['h'] = &ft_printf_print_short_integer_default;
-		functions['H'] = &ft_printf_print_ushort_integer;
+		//functions['h'] = &ft_printf_print_short_integer_default;
+		// functions['H'] = &ft_printf_print_ushort_integer;
 	}
 	if (param->specifier_length)
 	{
@@ -35,10 +35,13 @@ void	ft_printf_print_integer(t_param *param, int *total_char, va_list *l)
 			modifier -= 32;
 	}
 	func = functions[modifier];
-	str = func(total_char, l);
-	ft_printf_flag_numeric(param, total_char, str);
-	ft_putstr(str);
-	ft_strdel(&str);
+	if (func)
+	{
+		str = func(total_char, l);
+		ft_printf_flag_numeric(param, total_char, str);
+		ft_putstr(str);
+		ft_strdel(&str);
+	}
 }
 
 void	ft_printf_print_unsigned_integer(t_param *param, int *total_char, va_list *l)
@@ -94,21 +97,22 @@ void	ft_printf_print_string(t_param *param, int *total_char, va_list *l)
 		c = va_arg(l, int);
 		write(1, &c, 1);
 	}
+	else if (*(param->specifier) == '%')
+	{
+		c = '%';
+		write(1, &c, 1);
+		(*total_char)++;
+	}
 	else
 	{
 		str = va_arg(*l, char *);
 		if (str)
-		{
 			str = ft_strdup(str);
-			*total_char += ft_strlen(str);
-			ft_putstr(str);
-			ft_strdel(&str);
-		}
 		else
-		{
-			ft_putstr(MSG_NULL_POINTER);
-			*total_char += ft_strlen(MSG_NULL_POINTER);
-		}
+			str = ft_strdup(MSG_NULL_POINTER);
+		*total_char += ft_strlen(str);
+		ft_putstr(str);
+		ft_strdel(&str);
 	}
 }
 
@@ -118,12 +122,14 @@ void	ft_printf_call(t_param *param, int *total_char, va_list *l)
 	t_call_func			func;
 	unsigned int		format;
 
-	format = *(param->specifier);
+	if (param->specifier)
+		format = *(param->specifier);
 	if (!functions['s'])
 	{
 		functions['s'] = &ft_printf_print_string;
 		functions['S'] = NULL;
 		functions['c'] = &ft_printf_print_string;
+		functions['%'] = &ft_printf_print_string;
 		functions['C'] = NULL;
 		functions['d'] = &ft_printf_print_integer;
 		functions['D'] = NULL;
@@ -136,7 +142,8 @@ void	ft_printf_call(t_param *param, int *total_char, va_list *l)
 		functions['X'] = &ft_printf_print_hex_int;
 		functions['p'] = &ft_printf_print_pointer;
 	}
-	func = functions[format];
+	if (format)
+		func = functions[format];
 	if (func)
 		func(param, total_char, l);
 }

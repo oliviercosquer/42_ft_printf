@@ -56,19 +56,22 @@ void	ft_printf_del_params(t_param **params)
 	t_param	*tmp;
 
 	tmp = *params;
-	if (tmp->value)
-		free(tmp->value);
-	if (tmp->width)
-		free(tmp->width);
-	if (tmp->precision)
-		free(tmp->precision);
-	if (tmp->specifier)
-		free(tmp->specifier);
-	if (tmp->specifier_length)
-		free(tmp->specifier_length);
-	*params = tmp->next;
-	free(tmp);
-	*params = NULL;
+	if (tmp)
+	{
+		if (tmp->value)
+			free(tmp->value);
+		if (tmp->width)
+			free(tmp->width);
+		if (tmp->precision)
+			free(tmp->precision);
+		if (tmp->specifier)
+			free(tmp->specifier);
+		if (tmp->specifier_length)
+			free(tmp->specifier_length);
+		*params = tmp->next;
+		free(tmp);
+		*params = NULL;
+	}
 }
 
 t_param	*ft_printf_get_params(char **str, int *total_char)
@@ -81,16 +84,15 @@ t_param	*ft_printf_get_params(char **str, int *total_char)
 	param = NULL;
 	len = 0;
 	s = *str;
+	if (s[len] == '%' && !s[len + 1])
+	{
+		*str += 1;
+		return (NULL);
+	}
 	while (s[len] && s[len] != '%')
 	{
 		len++;
 		*total_char += 1;
-	}
-	if (s[len] && s[len + 1] == '%')
-	{
-		*total_char += 1;
-		len++;
-		s++;
 	}
 	write(1, s, len);
 	s += len;
@@ -100,6 +102,8 @@ t_param	*ft_printf_get_params(char **str, int *total_char)
 		format_length = ft_printf_get_format_length(param);
 		s += format_length + 1;
 	}
+	else if (*s)
+		s++;
 	*str = s;
 	return (param);
 }

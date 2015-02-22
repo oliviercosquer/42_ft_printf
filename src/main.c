@@ -43,14 +43,10 @@ int	main(void)
 {
 	int	lol = 24;
 
-	ft_printf("ft_p: '%p'\n", lol);
-	printf("p: '%p'\n", lol);
-ft_printf("Bla bla %o\n", 0);
-ft_printf("Bla bla %o\n", 123);
-printf("Bla bla %o\n", 0);
-printf("Bla bla %o\n", 123);
+	ft_printf("simple test\n");
+	ft_printf("% Zooooo\n");
+	printf("% Zooooo");
 	return (0);
-	//ft_printf("FT: i:%i, d:%d, s:%s, c:%c\n", 1024, 2048, "ABCDEF", 'Z');
 	#include "test.c"
 	return (0);
 }
