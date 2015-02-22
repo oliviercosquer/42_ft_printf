@@ -137,7 +137,7 @@ void	ft_printf_call(t_param *param, int *total_char, va_list *l)
 		functions['o'] = &ft_printf_print_octal;
 		functions['O'] = &ft_printf_print_o;
 		functions['u'] = &ft_printf_print_unsigned_integer;
-		functions['U'] = &ft_printf_print_unsigned_integer;
+		functions['U'] = &ft_printf_print_u;
 		functions['x'] = &ft_printf_print_hex;
 		functions['X'] = &ft_printf_print_hex;
 		functions['p'] = &ft_printf_print_pointer;

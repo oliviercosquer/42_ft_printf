@@ -8,6 +8,7 @@ SRC_FILES =	ft_params.c \
 			ft_printf.c \
 			ft_printf_call.c \
 			ft_printf_call2.c \
+			ft_printf_call3.c \
 			ft_printf_double.c \
 			ft_printf_flag.c \
 			ft_printf_hex.c \

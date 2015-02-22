@@ -65,6 +65,8 @@ void			ft_printf_print_hex(t_param *param, int *total_char, va_list *l);
 void			ft_printf_print_d(t_param *param, int *total_char, va_list *l);
 void			ft_printf_print_o(t_param *param, int *total_char, va_list *l);
 
+//ft_printf_call3
+void			ft_printf_print_u(t_param *param, int *total_char, va_list *l);
 //ft_printf_double
 char			*ft_printf_print_double_default(int *total_char, va_list *l);
 char			*ft_printf_print_long_double(int *total_char, va_list *l);
