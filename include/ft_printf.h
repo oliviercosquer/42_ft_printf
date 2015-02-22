@@ -62,6 +62,8 @@ void			ft_printf_call(t_param *param, int *total_char, va_list *l);
 void			ft_printf_print_wstring(t_param *param, int *total_char, va_list *l);
 void			ft_printf_print_octal(t_param *param, int *total_char, va_list *l);
 void			ft_printf_print_hex(t_param *param, int *total_char, va_list *l);
+void			ft_printf_print_d(t_param *param, int *total_char, va_list *l);
+void			ft_printf_print_o(t_param *param, int *total_char, va_list *l);
 
 //ft_printf_double
 char			*ft_printf_print_double_default(int *total_char, va_list *l);
@@ -108,4 +110,6 @@ void			ft_printf_print_hex_int(t_param *param, int *total_char, va_list *l);
 int				ft_printf_atoi(const char *str);
 char			ft_printf_int_to_hex(unsigned int i);
 void			ft_printf_str_toupper(char **str);
+int				ft_printf_wstrlen(wchar_t *str);
+void			ft_printf_putwstr(wchar_t *str);
 #endif

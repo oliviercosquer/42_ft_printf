@@ -12,22 +12,68 @@
 
 #include <ft_printf.h>
 
-int		ft_printf_wstrlen(wchar_t *str)
+void	ft_printf_print_d(t_param *param, int *total_char, va_list *l)
 {
-	int	len;
+	static t_print_func	functions[256];
+	t_print_func		func;
+	unsigned int		modifier;
+	char				*str;
 
-	len = 0;
-	if (str)
+	modifier = 0;
+	if (!functions[0])
 	{
-		while (str[len])
-			len++;
+		functions[0] = &ft_printf_print_long_integer;
+		functions['l'] = &ft_printf_print_long_integer;
+		functions['L'] = &ft_printf_print_long_long_integer;
+		functions['h'] = NULL;
+		functions['H'] = NULL;
 	}
-	return (len);
+	if (param->specifier_length)
+	{
+		modifier = *(param->specifier_length);
+		if (ft_strlen(param->specifier_length) == 2)
+			modifier -= 32;
+	}
+	func = functions[modifier];
+	if (func)
+	{
+		str = func(total_char, l);
+		ft_printf_flag_numeric(param, total_char, str);
+		ft_putstr(str);
+		ft_strdel(&str);
+	}
 }
 
-void	ft_printf_putwstr(wchar_t *str)
+void	ft_printf_print_o(t_param *param, int *total_char, va_list *l)
 {
-	write(1, str, ft_printf_wstrlen(str));
+	static t_print_func	functions[256];
+	t_print_func		func;
+	unsigned int		modifier;
+	char				*str;
+
+	modifier = 0;
+	if (!functions[0])
+	{
+		functions[0] = &ft_printf_print_long_octal;
+		functions['l'] = &ft_printf_print_long_octal;
+		functions['L'] = &ft_printf_print_long_long_octal;
+		functions['h'] = NULL;
+		functions['H'] = NULL;
+	}
+	if (param->specifier_length)
+	{
+		modifier = *(param->specifier_length);
+		if (ft_strlen(param->specifier_length) == 2)
+			modifier -= 32;
+	}
+	func = functions[modifier];
+	if (func)
+	{
+		str = func(total_char, l);
+		ft_printf_flag_numeric(param, total_char, str);
+		ft_putstr(str);
+		ft_strdel(&str);
+	}
 }
 
 void	ft_printf_print_wstring(t_param *param, int *total_char, va_list *l)

@@ -25,7 +25,7 @@ void	ft_printf_print_integer(t_param *param, int *total_char, va_list *l)
 		functions[0] = &ft_printf_print_integer_default;
 		functions['l'] = &ft_printf_print_long_integer;
 		functions['L'] = &ft_printf_print_long_long_integer;
-		functions['h'] = &ft_printf_print_short_integer_default;
+		functions['h'] = &ft_printf_print_integer_default;
 		functions['H'] = &ft_printf_print_ushort_integer;
 	}
 	if (param->specifier_length)
@@ -132,12 +132,12 @@ void	ft_printf_call(t_param *param, int *total_char, va_list *l)
 		functions['%'] = &ft_printf_print_string;
 		functions['C'] = &ft_printf_print_wstring;
 		functions['d'] = &ft_printf_print_integer;
-		functions['D'] = NULL;
+		functions['D'] = &ft_printf_print_d;
 		functions['i'] = &ft_printf_print_integer;
 		functions['o'] = &ft_printf_print_octal;
-		functions['O'] = NULL;
+		functions['O'] = &ft_printf_print_o;
 		functions['u'] = &ft_printf_print_unsigned_integer;
-		functions['U'] = NULL;
+		functions['U'] = &ft_printf_print_unsigned_integer;
 		functions['x'] = &ft_printf_print_hex;
 		functions['X'] = &ft_printf_print_hex;
 		functions['p'] = &ft_printf_print_pointer;

@@ -48,7 +48,7 @@ char	*ft_printf_print_long_octal(int *total_char, va_list *l)
 
 	value = (int)va_arg(l, unsigned long int);
 	str = ft_strnew(22);
-	i = 22;
+	i = 21;
 	if (str)
 	{
 		while (--i >= 0)
@@ -57,12 +57,10 @@ char	*ft_printf_print_long_octal(int *total_char, va_list *l)
 			value = value >> 3;
 		}
 		i = 0;
-		while (str[i] == '0')
+		while (str[i] == '0' && i < 20)
 			i++;
-		ft_memmove(str, str + i, ft_strlen(str) - i);
-		str[(22) - i] = '\0';
-		str[1] = (str[0] == '\0') ? '\0' : str[1];
-		str[0] = (str[0] == '\0') ? '0' : str[0];
+		ft_memmove(str, str + i, ft_strlen(str + i));
+		str[ft_strlen(str + i)] = '\0';
 		*total_char += ft_strlen(str);
 	}
 	return (str);

@@ -47,3 +47,21 @@ void	ft_printf_str_toupper(char **str)
 		}
 	}
 }
+
+int		ft_printf_wstrlen(wchar_t *str)
+{
+	int	len;
+
+	len = 0;
+	if (str)
+	{
+		while (str[len])
+			len++;
+	}
+	return (len);
+}
+
+void	ft_printf_putwstr(wchar_t *str)
+{
+	write(1, str, ft_printf_wstrlen(str));
+}

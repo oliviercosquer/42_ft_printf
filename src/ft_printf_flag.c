@@ -20,7 +20,10 @@ void	ft_printf_flag_numeric(t_param *param, int *total_char, char *str)
 
 	width = ft_printf_atoi(param->width);
 	len_value = ft_strlen(str);
-	c = param->flag;
+	if (param->flag)
+		c = param->flag;
+	else
+		c = ' ';
 	if (c == '0' || c == ' ')
 	{
 		while (width > len_value)
