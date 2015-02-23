@@ -130,7 +130,7 @@ int		ft_printf_flag_numeric(t_param *param, char *str)
 			ft_strdel(&tmp);
 	}
 	ft_putstr(new_str);
-	return (ft_strlen(new_str) - ft_strlen(str));
+	return (ft_strlen(new_str));
 }
 
 int		ft_printf_flag_string(t_param *param, char *str)
@@ -157,6 +157,6 @@ int		ft_printf_flag_string(t_param *param, char *str)
 		if (tmp != new_str && tmp != str)
 			ft_strdel(&tmp);
 	}
-	//ft_putstr(new_str);
+	ft_putstr(new_str);
 	return (ft_strlen(new_str));
 }

@@ -38,7 +38,7 @@ int		ft_printf(const char *s, ...)
 		total_char += ft_printf_call(param, &list);
 		ft_printf_del_params(&param);
 	}
-	ft_putstr(str);
+	//ft_putstr(str);
 	/*if (str)
 		free(str);*/
 	va_end(list);

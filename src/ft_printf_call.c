@@ -45,6 +45,7 @@ int	ft_printf_print_string(t_param *param, va_list *l)
 	int		total_char;
 
 	total_char = 0;
+	str = NULL;
 	if (param->specifier == 'c')
 	{
 		c = va_arg(l, int);
@@ -85,6 +86,7 @@ int	ft_printf_call(t_param *param, va_list *l)
 		format = param->specifier;
 	if (!functions['s'])
 	{
+		functions[0] = NULL;
 		functions['s'] = &ft_printf_print_string;
 		functions['S'] = NULL;
 		functions['c'] = &ft_printf_print_string;

@@ -114,9 +114,9 @@ char	ft_printf_param_parse_specifier(char **str)
 	specifier = '\0';
 	if (str && *str)
 	{
+		specifier = **str;
 		if (ft_strchr(VALID_SPECIFIER, **str))
 		{
-			specifier = **str;
 			*str += 1;
 		}
 	}

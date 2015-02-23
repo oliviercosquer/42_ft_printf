@@ -26,7 +26,7 @@ int	main(void)
 	ret  = 0;
 	//ret = printf("aa%%bb");
 	//printf("\nret:%d\n", ret);
-	ret = ft_printf("abcd:%d", 12);
+	ret = ft_printf("% Zoooo");
 	printf("\nftret:%d\n", ret);
 	/*ret = printf("% Zoooo");
 	printf("\nftret:%d\n", ret);*/
