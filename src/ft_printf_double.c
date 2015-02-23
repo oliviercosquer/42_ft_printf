@@ -12,7 +12,7 @@
 
 #include <ft_printf.h>
 
-char	*ft_printf_print_double_default(int *total_char, va_list *list)
+char	*ft_printf_print_double_default(va_list *list)
 {
 	double	n;
 	int		i;
@@ -32,16 +32,14 @@ char	*ft_printf_print_double_default(int *total_char, va_list *list)
 	ft_strdel(&tmp);
 	ft_strdel(&tmp2);
 	ft_putstr(str);
-	*total_char += ft_strlen(str);
 	return (str);
 }
 
-char	*ft_printf_print_long_double(int *total_char, va_list *list)
+char	*ft_printf_print_long_double(va_list *list)
 {
 	char	*str;
 
 	str = NULL;
-	(void)total_char;
 	(void)list;
 	return (str);
 }

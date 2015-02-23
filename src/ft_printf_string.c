@@ -12,14 +12,16 @@
 
 #include <ft_printf.h>
 
-void	ft_printf_print_pointer(t_param *param, int *total_char, va_list *l)
+int		ft_printf_print_pointer(t_param *param, va_list *l)
 {
 	char				*str;
 	unsigned long int	pointer;
 	int					i;
+	int					nb_char;
 
 	pointer = (unsigned long int)va_arg(l, void *);
 	str = ft_strnew(19);
+	nb_char = 0;
 	if (str)
 	{
 		str[0] = '0';
@@ -35,9 +37,10 @@ void	ft_printf_print_pointer(t_param *param, int *total_char, va_list *l)
 			i++;
 		ft_memmove(str + 2, str + i, ft_strlen(str + i));
 		str[ft_strlen(str + i) + 2] = '\0';
-		*total_char += ft_strlen(str);
+		nb_char += ft_strlen(str);
 		ft_putstr(str);
 		ft_strdel(&str);
 	}
 	(void)param;
+	return (nb_char);
 }

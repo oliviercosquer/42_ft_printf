@@ -96,7 +96,7 @@ char	*ft_printf_flag_numeric_0(char *str, int len)
 	return (new_str);
 }
 
-void	ft_printf_flag_numeric(t_param *param, int *total_char, char *str)
+int		ft_printf_flag_numeric(t_param *param, char *str)
 {
 	int		width;
 	int		len_value;
@@ -129,11 +129,11 @@ void	ft_printf_flag_numeric(t_param *param, int *total_char, char *str)
 		if (tmp != new_str && tmp != str)
 			ft_strdel(&tmp);
 	}
-	*total_char += ft_strlen(new_str) - ft_strlen(str);
 	ft_putstr(new_str);
+	return (ft_strlen(new_str) - ft_strlen(str));
 }
 
-void	ft_printf_flag_string(t_param *param, int *total_char, char *str)
+int		ft_printf_flag_string(t_param *param, char *str)
 {
 	int		width;
 	int		len_value;
@@ -157,7 +157,6 @@ void	ft_printf_flag_string(t_param *param, int *total_char, char *str)
 		if (tmp != new_str && tmp != str)
 			ft_strdel(&tmp);
 	}
-	*total_char += ft_strlen(new_str);
-	(void)total_char;
-	ft_putstr(new_str);
+	//ft_putstr(new_str);
+	return (ft_strlen(new_str));
 }

@@ -12,7 +12,7 @@
 
 #include <ft_printf.h>
 
-char	*ft_printf_print_hex_default(int *total_char, va_list *l)
+char	*ft_printf_print_hex_default(va_list *l)
 {
 	char			*str;
 	unsigned int	n;
@@ -33,12 +33,11 @@ char	*ft_printf_print_hex_default(int *total_char, va_list *l)
 			i++;
 		ft_memmove(str, str + i, ft_strlen(str + i));
 		str[ft_strlen(str + i)] = '\0';
-		*total_char += ft_strlen(str);
 	}
 	return (str);
 }
 
-char	*ft_printf_print_long_hex(int *total_char, va_list *l)
+char	*ft_printf_print_long_hex(va_list *l)
 {
 	char				*str;
 	unsigned long int	n;
@@ -59,12 +58,11 @@ char	*ft_printf_print_long_hex(int *total_char, va_list *l)
 			i++;
 		ft_memmove(str, str + i, ft_strlen(str + i));
 		str[ft_strlen(str + i)] = '\0';
-		*total_char += ft_strlen(str);
 	}
 	return (str);
 }
 
-char	*ft_printf_print_long_long_hex(int *total_char, va_list *l)
+char	*ft_printf_print_long_long_hex(va_list *l)
 {
 	char					*str;
 	unsigned long long int	n;
@@ -85,12 +83,11 @@ char	*ft_printf_print_long_long_hex(int *total_char, va_list *l)
 			i++;
 		ft_memmove(str, str + i, ft_strlen(str + i));
 		str[ft_strlen(str + i)] = '\0';
-		*total_char += ft_strlen(str);
 	}
 	return (str);
 }
 
-char	*ft_printf_print_short_hex(int *total_char, va_list *l)
+char	*ft_printf_print_short_hex(va_list *l)
 {
 	char			*str;
 	unsigned int	n;
@@ -111,7 +108,6 @@ char	*ft_printf_print_short_hex(int *total_char, va_list *l)
 			i++;
 		ft_memmove(str, str + i, ft_strlen(str + i));
 		str[ft_strlen(str + i)] = '\0';
-		*total_char += ft_strlen(str);
 	}
 	return (str);
 }

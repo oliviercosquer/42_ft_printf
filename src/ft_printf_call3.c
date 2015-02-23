@@ -12,14 +12,16 @@
 
 #include <ft_printf.h>
 
-void	ft_printf_print_u(t_param *param, int *total_char, va_list *l)
+int		ft_printf_print_u(t_param *param, va_list *l)
 {
 	static t_print_func	functions[256];
 	t_print_func		func;
 	unsigned int		modifier;
 	char				*str;
+	int					nb_char;
 
 	modifier = 0;
+	nb_char = 0;
 	if (!functions[0])
 	{
 		functions[0] = &ft_printf_print_long_uinteger;
@@ -34,8 +36,9 @@ void	ft_printf_print_u(t_param *param, int *total_char, va_list *l)
 	func = functions[modifier];
 	if (func)
 	{
-		str = func(total_char, l);
-		ft_printf_flag_numeric(param, total_char, str);
+		str = func(l);
+		nb_char += ft_printf_flag_numeric(param, str);
 		ft_strdel(&str);
 	}
+	return (nb_char);
 }

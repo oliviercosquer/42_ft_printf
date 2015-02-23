@@ -12,14 +12,16 @@
 
 #include <ft_printf.h>
 
-void	ft_printf_print_d(t_param *param, int *total_char, va_list *l)
+int		ft_printf_print_d(t_param *param, va_list *l)
 {
 	static t_print_func	functions[256];
 	t_print_func		func;
 	unsigned int		modifier;
 	char				*str;
+	int					nb_char;
 
 	modifier = 0;
+	nb_char = 0;
 	if (!functions[0])
 	{
 		functions[0] = &ft_printf_print_long_integer;
@@ -37,20 +39,23 @@ void	ft_printf_print_d(t_param *param, int *total_char, va_list *l)
 	func = functions[modifier];
 	if (func)
 	{
-		str = func(total_char, l);
-		ft_printf_flag_numeric(param, total_char, str);
+		str = func(l);
+		nb_char = ft_printf_flag_numeric(param, str);
 		ft_strdel(&str);
 	}
+	return (nb_char);
 }
 
-void	ft_printf_print_o(t_param *param, int *total_char, va_list *l)
+int		ft_printf_print_o(t_param *param, va_list *l)
 {
 	static t_print_func	functions[256];
 	t_print_func		func;
 	unsigned int		modifier;
 	char				*str;
+	int					nb_char;
 
 	modifier = 0;
+	nb_char = 0;
 	if (!functions[0])
 	{
 		functions[0] = &ft_printf_print_long_octal2;
@@ -68,20 +73,23 @@ void	ft_printf_print_o(t_param *param, int *total_char, va_list *l)
 	func = functions[modifier];
 	if (func)
 	{
-		str = func(total_char, l);
-		ft_printf_flag_numeric(param, total_char, str);
+		str = func(l);
+		nb_char = ft_printf_flag_numeric(param, str);
 		ft_strdel(&str);
 	}
+	return (nb_char);
 }
 
-void	ft_printf_print_wstring(t_param *param, int *total_char, va_list *l)
+int		ft_printf_print_wstring(t_param *param, va_list *l)
 {
 	wchar_t	*str;
 	wchar_t	c;
+	int		nb_char;
 
+	nb_char = 0;
 	if (param->specifier == 'C')
 	{
-		(*total_char)++;
+		nb_char++;
 		c = va_arg(l, wchar_t);
 		write(1, &c, 1);
 	}
@@ -89,7 +97,7 @@ void	ft_printf_print_wstring(t_param *param, int *total_char, va_list *l)
 	{
 		c = '%';
 		write(1, &c, 1);
-		(*total_char)++;
+		nb_char++;
 	}
 	else
 	{
@@ -98,18 +106,21 @@ void	ft_printf_print_wstring(t_param *param, int *total_char, va_list *l)
 			ft_printf_putwstr(str);
 		else
 			ft_putstr(MSG_NULL_POINTER);
-		*total_char += ft_printf_wstrlen(str);
+		nb_char += ft_printf_wstrlen(str);
 	}
+	return (nb_char);
 }
 
-void	ft_printf_print_octal(t_param *param, int *total_char, va_list *l)
+int		ft_printf_print_octal(t_param *param, va_list *l)
 {
 	static t_print_func	functions[256];
 	t_print_func		func;
 	unsigned int		modifier;
-	char				*str;
+	char				*str;	
+	int					nb_char;
 
 	modifier = 0;
+	nb_char = 0;
 	if (!functions[0])
 	{
 		functions[0] = &ft_printf_print_octal_default;
@@ -127,20 +138,23 @@ void	ft_printf_print_octal(t_param *param, int *total_char, va_list *l)
 	func = functions[modifier];
 	if (func)
 	{
-		str = func(total_char, l);
-		ft_printf_flag_numeric(param, total_char, str);
+		str = func(l);
+		nb_char = ft_printf_flag_numeric(param, str);
 		ft_strdel(&str);
 	}
+	return (nb_char);
 }
 
-void	ft_printf_print_hex(t_param *param, int *total_char, va_list *l)
+int		ft_printf_print_hex(t_param *param, va_list *l)
 {
 	static t_print_func	functions[256];
 	t_print_func		func;
 	unsigned int		modifier;
 	char				*str;
+	int					nb_char;
 
 	modifier = 0;
+	nb_char = 0;
 	if (!functions[0])
 	{
 		functions[0] = &ft_printf_print_hex_default;
@@ -158,10 +172,11 @@ void	ft_printf_print_hex(t_param *param, int *total_char, va_list *l)
 	func = functions[modifier];
 	if (func)
 	{
-		str = func(total_char, l);
+		str = func(l);
 		if (param->specifier == 'X')
 			ft_printf_str_toupper(&str);
-		ft_printf_flag_numeric(param, total_char, str);
+		nb_char = ft_printf_flag_numeric(param, str);
 		ft_strdel(&str);
 	}
+	return (nb_char);
 }

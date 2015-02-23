@@ -12,7 +12,7 @@
 
 #include <ft_printf.h>
 
-char	*ft_printf_print_octal_default(int *total_char, va_list *l)
+char	*ft_printf_print_octal_default(va_list *l)
 {
 	unsigned int	value;
 	char			*str;
@@ -35,12 +35,11 @@ char	*ft_printf_print_octal_default(int *total_char, va_list *l)
 		str[(11) - i] = '\0';
 		str[1] = (str[0] == '\0') ? '\0' : str[1];
 		str[0] = (str[0] == '\0') ? '0' : str[0];
-		*total_char += ft_strlen(str);
 	}
 	return (str);
 }
 
-char	*ft_printf_print_long_octal(int *total_char, va_list *l)
+char	*ft_printf_print_long_octal(va_list *l)
 {
 	unsigned long int	value;
 	char				*str;
@@ -61,12 +60,11 @@ char	*ft_printf_print_long_octal(int *total_char, va_list *l)
 			i++;
 		ft_memmove(str, str + i, ft_strlen(str + i));
 		str[ft_strlen(str + i)] = '\0';
-		*total_char += ft_strlen(str);
 	}
 	return (str);
 }
 
-char	*ft_printf_print_long_octal2(int *total_char, va_list *l)
+char	*ft_printf_print_long_octal2(va_list *l)
 {
 	unsigned long int	value;
 	char				*str;
@@ -87,12 +85,11 @@ char	*ft_printf_print_long_octal2(int *total_char, va_list *l)
 			i++;
 		ft_memmove(str, str + i, ft_strlen(str + i));
 		str[ft_strlen(str + i)] = '\0';
-		*total_char += ft_strlen(str);
 	}
 	return (str);
 }
 
-char	*ft_printf_print_long_long_octal(int *total_char, va_list *l)
+char	*ft_printf_print_long_long_octal(va_list *l)
 {
 	unsigned long long int	value;
 	char					*str;
@@ -115,7 +112,6 @@ char	*ft_printf_print_long_long_octal(int *total_char, va_list *l)
 		str[(22) - i] = '\0';
 		str[1] = (str[0] == '\0') ? '\0' : str[1];
 		str[0] = (str[0] == '\0') ? '0' : str[0];
-		*total_char += ft_strlen(str);
 	}
 	return (str);
 }

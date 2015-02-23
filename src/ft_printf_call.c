@@ -12,34 +12,39 @@
 
 #include <ft_printf.h>
 
-void	ft_printf_print_double(t_param *param, int *total_char, va_list *l)
+int	ft_printf_print_double(t_param *param, va_list *l)
 {
 	static t_print_func	functions[256];
 	t_print_func		func;
 	unsigned int		modifier;
 	char				*str;
+	int					nb_char;
 
 	modifier = 0;
+	nb_char = 0;
 	if (!functions[0])
 	{
-		functions[0] = &ft_printf_print_double_default;
-		functions['l'] = &ft_printf_print_long_double;
+		/*functions[0] = &ft_printf_print_double_default;
+		functions['l'] = &ft_printf_print_long_double;*/
 	}
 	if (param->specifier_length)
 		modifier = *(param->specifier_length);
 	func = functions[modifier];
-	str = func(total_char, l);
-	//ft_printf_flag_numeric(param, total_char, str);
+	(void)func;
+	//str = func(l);
 	(void)str;
+	(void)l;
+	//nb_char += ft_printf_flag_numeric(param, str);
+	return (nb_char);
 }
 
-void	ft_printf_print_string(t_param *param, int *total_char, va_list *l)
+int	ft_printf_print_string(t_param *param, va_list *l)
 {
 	char	*str;
 	char	c;
-	int		total_char2;
+	int		total_char;
 
-	total_char2 = 0;
+	total_char = 0;
 	if (param->specifier == 'c')
 	{
 		c = va_arg(l, int);
@@ -64,13 +69,13 @@ void	ft_printf_print_string(t_param *param, int *total_char, va_list *l)
 	}
 	if (str)
 	{
-		ft_printf_flag_string(param, total_char, str);
-		(void)total_char2;
+		total_char = ft_printf_flag_string(param, str);
 		ft_strdel(&str);
 	}
+	return (total_char);
 }
 
-void	ft_printf_call(t_param *param, int *total_char, va_list *l)
+int	ft_printf_call(t_param *param, va_list *l)
 {
 	static t_call_func	functions[256];
 	t_call_func			func;
@@ -99,5 +104,6 @@ void	ft_printf_call(t_param *param, int *total_char, va_list *l)
 	if (format)
 		func = functions[format];
 	if (func)
-		func(param, total_char, l);
+		return (func(param, l));
+	return (0);
 }

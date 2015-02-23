@@ -21,15 +21,15 @@
 
 int	main(void)
 {
-	//int ret;
+	int ret;
 
-	//ret  = 0;
+	ret  = 0;
 	//ret = printf("aa%%bb");
 	//printf("\nret:%d\n", ret);
-	//ret = ft_printf("% Zoooo");
-	//printf("\nftret:%d\n", ret);
+	ret = ft_printf("abcd:%d", 12);
+	printf("\nftret:%d\n", ret);
 	/*ret = printf("% Zoooo");
 	printf("\nftret:%d\n", ret);*/
-	#include "test.c"
+	//#include "test.c"
 	return (0);
 }

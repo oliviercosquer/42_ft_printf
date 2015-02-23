@@ -33,8 +33,8 @@ typedef struct	s_param
 	char			specifier;
 	char			*specifier_length;
 }				t_param;
-typedef char	*(*t_print_func)(int *i, va_list *list);
-typedef void	(*t_call_func)(t_param *p, int *i, va_list *list);
+typedef char	*(*t_print_func)(va_list *list);
+typedef int		(*t_call_func)(t_param *p, va_list *list);
 
 //ft_params
 t_param			*ft_printf_get_params(char **str, int *total_char, va_list *list);
@@ -58,47 +58,47 @@ int				ft_printf_get_format_length(t_param *param);
 int				ft_printf(const char *str, ...);
 
 //ft_printf_call
-void			ft_printf_call(t_param *param, int *total_char, va_list *l);
+int				ft_printf_call(t_param *param, va_list *l);
 
 //ft_printf_call2
-void			ft_printf_print_wstring(t_param *param, int *total_char, va_list *l);
-void			ft_printf_print_octal(t_param *param, int *total_char, va_list *l);
-void			ft_printf_print_hex(t_param *param, int *total_char, va_list *l);
-void			ft_printf_print_d(t_param *param, int *total_char, va_list *l);
-void			ft_printf_print_o(t_param *param, int *total_char, va_list *l);
+int				ft_printf_print_wstring(t_param *param, va_list *l);
+int				ft_printf_print_octal(t_param *param, va_list *l);
+int				ft_printf_print_hex(t_param *param, va_list *l);
+int				ft_printf_print_d(t_param *param, va_list *l);
+int				ft_printf_print_o(t_param *param, va_list *l);
 
 //ft_printf_call3
-void			ft_printf_print_u(t_param *param, int *total_char, va_list *l);
+int				ft_printf_print_u(t_param *param, va_list *l);
 
 //ft_printf_call_integer
-void			ft_printf_print_integer(t_param *param, int *total_char, va_list *l);
-void			ft_printf_print_unsigned_integer(t_param *param, int *total_char, va_list *l);
+int				ft_printf_print_integer(t_param *param, va_list *l);
+int				ft_printf_print_unsigned_integer(t_param *param, va_list *l);
 
 //ft_printf_double
-char			*ft_printf_print_double_default(int *total_char, va_list *l);
-char			*ft_printf_print_long_double(int *total_char, va_list *l);
+char			*ft_printf_print_double_default(va_list *l);
+char			*ft_printf_print_long_double(va_list *l);
 
 //ft_printf_flag
-void			ft_printf_flag_numeric(t_param *param, int *total_char, char *str);
-void			ft_printf_flag_string(t_param *param, int *total_char, char *str);
+int				ft_printf_flag_numeric(t_param *param, char *str);
+int				ft_printf_flag_string(t_param *param, char *str);
 
 //ft_printf_hex
-char			*ft_printf_print_hex_default(int *total_char, va_list *l);
-char			*ft_printf_print_long_hex(int *total_char, va_list *l);
-char			*ft_printf_print_long_long_hex(int *total_char, va_list *l);
-char			*ft_printf_print_short_hex(int *total_char, va_list *l);
+char			*ft_printf_print_hex_default(va_list *l);
+char			*ft_printf_print_long_hex(va_list *l);
+char			*ft_printf_print_long_long_hex(va_list *l);
+char			*ft_printf_print_short_hex(va_list *l);
 
 //ft_printf_integer
-char			*ft_printf_print_integer_default(int *total_char, va_list *l);
-char			*ft_printf_print_long_integer(int *total_char, va_list *l);
-char			*ft_printf_print_long_long_integer(int *total_char, va_list *l);
-char			*ft_printf_print_short_integer_default(int *total_char, va_list *list);
-char			*ft_printf_print_ushort_integer(int *total_char, va_list *list);
+char			*ft_printf_print_integer_default(va_list *l);
+char			*ft_printf_print_long_integer(va_list *l);
+char			*ft_printf_print_long_long_integer(va_list *l);
+char			*ft_printf_print_short_integer_default(va_list *list);
+char			*ft_printf_print_ushort_integer(va_list *list);
 
 //ft_printf_integer2
-char			*ft_printf_print_uinteger(int *total_char, va_list *list);
-char			*ft_printf_print_long_uinteger(int *total_char, va_list *list);
-char			*ft_printf_print_integer_n(int *total_char, va_list *list);
+char			*ft_printf_print_uinteger(va_list *list);
+char			*ft_printf_print_long_uinteger(va_list *list);
+char			*ft_printf_print_integer_n(va_list *list);
 
 //ft_printf_integer_signed
 char			*ft_printf_lint_itoa(long int n);
@@ -109,10 +109,10 @@ char			*ft_printf_unsigned_itoa(unsigned int n);
 char			*ft_printf_ulong_itoa(unsigned long int n);
 
 //ft_printf_octal
-char			*ft_printf_print_octal_default(int *total_char, va_list *l);
-char			*ft_printf_print_long_octal(int *total_char, va_list *l);
-char			*ft_printf_print_long_octal2(int *total_char, va_list *l);
-char			*ft_printf_print_long_long_octal(int *total_char, va_list *l);
+char			*ft_printf_print_octal_default(va_list *l);
+char			*ft_printf_print_long_octal(va_list *l);
+char			*ft_printf_print_long_octal2(va_list *l);
+char			*ft_printf_print_long_long_octal(va_list *l);
 
 //ft_printf_param_parse
 char			*ft_printf_param_parse_flag(char **str);
@@ -122,8 +122,8 @@ char			*ft_printf_param_parse_specifier_length(char **str);
 char			ft_printf_param_parse_specifier(char **str);
 
 //ft_printf_string
-void			ft_printf_print_pointer(t_param *param, int *total_char, va_list *l);
-void			ft_printf_print_hex_int(t_param *param, int *total_char, va_list *l);
+int				ft_printf_print_pointer(t_param *param, va_list *l);
+int				ft_printf_print_hex_int(t_param *param, va_list *l);
 
 //ft_printf_tools
 int				ft_printf_atoi(const char *str);

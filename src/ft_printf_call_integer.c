@@ -34,23 +34,26 @@ t_print_func	ft_printf_get_call_integer(char *specifier_length)
 		return (functions[0]);
 }
 
-void	ft_printf_print_integer(t_param *param, int *total_char, va_list *l)
+int		ft_printf_print_integer(t_param *param, va_list *l)
 {
 	t_print_func	func;
 	char			*str;
+	int				nb_char;
 
 	str = NULL;
+	nb_char = 0;
 	func = ft_printf_get_call_integer(param->specifier_length);
 	if (func)
 	{
-		str = func(total_char, l);
-		ft_printf_flag_numeric(param, total_char, str);
+		str = func(l);
+		nb_char += ft_printf_flag_numeric(param, str);
 		if (str)
 			ft_strdel(&str);
 	}
+	return (nb_char);
 }
 
-void	ft_printf_print_unsigned_integer(t_param *param, int *total_char, va_list *l)
+int		ft_printf_print_unsigned_integer(t_param *param, va_list *l)
 {
 	static t_print_func	functions[256];
 	t_print_func		func;
@@ -66,7 +69,7 @@ void	ft_printf_print_unsigned_integer(t_param *param, int *total_char, va_list *
 	if (param->specifier_length)
 		modifier = *(param->specifier_length);
 	func = functions[modifier];
-	str = func(total_char, l);
-	ft_printf_flag_numeric(param, total_char, str);
+	str = func(l);
 	ft_strdel(&str);
+	return (ft_printf_flag_numeric(param, str));
 }
