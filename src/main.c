@@ -19,16 +19,17 @@
 #	define PRINTF_MACRO ft_printf
 #endif
 
-#define THE_TEST "{%10d}", 42)
 int	main(void)
 {
-	/*int lol;
-	lol = printf("before %0*d after.ret:\n", 10, -4242);
-	printf("ret: %d\n", lol);
-	lol = 0;
-	lol = ft_printf("before %0*d after.ret:\n", 10, -4242);
-	printf("ret: %d\n", lol);
-	return (0);*/
+	//int ret;
+
+	//ret  = 0;
+	//ret = printf("aa%%bb");
+	//printf("\nret:%d\n", ret);
+	//ret = ft_printf("% Zoooo");
+	//printf("\nftret:%d\n", ret);
+	/*ret = printf("% Zoooo");
+	printf("\nftret:%d\n", ret);*/
 	#include "test.c"
 	return (0);
 }

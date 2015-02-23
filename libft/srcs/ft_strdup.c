@@ -23,7 +23,8 @@ char	*ft_strdup(const char *str)
 	new_str = (char*)malloc(sizeof(char) * length + 1);
 	if (new_str)
 	{
-		while (index < length)
+		new_str[length] = '\0';
+		while (index <= length)
 		{
 			new_str[index] = str[index];
 			index++;

@@ -37,7 +37,9 @@ void	ft_printf_print_string(t_param *param, int *total_char, va_list *l)
 {
 	char	*str;
 	char	c;
+	int		total_char2;
 
+	total_char2 = 0;
 	if (param->specifier == 'c')
 	{
 		c = va_arg(l, int);
@@ -62,8 +64,8 @@ void	ft_printf_print_string(t_param *param, int *total_char, va_list *l)
 	}
 	if (str)
 	{
-		*total_char += ft_strlen(str);
 		ft_printf_flag_string(param, total_char, str);
+		(void)total_char2;
 		ft_strdel(&str);
 	}
 }

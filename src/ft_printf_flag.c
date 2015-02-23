@@ -62,7 +62,7 @@ char	*ft_printf_flag_space(char *str, int len)
 		if (new_str)
 		{
 			ft_memset(new_str, c, len);
-			ft_memcpy(new_str + len, str, ft_strlen(str));
+			ft_memcpy(new_str + len, str, ft_strlen(str) + 1);
 		}
 	}
 	return (new_str);
@@ -85,12 +85,12 @@ char	*ft_printf_flag_numeric_0(char *str, int len)
 		{
 			new_str[0] = str[0];
 			ft_memset(new_str + 1, c, len2);
-			ft_memcpy(new_str + len2 + 1, str + 1, ft_strlen(str + 1));
+			ft_memcpy(new_str + len2 + 1, str + 1, ft_strlen(str + 1) + 1);
 		}
 		else
 		{
 			ft_memset(new_str, c, len2);
-			ft_memcpy(new_str + len2, str, ft_strlen(str));
+			ft_memcpy(new_str + len2, str, ft_strlen(str) + 1);
 		}
 	}
 	return (new_str);
@@ -122,7 +122,7 @@ void	ft_printf_flag_numeric(t_param *param, int *total_char, char *str)
 		if (tmp != new_str && tmp != str)
 			ft_strdel(&tmp);
 	}
-	else if (ft_strchr(param->flag, ' ') || (width - len_value) > 0)
+	else if (ft_strchr(param->flag, ' ') || (param->width && (width - len_value) > 0))
 	{
 		tmp = new_str;
 		new_str = ft_printf_flag_space(new_str, width - len_value);
@@ -150,13 +150,14 @@ void	ft_printf_flag_string(t_param *param, int *total_char, char *str)
 		if (tmp != new_str && tmp != str)
 			ft_strdel(&tmp);
 	}
-	else if ((width - len_value) > 0)
+	else if ((param->width && (width - len_value) > 0))
 	{
 		tmp = new_str;
 		new_str = ft_printf_flag_space(new_str, width - len_value);
 		if (tmp != new_str && tmp != str)
 			ft_strdel(&tmp);
 	}
-	*total_char += ft_strlen(new_str) - ft_strlen(str);
+	*total_char += ft_strlen(new_str);
+	(void)total_char;
 	ft_putstr(new_str);
 }

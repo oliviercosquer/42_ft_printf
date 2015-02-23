@@ -37,14 +37,16 @@ void	ft_printf_del_params(t_param **params)
 	tmp = *params;
 	if (tmp)
 	{
-		if (tmp->value)
-			free(tmp->value);
+		if (tmp->flag)
+			free(tmp->flag);
 		if (tmp->width)
 			free(tmp->width);
 		if (tmp->precision)
 			free(tmp->precision);
 		if (tmp->specifier_length)
 			free(tmp->specifier_length);
+		if (tmp->value)
+			free(tmp->value);
 		free(tmp);
 		*params = NULL;
 	}
@@ -67,8 +69,8 @@ void	ft_printf_param_find(char **str, int *total_char)
 		{
 			while (s[len] && s[len] != '%')
 				len++;
-			*total_char += len;
 			write(1, s, len);
+			*total_char += len;
 			*str += len + 1;
 		}
 	}
@@ -76,6 +78,7 @@ void	ft_printf_param_find(char **str, int *total_char)
 
 void	ft_printf_param_special(t_param *param)
 {
+	free(param->specifier_length);
 	param->specifier_length = ft_strdup("l");
 	if (param->specifier == 'D')
 		param->specifier = 'd';

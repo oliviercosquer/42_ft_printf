@@ -19,7 +19,7 @@ void	ft_printf_print_pointer(t_param *param, int *total_char, va_list *l)
 	int					i;
 
 	pointer = (unsigned long int)va_arg(l, void *);
-	str = ft_strnew(18);
+	str = ft_strnew(19);
 	if (str)
 	{
 		str[0] = '0';

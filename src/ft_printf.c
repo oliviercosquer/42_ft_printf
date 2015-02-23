@@ -39,6 +39,8 @@ int		ft_printf(const char *s, ...)
 		ft_printf_del_params(&param);
 	}
 	ft_putstr(str);
+	/*if (str)
+		free(str);*/
 	va_end(list);
 	return (total_char);
 }
