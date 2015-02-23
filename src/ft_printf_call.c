@@ -40,15 +40,17 @@ void	ft_printf_print_string(t_param *param, int *total_char, va_list *l)
 
 	if (param->specifier == 'c')
 	{
-		(*total_char)++;
 		c = va_arg(l, int);
-		write(1, &c, 1);
+		str = ft_strnew(1);
+		if (str)
+			str[0] = c;
 	}
 	else if (param->specifier == '%')
 	{
 		c = '%';
-		write(1, &c, 1);
-		(*total_char)++;
+		str = ft_strnew(1);
+		if (str)
+			str[0] = c;
 	}
 	else
 	{
@@ -57,6 +59,9 @@ void	ft_printf_print_string(t_param *param, int *total_char, va_list *l)
 			str = ft_strdup(str);
 		else
 			str = ft_strdup(MSG_NULL_POINTER);
+	}
+	if (str)
+	{
 		*total_char += ft_strlen(str);
 		ft_printf_flag_string(param, total_char, str);
 		ft_strdel(&str);
