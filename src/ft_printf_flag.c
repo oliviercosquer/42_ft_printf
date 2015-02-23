@@ -48,7 +48,7 @@ char	*ft_printf_flag_numeric_plus(char *str)
 	return (new_str);
 }
 
-char	*ft_printf_flag_numeric_space(char *str, int len)
+char	*ft_printf_flag_space(char *str, int len)
 {
 	char	c;
 	char	*new_str;
@@ -125,7 +125,7 @@ void	ft_printf_flag_numeric(t_param *param, int *total_char, char *str)
 	else if (ft_strchr(param->flag, ' ') || (width - len_value) > 0)
 	{
 		tmp = new_str;
-		new_str = ft_printf_flag_numeric_space(new_str, width - len_value);
+		new_str = ft_printf_flag_space(new_str, width - len_value);
 		if (tmp != new_str && tmp != str)
 			ft_strdel(&tmp);
 	}
@@ -135,7 +135,28 @@ void	ft_printf_flag_numeric(t_param *param, int *total_char, char *str)
 
 void	ft_printf_flag_string(t_param *param, int *total_char, char *str)
 {
-	(void)param;
-	(void)total_char;
-	(void)str;
+	int		width;
+	int		len_value;
+	char	*new_str;
+	char	*tmp;
+
+	width = ft_printf_atoi(param->width);
+	len_value = ft_strlen(str);
+	new_str = str;
+	if (ft_strchr(param->flag, '-') && width > len_value)
+	{
+		tmp = new_str;
+		new_str = ft_printf_flag_numeric_minus(new_str, width - len_value);
+		if (tmp != new_str && tmp != str)
+			ft_strdel(&tmp);
+	}
+	else if ((width - len_value) > 0)
+	{
+		tmp = new_str;
+		new_str = ft_printf_flag_space(new_str, width - len_value);
+		if (tmp != new_str && tmp != str)
+			ft_strdel(&tmp);
+	}
+	*total_char += ft_strlen(new_str) - ft_strlen(str);
+	ft_putstr(new_str);
 }

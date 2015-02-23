@@ -80,6 +80,7 @@ char			*ft_printf_print_long_double(int *total_char, va_list *l);
 
 //ft_printf_flag
 void			ft_printf_flag_numeric(t_param *param, int *total_char, char *str);
+void			ft_printf_flag_string(t_param *param, int *total_char, char *str);
 
 //ft_printf_hex
 char			*ft_printf_print_hex_default(int *total_char, va_list *l);

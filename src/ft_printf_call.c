@@ -58,7 +58,7 @@ void	ft_printf_print_string(t_param *param, int *total_char, va_list *l)
 		else
 			str = ft_strdup(MSG_NULL_POINTER);
 		*total_char += ft_strlen(str);
-		ft_putstr(str);
+		ft_printf_flag_string(param, total_char, str);
 		ft_strdel(&str);
 	}
 }
