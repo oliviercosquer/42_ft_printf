@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:56 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/21 22:34:37 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/23 06:27:32 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int		ft_printf(const char *s, ...)
 		ft_printf_call(param, &total_char, &list);
 		ft_printf_del_params(&param);
 	}
+	ft_putstr(str);
 	va_end(list);
 	return (total_char);
 }

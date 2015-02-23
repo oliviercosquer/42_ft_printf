@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:55 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/20 07:52:26 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/23 07:33:42 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,26 +29,6 @@ t_param	*ft_printf_new_param(void)
 	}
 	return (NULL);
 }
-/*
-t_param	*ft_printf_get_next_param(char *str)
-{
-	char	*tmp;
-	t_param	*param;
-
-	tmp = str;
-	param = ft_printf_new_param();
-	if (param)
-	{
-		if (ft_has_flag(tmp))
-			param->flag = ft_get_flag(tmp);
-		if (ft_has_width(tmp))
-			param->width = ft_get_width(&tmp);
-		if (ft_has_precision(tmp))
-			param->precision = ft_get_precision(&tmp);
-		//param->specifier = ft_get_specifier(&tmp, param);
-	}
-	return (param);
-}*/
 
 void	ft_printf_del_params(t_param **params)
 {
@@ -94,17 +74,24 @@ void	ft_printf_param_find(char **str, int *total_char)
 	}
 }
 
+void	ft_printf_param_special(t_param *param)
+{
+	param->specifier_length = ft_strdup("l");
+	if (param->specifier == 'D')
+		param->specifier = 'd';
+	if (param->specifier == 'U')
+		param->specifier = 'u';
+	if (param->specifier == 'O')
+		param->specifier = 'o';
+}
+
 t_param	*ft_printf_param_parse(char **str, va_list *list)
 {
-	int		format_length;
-	char	*start_str;
 	t_param	*param;
 
 	param = NULL;
-	format_length = 0;
 	if (str && *str)
 	{
-		start_str = *str;
 		param = ft_printf_new_param();
 		if (param)
 		{
@@ -113,12 +100,12 @@ t_param	*ft_printf_param_parse(char **str, va_list *list)
 			param->precision = ft_printf_param_parse_precision(str, list);//DONE
 			param->specifier_length = ft_printf_param_parse_specifier_length(str);//DONE
 			param->specifier = ft_printf_param_parse_specifier(str);//DONE
-			format_length = *str - start_str;
+			if (ft_strchr(SPECIAL_SPECIFIER, param->specifier))
+				ft_printf_param_special(param);
 		}
 	}
 	else if (**str)
 		*str += 1;
-	*str += format_length - 1;
 	return (param);
 }
 

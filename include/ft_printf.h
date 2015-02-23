@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:55 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/21 22:53:58 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/23 07:33:46 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define FT_PRINTF_H
 # define MSG_NULL_POINTER "(null)"
 # define VALID_SPECIFIER "dDiuUoOxXfFeEgGaAcCsSpn%"
+# define SPECIAL_SPECIFIER "DUO"
 # define VALID_LENGTH "hllljztL"
 # define VALID_FLAGS "-+ #0"
 # include <stdlib.h>
@@ -69,6 +70,10 @@ void			ft_printf_print_o(t_param *param, int *total_char, va_list *l);
 //ft_printf_call3
 void			ft_printf_print_u(t_param *param, int *total_char, va_list *l);
 
+//ft_printf_call_integer
+void			ft_printf_print_integer(t_param *param, int *total_char, va_list *l);
+void			ft_printf_print_unsigned_integer(t_param *param, int *total_char, va_list *l);
+
 //ft_printf_double
 char			*ft_printf_print_double_default(int *total_char, va_list *l);
 char			*ft_printf_print_long_double(int *total_char, va_list *l);
@@ -92,6 +97,7 @@ char			*ft_printf_print_ushort_integer(int *total_char, va_list *list);
 //ft_printf_integer2
 char			*ft_printf_print_uinteger(int *total_char, va_list *list);
 char			*ft_printf_print_long_uinteger(int *total_char, va_list *list);
+char			*ft_printf_print_integer_n(int *total_char, va_list *list);
 
 //ft_printf_integer_signed
 char			*ft_printf_lint_itoa(long int n);
