@@ -24,6 +24,8 @@
 # include <libft.h>
 # include <stdio.h> // TO DELETE
 # define SEGV ft_putstr("segv\n");
+
+
 typedef struct	s_param
 {
 	char			*value;
