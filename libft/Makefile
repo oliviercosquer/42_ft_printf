@@ -6,7 +6,7 @@
 #    By: olivier <olivier@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/19 18:12:20 by ocosquer          #+#    #+#              #
-#    Updated: 2015/02/09 02:21:42 by olivier          ###   ########.fr        #
+#    Updated: 2015/02/24 07:36:06 by olivier          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,10 +38,8 @@ SRCS = $(patsubst %, $(SRC_PATH)/%, $(SRC_FILES))
 all: ${NAME}
 
 ${NAME}:
-	@echo Linckage
-	$(CC) $(FLAGS) -I./includes/ -c $(SRCS)
-	@echo compilation de la library
-	ar rc $(NAME) $(OBJ:.c=.o)
+	@$(CC) $(FLAGS) -I./includes/ -c $(SRCS)
+	@ar rc $(NAME) $(OBJ:.c=.o)
 
 clean:
 	@rm -f $(OBJ:.c=.o)

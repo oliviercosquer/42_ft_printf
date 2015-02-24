@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/20 22:40:02 by olivier           #+#    #+#             */
-/*   Updated: 2015/02/20 22:51:23 by olivier          ###   ########.fr       */
+/*   Updated: 2015/02/24 07:46:26 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,17 +115,20 @@ int		ft_printf_flag_numeric(t_param *param, char *str)
 		if (tmp != new_str && tmp != str)
 			ft_strdel(&tmp);
 	}
-	else if (ft_strchr(param->flag, '0'))
+	else if (ft_strchr(param->flag, '0') || param->precision)
 	{
 		tmp = new_str;
+		if (param->precision)
+			width = ft_printf_atoi(param->precision);
 		new_str = ft_printf_flag_numeric_0(new_str, width - len_value);
 		if (tmp != new_str && tmp != str)
 			ft_strdel(&tmp);
 	}
-	else if (ft_strchr(param->flag, ' ') || (param->width && (width - len_value) > 0))
+	if (ft_strchr(param->flag, ' ') || (param->width && (width - len_value) > 0))
 	{
+		width = ft_printf_atoi(param->width);
 		tmp = new_str;
-		new_str = ft_printf_flag_space(new_str, width - len_value);
+		new_str = ft_printf_flag_space(new_str, width - ft_strlen(new_str));
 		if (tmp != new_str && tmp != str)
 			ft_strdel(&tmp);
 	}

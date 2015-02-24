@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_param_parse.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ocosquer <ocosquer@student.42.fr>          +#+  +:+       +#+        */
+/*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/22 13:41:31 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/22 13:41:38 by ocosquer         ###   ########.fr       */
+/*   Updated: 2015/02/24 07:42:54 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	*ft_printf_param_parse_precision(char **str, va_list *list)
 				len ++;
 			precision = ft_strsub(s, 0, len);			
 		}
-		*str += len;
+		*str += len + 1;
 	}
 	return (precision);
 }
