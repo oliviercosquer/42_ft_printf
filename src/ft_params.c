@@ -84,8 +84,8 @@ void	ft_printf_param_special(t_param *param)
 		param->specifier = 'd';
 	if (param->specifier == 'U')
 		param->specifier = 'u';
-	if (param->specifier == 'O')
-		param->specifier = 'o';
+	/*if (param->specifier == 'O')
+		param->specifier = 'o';*/
 }
 
 t_param	*ft_printf_param_parse(char **str, va_list *list)

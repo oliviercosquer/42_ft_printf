@@ -14,20 +14,25 @@
 #include <limits.h>
 
 #ifdef _USER__
-#	define PRINTF_MACRO printf
+#	define PRINTF_MACRO ft_printf
 #else
-#	define PRINTF_MACRO printf
+#	define PRINTF_MACRO ft_printf
 #endif
 
 int	main(void)
 {
-	/*int ret;
+	int ret;
 
 	ret  = 0;
-	ret = ft_printf("% Zoooo");
+	/*ret = ft_printf("% Zoooo");
 	printf("\nftret:%d\n", ret);*/
 	//printf("d:%10.4d\n", 42);
 	//ft_printf("d:%10.4d\n", 42);
-	#include "test.c"
+	ret = ft_printf("{%0-3d}", 0);
+	printf("\nftret:%d\n", ret);
+	ret = printf("{%0-3d}", 0);
+	printf("\nftret:%d\n", ret);
+	//ft_printf("{%10d}", -42);
+	//#include "test.c"
 	return (0);
 }

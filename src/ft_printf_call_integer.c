@@ -46,7 +46,7 @@ int		ft_printf_print_integer(t_param *param, va_list *l)
 	if (func)
 	{
 		str = func(l);
-		nb_char += ft_printf_flag_numeric(param, str);
+		nb_char += ft_printf_get_flag_func(param->specifier)(param, str);
 		if (str)
 			ft_strdel(&str);
 	}
@@ -70,6 +70,71 @@ int		ft_printf_print_unsigned_integer(t_param *param, va_list *l)
 		modifier = *(param->specifier_length);
 	func = functions[modifier];
 	str = func(l);
-	ft_strdel(&str);
-	return (ft_printf_flag_numeric(param, str));
+	//ft_strdel(&str);
+	return (ft_printf_get_flag_func(param->specifier)(param, str));
+}
+/*
+int		ft_printf_print_d(t_param *param, va_list *l)
+{
+	static t_print_func	functions[256];
+	t_print_func		func;
+	unsigned int		modifier;
+	char				*str;
+	int					nb_char;
+
+	modifier = 0;
+	nb_char = 0;
+	if (!functions[0])
+	{
+		functions[0] = &ft_printf_print_long_integer;
+		functions['l'] = &ft_printf_print_long_integer;
+		functions['L'] = &ft_printf_print_long_long_integer;
+		functions['h'] = NULL;
+		functions['H'] = NULL;
+	}
+	if (param->specifier_length)
+	{
+		modifier = *(param->specifier_length);
+		if (ft_strlen(param->specifier_length) == 2)
+			modifier -= 32;
+	}
+	func = functions[modifier];
+	if (func)
+	{
+		str = func(l);
+		nb_char = ft_printf_get_flag_func(param->specifier)(param, str);
+		ft_strdel(&str);
+	}
+	return (nb_char);
+}*/
+
+int		ft_printf_print_u(t_param *param, va_list *l)
+{
+	static t_print_func	functions[256];
+	t_print_func		func;
+	unsigned int		modifier;
+	char				*str;
+	int					nb_char;
+
+	modifier = 0;
+	nb_char = 0;
+	if (!functions[0])
+	{
+		functions[0] = &ft_printf_print_long_uinteger;
+		functions['l'] = &ft_printf_print_long_uinteger;
+	}
+	if (param->specifier_length)
+	{
+		modifier = *(param->specifier_length);
+		if (ft_strlen(param->specifier_length) == 2)
+			modifier -= 32;
+	}
+	func = functions[modifier];
+	if (func)
+	{
+		str = func(l);
+		nb_char += ft_printf_get_flag_func(param->specifier)(param, str);
+		ft_strdel(&str);
+	}
+	return (nb_char);
 }

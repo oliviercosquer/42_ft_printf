@@ -12,40 +12,6 @@
 
 #include <ft_printf.h>
 
-int		ft_printf_print_d(t_param *param, va_list *l)
-{
-	static t_print_func	functions[256];
-	t_print_func		func;
-	unsigned int		modifier;
-	char				*str;
-	int					nb_char;
-
-	modifier = 0;
-	nb_char = 0;
-	if (!functions[0])
-	{
-		functions[0] = &ft_printf_print_long_integer;
-		functions['l'] = &ft_printf_print_long_integer;
-		functions['L'] = &ft_printf_print_long_long_integer;
-		functions['h'] = NULL;
-		functions['H'] = NULL;
-	}
-	if (param->specifier_length)
-	{
-		modifier = *(param->specifier_length);
-		if (ft_strlen(param->specifier_length) == 2)
-			modifier -= 32;
-	}
-	func = functions[modifier];
-	if (func)
-	{
-		str = func(l);
-		nb_char = ft_printf_flag_numeric(param, str);
-		ft_strdel(&str);
-	}
-	return (nb_char);
-}
-
 int		ft_printf_print_o(t_param *param, va_list *l)
 {
 	static t_print_func	functions[256];
@@ -60,9 +26,7 @@ int		ft_printf_print_o(t_param *param, va_list *l)
 	{
 		functions[0] = &ft_printf_print_long_octal2;
 		functions['l'] = &ft_printf_print_long_octal2;
-		functions['L'] = &ft_printf_print_long_long_octal;
 		functions['h'] = NULL;
-		functions['H'] = NULL;
 	}
 	if (param->specifier_length)
 	{
@@ -74,7 +38,7 @@ int		ft_printf_print_o(t_param *param, va_list *l)
 	if (func)
 	{
 		str = func(l);
-		nb_char = ft_printf_flag_numeric(param, str);
+		nb_char = ft_printf_get_flag_func(param->specifier)(param, str);
 		ft_strdel(&str);
 	}
 	return (nb_char);
@@ -139,7 +103,7 @@ int		ft_printf_print_octal(t_param *param, va_list *l)
 	if (func)
 	{
 		str = func(l);
-		nb_char = ft_printf_flag_numeric(param, str);
+		nb_char = ft_printf_get_flag_func(param->specifier)(param, str);
 		ft_strdel(&str);
 	}
 	return (nb_char);
@@ -175,7 +139,7 @@ int		ft_printf_print_hex(t_param *param, va_list *l)
 		str = func(l);
 		if (param->specifier == 'X')
 			ft_printf_str_toupper(&str);
-		nb_char = ft_printf_flag_numeric(param, str);
+		nb_char = ft_printf_get_flag_func(param->specifier)(param, str);
 		ft_strdel(&str);
 	}
 	return (nb_char);

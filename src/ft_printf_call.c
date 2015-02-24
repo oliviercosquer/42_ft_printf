@@ -41,24 +41,17 @@ int	ft_printf_print_double(t_param *param, va_list *l)
 int	ft_printf_print_string(t_param *param, va_list *l)
 {
 	char	*str;
-	char	c;
 	int		total_char;
 
 	total_char = 0;
 	str = NULL;
 	if (param->specifier == 'c')
 	{
-		c = va_arg(l, int);
-		str = ft_strnew(1);
-		if (str)
-			str[0] = c;
+		total_char += ft_printf_print_c(param, va_arg(*l, int));
 	}
 	else if (param->specifier == '%')
-	{
-		c = '%';
-		str = ft_strnew(1);
-		if (str)
-			str[0] = c;
+	{		
+		total_char += ft_printf_print_c(param, '%');
 	}
 	else
 	{
@@ -67,11 +60,7 @@ int	ft_printf_print_string(t_param *param, va_list *l)
 			str = ft_strdup(str);
 		else
 			str = ft_strdup(MSG_NULL_POINTER);
-	}
-	if (str)
-	{
-		total_char = ft_printf_flag_string(param, str);
-		ft_strdel(&str);
+		total_char += ft_printf_print_string_default(param, str);
 	}
 	return (total_char);
 }
@@ -88,15 +77,15 @@ int	ft_printf_call(t_param *param, va_list *l)
 	{
 		functions[0] = NULL;
 		functions['s'] = &ft_printf_print_string;
-		functions['S'] = NULL;
+		//functions['S'] = NULL;
 		functions['c'] = &ft_printf_print_string;
 		functions['%'] = &ft_printf_print_string;
-		functions['C'] = &ft_printf_print_wstring;
+		//functions['C'] = NULL;
 		functions['d'] = &ft_printf_print_integer;
 		//functions['D'] = &ft_printf_print_d;
 		functions['i'] = &ft_printf_print_integer;
 		functions['o'] = &ft_printf_print_octal;
-		//functions['O'] = &ft_printf_print_o;
+		functions['O'] = &ft_printf_print_o;
 		functions['u'] = &ft_printf_print_unsigned_integer;
 		//functions['U'] = &ft_printf_print_u;
 		functions['x'] = &ft_printf_print_hex;

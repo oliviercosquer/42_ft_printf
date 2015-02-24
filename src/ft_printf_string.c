@@ -12,6 +12,34 @@
 
 #include <ft_printf.h>
 
+int		ft_printf_print_c(t_param *param, char c)
+{
+	int				nb_char;
+	t_flag_func		func;
+
+	nb_char = 1;
+	ft_putchar(c);
+	(void)func;
+	(void)param;
+	return (nb_char);
+}
+
+int		ft_printf_print_string_default(t_param *param, char *str)
+{
+	int				nb_char;
+	t_flag_func		func;
+
+	nb_char = ft_strlen(str);
+	ft_putstr(str);
+	(void)func;
+	(void)param;
+	/*
+	func = ft_printf_get_flag_func(param->specifier);
+	if (func)
+		nb_char += func(param, str);*/
+	return (nb_char);
+}
+
 int		ft_printf_print_pointer(t_param *param, va_list *l)
 {
 	char				*str;

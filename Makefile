@@ -7,10 +7,12 @@ SRC_FILES =	ft_params.c \
 			ft_printf.c \
 			ft_printf_call.c \
 			ft_printf_call2.c \
-			ft_printf_call3.c \
 			ft_printf_call_integer.c \
 			ft_printf_double.c \
 			ft_printf_flag.c \
+			ft_printf_flag_integer.c \
+			ft_printf_flag_string.c \
+			ft_printf_flag_c.c \
 			ft_printf_hex.c \
 			ft_printf_integer.c \
 			ft_printf_integer2.c \
