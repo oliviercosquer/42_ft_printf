@@ -65,6 +65,33 @@ int	ft_printf_print_string(t_param *param, va_list *l)
 	return (total_char);
 }
 
+int	ft_printf_print_wchar_t(t_param *param, va_list *l)
+{
+	//wchar_t	*str;
+	int		total_char;
+
+	total_char = 0;
+	//str = NULL;
+	if (param->specifier == 'C')
+	{
+		total_char += ft_printf_print_wchar_c(param, va_arg(*l, wchar_t));
+	}
+	else if (param->specifier == '%')
+	{		
+		total_char += ft_printf_print_wchar_c(param, L'%');
+	}
+	else
+	{
+		/*str = va_arg(*l, wchar_t *);
+		if (str)
+			str = ft_strdup(str);
+		else
+			str = ft_strdup(MSG_NULL_POINTER);
+		total_char += ft_printf_print_wchar_default(param, str);*/
+	}
+	return (total_char);
+}
+
 int	ft_printf_call(t_param *param, va_list *l)
 {
 	static t_call_func	functions[256];
@@ -77,10 +104,10 @@ int	ft_printf_call(t_param *param, va_list *l)
 	{
 		functions[0] = NULL;
 		functions['s'] = &ft_printf_print_string;
-		//functions['S'] = NULL;
+		functions['S'] = NULL;
 		functions['c'] = &ft_printf_print_string;
 		functions['%'] = &ft_printf_print_string;
-		//functions['C'] = NULL;
+		functions['C'] = ft_printf_print_wchar_t;
 		functions['d'] = &ft_printf_print_integer;
 		//functions['D'] = &ft_printf_print_d;
 		functions['i'] = &ft_printf_print_integer;

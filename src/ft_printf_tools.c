@@ -63,5 +63,5 @@ int		ft_printf_wstrlen(wchar_t *str)
 
 void	ft_printf_putwstr(wchar_t *str)
 {
-	write(1, str, ft_printf_wstrlen(str));
+	write(1, str, ft_printf_wstrlen(str) * sizeof(wchar_t));
 }

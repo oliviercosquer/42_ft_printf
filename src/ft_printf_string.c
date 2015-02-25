@@ -40,6 +40,24 @@ int		ft_printf_print_string_default(t_param *param, char *str)
 	return (nb_char);
 }
 
+int		ft_printf_print_wchar_c(t_param *param, wchar_t c)
+{
+	(void)param;
+	write(1, &c, sizeof(wchar_t));
+	return (1);
+}
+
+int		ft_printf_print_wchar_default(t_param *param, wchar_t *str)
+{
+	int				nb_char;
+	//t_flag_func		func;
+
+	(void)param;
+	ft_printf_putwstr(str);
+	nb_char = ft_printf_wstrlen(str);
+	return (nb_char);	
+}
+
 int		ft_printf_print_pointer(t_param *param, va_list *l)
 {
 	char				*str;

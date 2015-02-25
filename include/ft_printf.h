@@ -23,6 +23,7 @@
 # include <stdarg.h>
 # include <libft.h>
 # include <stdio.h> // TO DELETE
+# include <locale.h> // TO DELETE	
 # define SEGV ft_putstr("segv\n");
 
 
@@ -150,6 +151,8 @@ char			ft_printf_param_parse_specifier(char **str);
 int				ft_printf_print_pointer(t_param *param, va_list *l);
 int				ft_printf_print_string_default(t_param *param, char *str);
 int				ft_printf_print_c(t_param *param, char c);
+int			ft_printf_print_wchar_c(t_param *param, wchar_t c);
+int			ft_printf_print_wchar_default(t_param *param, wchar_t *str);
 
 //ft_printf_tools
 int				ft_printf_atoi(const char *str);
