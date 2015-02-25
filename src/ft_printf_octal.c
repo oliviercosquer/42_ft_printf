@@ -45,46 +45,24 @@ char	*ft_printf_print_long_octal(va_list *l)
 	char				*str;
 	int					i;
 
-	value = (int)va_arg(l, unsigned long int);
-	str = ft_strnew(22);
-	i = 22;
-	if (str)
-	{
-		while (--i >= 0)
-		{
-			str[i] = '0' + ((value << 61) >> 61);
-			value = value >> 3;
-		}
-		i = 0;
-		while (str[i] == '0' && i < 21)
-			i++;
-		ft_memmove(str, str + i, ft_strlen(str + i));
-		str[ft_strlen(str + i)] = '\0';
-	}
-	return (str);
-}
-
-char	*ft_printf_print_long_octal2(va_list *l)
-{
-	unsigned long int	value;
-	char				*str;
-	int					i;
 
 	value = (int)va_arg(l, unsigned long int);
-	str = ft_strnew(22);
+	str = ft_strnew(21);
 	i = 21;
 	if (str)
 	{
 		while (--i >= 0)
 		{
-			str[i] = '0' + ((value << 61) >> 61);
+			str[i] = '0' + (unsigned long int)((value << 61) >> 61);
 			value = value >> 3;
 		}
 		i = 0;
-		while (str[i] == '0' && i < 20)
+		while (str[i] == '0' && i < 22)
 			i++;
-		ft_memmove(str, str + i, ft_strlen(str + i));
-		str[ft_strlen(str + i)] = '\0';
+		ft_memmove(str, str + i, ft_strlen(str) - i);
+		str[(21) - i] = '\0';
+		str[1] = (str[0] == '\0') ? '\0' : str[1];
+		str[0] = (str[0] == '\0') ? '0' : str[0];
 	}
 	return (str);
 }
@@ -97,7 +75,7 @@ char	*ft_printf_print_long_long_octal(va_list *l)
 
 	value = (int)va_arg(l, unsigned long long int);
 	str = ft_strnew(22);
-	i = 22;
+	i = 21;
 	if (str)
 	{
 		while (--i >= 0)
@@ -106,7 +84,7 @@ char	*ft_printf_print_long_long_octal(va_list *l)
 			value = value >> 3;
 		}
 		i = 0;
-		while (str[i] == '0' && i < 20)
+		while (str[i] == '0' && i < 22)
 			i++;
 		ft_memmove(str, str + i, ft_strlen(str) - i);
 		str[(22) - i] = '\0';

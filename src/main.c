@@ -28,9 +28,13 @@ int	main(void)
 	printf("\nftret:%d\n", ret);*/
 	//printf("d:%10.4d\n", 42);
 	//ft_printf("d:%10.4d\n", 42);
-	ret = ft_printf("{%0-3d}", 0);
+	ret = ft_printf("%O", 42);
 	printf("\nftret:%d\n", ret);
-	ret = printf("{%0-3d}", 0);
+	ret = printf("%O", 42);
+	printf("\nftret:%d\n", ret);
+	ret = ft_printf("%O", LONG_MAX);
+	printf("\nftret:%d\n", ret);
+	ret = printf("%O", LONG_MAX);
 	printf("\nftret:%d\n", ret);
 	//ft_printf("{%10d}", -42);
 	//#include "test.c"

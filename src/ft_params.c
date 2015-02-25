@@ -78,14 +78,15 @@ void	ft_printf_param_find(char **str, int *total_char)
 
 void	ft_printf_param_special(t_param *param)
 {
-	free(param->specifier_length);
-	param->specifier_length = ft_strdup("l");
+
+	if (!param->specifier_length)
+		param->specifier_length = ft_strdup("l");
 	if (param->specifier == 'D')
 		param->specifier = 'd';
 	if (param->specifier == 'U')
 		param->specifier = 'u';
-	/*if (param->specifier == 'O')
-		param->specifier = 'o';*/
+	if (param->specifier == 'O')
+		param->specifier = 'o';
 }
 
 t_param	*ft_printf_param_parse(char **str, va_list *list)

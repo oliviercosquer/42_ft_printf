@@ -24,8 +24,8 @@ int		ft_printf_print_o(t_param *param, va_list *l)
 	nb_char = 0;
 	if (!functions[0])
 	{
-		functions[0] = &ft_printf_print_long_octal2;
-		functions['l'] = &ft_printf_print_long_octal2;
+		functions[0] = &ft_printf_print_long_octal;
+		functions['l'] = &ft_printf_print_long_octal;
 		functions['h'] = NULL;
 	}
 	if (param->specifier_length)
@@ -78,28 +78,26 @@ int		ft_printf_print_wstring(t_param *param, va_list *l)
 int		ft_printf_print_octal(t_param *param, va_list *l)
 {
 	static t_print_func	functions[256];
+	static t_print_func	functions2[256];
 	t_print_func		func;
-	unsigned int		modifier;
 	char				*str;	
 	int					nb_char;
 
-	modifier = 0;
 	nb_char = 0;
 	if (!functions[0])
 	{
 		functions[0] = &ft_printf_print_octal_default;
 		functions['l'] = &ft_printf_print_long_octal;
-		functions['L'] = &ft_printf_print_long_long_octal;
 		functions['h'] = NULL;
-		functions['H'] = NULL;
+		functions2['l'] = &ft_printf_print_long_long_octal;
+		functions2['h'] = NULL;
 	}
-	if (param->specifier_length)
-	{
-		modifier = *(param->specifier_length);
-		if (ft_strlen(param->specifier_length) == 2)
-			modifier -= 32;
-	}
-	func = functions[modifier];
+	if (ft_strlen(param->specifier_length) == 2)
+		func = functions2[(unsigned int)param->specifier_length[1]];
+	else if (ft_strlen(param->specifier_length) == 1)
+		func = functions[(unsigned int)param->specifier_length[0]];
+	else
+		func =  functions[0];
 	if (func)
 	{
 		str = func(l);

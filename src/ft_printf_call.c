@@ -85,7 +85,7 @@ int	ft_printf_call(t_param *param, va_list *l)
 		//functions['D'] = &ft_printf_print_d;
 		functions['i'] = &ft_printf_print_integer;
 		functions['o'] = &ft_printf_print_octal;
-		functions['O'] = &ft_printf_print_o;
+		functions['O'] = &ft_printf_print_octal;
 		functions['u'] = &ft_printf_print_unsigned_integer;
 		//functions['U'] = &ft_printf_print_u;
 		functions['x'] = &ft_printf_print_hex;
