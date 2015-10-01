@@ -24,12 +24,13 @@ SRC_FILES =	ft_params.c \
 			ft_printf_tools.c
 BASE_FILES = $(addprefix $(SRC_PATH),$(SRC_FILES))
 SRC = $(BASE_FILES)
+FLAGS = #-Wall -Werror -Wextra
 
 all: libft_all ${NAME}
 
 ${NAME}:
 	@echo compilation of $(NAME)
-	@gcc -c $(INCLUDE_PATH) -Wall -Werror -Wextra $(SRC) -L./libft -lft
+	@gcc -c $(INCLUDE_PATH) $(FLAGS)  $(SRC)
 	@ar rc ./libft/libft.a $(SRC_FILES:.c=.o)
 	@cp ./libft/libft.a ./libftprintf.a
 	@echo Compilation done!

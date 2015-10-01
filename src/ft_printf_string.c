@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:56 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/21 23:47:19 by olivier          ###   ########.fr       */
+/*   Updated: 2015/10/01 15:22:28 by ocosquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int		ft_printf_print_pointer(t_param *param, va_list *l)
 	int					i;
 	int					nb_char;
 
-	pointer = (unsigned long int)va_arg(l, void *);
+	pointer = (unsigned long int)va_arg(*l, void *);
 	str = ft_strnew(19);
 	nb_char = 0;
 	if (str)

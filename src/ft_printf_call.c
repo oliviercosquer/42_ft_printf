@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/20 04:12:38 by olivier           #+#    #+#             */
-/*   Updated: 2015/02/23 07:21:15 by olivier          ###   ########.fr       */
+/*   Updated: 2015/10/01 15:13:21 by ocosquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ int	ft_printf_call(t_param *param, va_list *l)
 	t_call_func			func;
 	unsigned int		format;
 
+	format = 0;
 	if (param->specifier)
 		format = param->specifier;
 	if (!functions['s'])

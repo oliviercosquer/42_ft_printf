@@ -6,7 +6,7 @@
 /*   By: ocosquer <ocosquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/22 04:34:03 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/22 04:34:05 by ocosquer         ###   ########.fr       */
+/*   Updated: 2015/10/01 15:20:50 by ocosquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_printf_print_octal_default(va_list *l)
 	char			*str;
 	int				i;
 
-	value = (int)va_arg(l, unsigned int);
+	value = (int)va_arg(*l, unsigned int);
 	str = ft_strnew(11);
 	i = 11;
 	if (str)
@@ -46,7 +46,7 @@ char	*ft_printf_print_long_octal(va_list *l)
 	int					i;
 
 
-	value = (int)va_arg(l, unsigned long int);
+	value = (int)va_arg(*l, unsigned long int);
 	str = ft_strnew(21);
 	i = 21;
 	if (str)
@@ -73,7 +73,7 @@ char	*ft_printf_print_long_long_octal(va_list *l)
 	char					*str;
 	int						i;
 
-	value = (int)va_arg(l, unsigned long long int);
+	value = (int)va_arg(*l, unsigned long long int);
 	str = ft_strnew(22);
 	i = 21;
 	if (str)

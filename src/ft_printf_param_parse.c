@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/22 13:41:31 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/24 07:42:54 by olivier          ###   ########.fr       */
+/*   Updated: 2015/10/01 15:22:11 by ocosquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_printf_param_parse_width(char **str, va_list *list)
 		s = *str;
 		if (**str == '*')
 		{
-			width = ft_itoa(va_arg(list, int));
+			width = ft_itoa(va_arg(*list, int));
 			len++;
 		}
 		else
@@ -73,7 +73,7 @@ char	*ft_printf_param_parse_precision(char **str, va_list *list)
 		s = *str + 1;
 		if (*s == '*')
 		{
-			precision = ft_itoa(va_arg(list, int));
+			precision = ft_itoa(va_arg(*list, int));
 			len++;
 		}
 		else

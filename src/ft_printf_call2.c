@@ -6,7 +6,7 @@
 /*   By: ocosquer <ocosquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/22 04:20:01 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/22 04:20:02 by ocosquer         ###   ########.fr       */
+/*   Updated: 2015/10/01 15:18:26 by ocosquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		ft_printf_print_wstring(t_param *param, va_list *l)
 	if (param->specifier == 'C')
 	{
 		nb_char++;
-		c = va_arg(l, wchar_t);
+		c = va_arg(*l, wchar_t);
 		write(1, &c, 1);
 	}
 	else if (param->specifier == '%')

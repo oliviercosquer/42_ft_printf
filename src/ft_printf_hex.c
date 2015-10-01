@@ -6,7 +6,7 @@
 /*   By: ocosquer <ocosquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/22 05:28:08 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/22 05:28:10 by ocosquer         ###   ########.fr       */
+/*   Updated: 2015/10/01 15:19:39 by ocosquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_printf_print_hex_default(va_list *l)
 	if (str)
 	{
 		i = 8;
-		n = va_arg(l, int);
+		n = va_arg(*l, int);
 		while (--i >= 0)
 		{
 			str[i] = ft_printf_int_to_hex(((n << 28) >> 28));
@@ -47,7 +47,7 @@ char	*ft_printf_print_long_hex(va_list *l)
 	if (str)
 	{
 		i = 16;
-		n = va_arg(l, unsigned long int);
+		n = va_arg(*l, unsigned long int);
 		while (--i >= 0)
 		{
 			str[i] = ft_printf_int_to_hex(((n << 60) >> 60));
@@ -72,7 +72,7 @@ char	*ft_printf_print_long_long_hex(va_list *l)
 	if (str)
 	{
 		i = 16;
-		n = va_arg(l, unsigned long long int);
+		n = va_arg(*l, unsigned long long int);
 		while (--i >= 0)
 		{
 			str[i] = ft_printf_int_to_hex(((n << 60) >> 60));
@@ -97,7 +97,7 @@ char	*ft_printf_print_short_hex(va_list *l)
 	if (str)
 	{
 		i = 8;
-		n = va_arg(l, int);
+		n = va_arg(*l, int);
 		while (--i >= 0)
 		{
 			str[i] = ft_printf_int_to_hex(((n << 28) >> 28));
