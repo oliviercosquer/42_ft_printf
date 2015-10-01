@@ -6,7 +6,7 @@
 /*   By: ocosquer <ocosquer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/22 05:28:08 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/10/01 15:19:39 by ocosquer         ###   ########.fr       */
+/*   Updated: 2015/10/01 16:47:41 by ocosquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ char	*ft_printf_print_short_hex(va_list *l)
 	unsigned int	n;
 	int				i;
 
+//	ft_putstr("SEGV\n");
 	str = ft_strnew(8);
 	if (str)
 	{

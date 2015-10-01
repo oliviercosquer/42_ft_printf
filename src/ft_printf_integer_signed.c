@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/18 05:23:59 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/10/01 15:37:45 by ocosquer         ###   ########.fr       */
+/*   Updated: 2015/10/01 16:36:03 by ocosquer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char	*ft_printf_long_lint_itoa(long int n)
 	long long int	rest;
 	int				negative;
 
-	ft_putstr("TURLUPUTAIN\n");
+	//ft_putstr("TURLUPUTAIN\n");
 	negative = (n < 0) ? -1 : 1;
 	len = ft_printf_long_lint_length(n) + 1;
 	len += (negative == -1) ? 1 : 0;
