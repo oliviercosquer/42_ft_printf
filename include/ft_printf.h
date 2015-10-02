@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:55 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/02/24 07:38:22 by olivier          ###   ########.fr       */
+/*   Updated: 2015/10/02 14:40:05 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,8 +151,8 @@ char			ft_printf_param_parse_specifier(char **str);
 int				ft_printf_print_pointer(t_param *param, va_list *l);
 int				ft_printf_print_string_default(t_param *param, char *str);
 int				ft_printf_print_c(t_param *param, char c);
-int			ft_printf_print_wchar_c(t_param *param, wchar_t c);
-int			ft_printf_print_wchar_default(t_param *param, wchar_t *str);
+int				ft_printf_print_wchar_c(t_param *param, wchar_t c);
+int				ft_printf_print_wchar_default(t_param *param, wchar_t *str);
 
 //ft_printf_tools
 int				ft_printf_atoi(const char *str);

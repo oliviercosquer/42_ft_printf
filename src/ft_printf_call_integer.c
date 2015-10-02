@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/23 06:39:07 by olivier           #+#    #+#             */
-/*   Updated: 2015/10/01 16:47:03 by ocosquer         ###   ########.fr       */
+/*   Updated: 2015/10/02 12:34:39 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,10 @@ int		ft_printf_print_unsigned_integer(t_param *param, va_list *l)
 	if (param->specifier_length)
 		modifier = *(param->specifier_length);
 	func = functions[modifier];
-	str = func(l);
+	if (func)
+		str = func(l);
+	else
+		str = NULL;
 	//ft_strdel(&str);
 	return (ft_printf_get_flag_func(param->specifier)(param, str));
 }

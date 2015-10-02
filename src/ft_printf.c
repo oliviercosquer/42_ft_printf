@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:56 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/10/01 16:44:08 by ocosquer         ###   ########.fr       */
+/*   Updated: 2015/10/02 12:34:49 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		ft_printf(const char *s, ...)
 	while ((param = ft_printf_get_params(&str, &total_char, &list)))
 	{
 		setlocale(LC_ALL, "");
-//		 ft_display_param(param);
+		//ft_display_param(param);
 		total_char += ft_printf_call(param, &list);
 		ft_printf_del_params(&param);
 	}

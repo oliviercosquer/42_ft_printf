@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/20 04:12:38 by olivier           #+#    #+#             */
-/*   Updated: 2015/10/01 15:13:21 by ocosquer         ###   ########.fr       */
+/*   Updated: 2015/10/02 14:22:12 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,11 +104,10 @@ int	ft_printf_call(t_param *param, va_list *l)
 	if (!functions['s'])
 	{
 		functions[0] = NULL;
+		functions['%'] = &ft_printf_print_string;
 		functions['s'] = &ft_printf_print_string;
 		functions['S'] = NULL;
-		functions['c'] = &ft_printf_print_string;
-		functions['%'] = &ft_printf_print_string;
-		functions['C'] = ft_printf_print_wchar_t;
+		functions['p'] = &ft_printf_print_pointer;
 		functions['d'] = &ft_printf_print_integer;
 		//functions['D'] = &ft_printf_print_d;
 		functions['i'] = &ft_printf_print_integer;
@@ -118,10 +117,12 @@ int	ft_printf_call(t_param *param, va_list *l)
 		//functions['U'] = &ft_printf_print_u;
 		functions['x'] = &ft_printf_print_hex;
 		functions['X'] = &ft_printf_print_hex;
-		functions['p'] = &ft_printf_print_pointer;
+		functions['c'] = &ft_printf_print_string;
+		functions['C'] = ft_printf_print_wchar_t;
 	}
 	if (format)
 		func = functions[format];
+	//printf("f(u): %p\nfun: %p\n", &ft_printf_print_unsigned_integer, func);
 	if (func)
 		return (func(param, l));
 	return (0);
