@@ -6,12 +6,11 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/05 13:16:02 by olivier           #+#    #+#             */
-/*   Updated: 2015/10/05 13:16:42 by olivier          ###   ########.fr       */
+/*   Updated: 2015/10/05 14:21:32 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf_param.h>
-
 
 char	*ft_printf_param_parse_flag(char **str)
 {

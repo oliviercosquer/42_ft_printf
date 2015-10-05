@@ -6,12 +6,13 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/05 12:09:29 by olivier           #+#    #+#             */
-/*   Updated: 2015/10/05 13:24:40 by olivier          ###   ########.fr       */
+/*   Updated: 2015/10/05 14:24:04 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_PARAM_H
 # define FT_PRINTF_PARAM_H
+# include <ft_printf.h>
 
 typedef struct	s_param
 {

@@ -2,26 +2,20 @@ NAME = libftprintf.a
 INCLUDE_PATH = -I./include/ -I./libft/includes
 LIBFT_DIR = ./libft
 SRC_PATH = ./src/
-SRC_FILES =	ft_params.c \
-			ft_params_check.c \
-			ft_printf.c \
-			ft_printf_call.c \
-			ft_printf_call2.c \
-			ft_printf_call_integer.c \
-			ft_printf_double.c \
-			ft_printf_flag.c \
-			ft_printf_flag_integer.c \
-			ft_printf_flag_string.c \
-			ft_printf_flag_c.c \
-			ft_printf_hex.c \
-			ft_printf_integer.c \
-			ft_printf_integer2.c \
-			ft_printf_integer_signed.c \
-			ft_printf_integer_unsigned.c \
-			ft_printf_octal.c \
-			ft_printf_param_parse.c \
-			ft_printf_string.c \
-			ft_printf_tools.c
+SRC_FILES =	call/ft_printf_call_flag.c \
+			call/ft_printf_call_precision.c \
+			call/ft_printf_call_type.c \
+			call/ft_printf_call_width.c \
+			convert/ft_printf_convert_double.c \
+			convert/ft_printf_convert_hex.c \
+			convert/ft_printf_convert_integer.c \
+			convert/ft_printf_convert_octal.c \
+			convert/ft_printf_convert_string.c \
+			convert/ft_printf_convert_unsigned_integer.c \
+			param/ft_printf_param.c \
+			param/ft_printf_param_check.c \
+			param/ft_printf_param_parse.c \
+			param/ft_printf_param_parse_specifiers.c
 BASE_FILES = $(addprefix $(SRC_PATH),$(SRC_FILES))
 SRC = $(BASE_FILES)
 FLAGS = #-Wall -Werror -Wextra
