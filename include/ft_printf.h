@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:55 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/10/05 11:38:58 by olivier          ###   ########.fr       */
+/*   Updated: 2015/10/05 13:35:08 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <stdio.h> // TO DELETE
 # include <locale.h> // TO DELETE	
 # define SEGV ft_putstr("segv\n");
+# define DEBUG 1
 
 typedef struct	s_param
 {
@@ -64,6 +65,7 @@ int				ft_printf_get_format_length(t_param *param);
 
 //ft_printf
 int				ft_printf(const char *str, ...);
+int				ft_printf_do(t_param *param, va_list *list);
 void			ft_display_param(t_param *param);
 
 //ft_printf_call

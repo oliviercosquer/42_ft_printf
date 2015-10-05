@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/05 12:09:29 by olivier           #+#    #+#             */
-/*   Updated: 2015/10/05 13:20:01 by olivier          ###   ########.fr       */
+/*   Updated: 2015/10/05 13:24:40 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void			ft_printf_param_del(t_param **params);
 
 //param parse
 t_param			*ft_printf_param_get(char **str, int *total_char, va_list *list);
+t_param			*ft_printf_param_parse(char **str, va_list *list);
 void			ft_printf_param_find_next(char **str, int *total_char);
 void			ft_printf_param_special(t_param *param);
-t_param			*ft_printf_param_parse(char **str, va_list *list);
 
 //parse specifiers
 char			*ft_printf_param_parse_flag(char **str);

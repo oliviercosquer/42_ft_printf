@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:56 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/10/02 12:34:49 by olivier          ###   ########.fr       */
+/*   Updated: 2015/10/05 13:34:57 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ int		ft_printf(const char *s, ...)
 	while ((param = ft_printf_get_params(&str, &total_char, &list)))
 	{
 		setlocale(LC_ALL, "");
-		//ft_display_param(param);
-		total_char += ft_printf_call(param, &list);
+		if (FT_PRINTF_DEBUG)
+			ft_display_param(param);
+		total_char += ft_printf_do(param, &list);
 		ft_printf_del_params(&param);
 	}
 	//ft_putstr(str);
@@ -44,4 +45,30 @@ int		ft_printf(const char *s, ...)
 		free(str);*/
 	va_end(list);
 	return (total_char);
+}
+
+int		ft_printf_do(t_param *param, va_list *list)
+{
+	t_convert_func	convert;
+	char			*str;
+	int				length;
+
+	str = NULL;
+	length = 0;
+	convert = ft_printf_call_get_type_func(param);
+	str = convert(list);
+
+	/*
+	* @TODO
+	* flag
+	* precision
+	* width
+	*/
+	if (str)
+	{
+		ft_putstr(str);
+		length = ft_strlen(str);
+		ft_strdel(&str);
+	}
+	return (length);
 }
