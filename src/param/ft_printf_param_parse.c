@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/05 13:19:30 by olivier           #+#    #+#             */
-/*   Updated: 2015/10/05 14:21:35 by olivier          ###   ########.fr       */
+/*   Updated: 2015/10/08 14:46:14 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_param	*ft_printf_param_parse(char **str, va_list *list)
 	param = NULL;
 	if (str && *str)
 	{
-		param = ft_printf_new_param();
+		param = ft_printf_param_new();
 		if (param)
 		{
 			param->flag = ft_printf_param_parse_flag(str);//DONE
@@ -73,7 +73,7 @@ t_param	*ft_printf_param_parse(char **str, va_list *list)
 	return (param);
 }
 
-t_param	*ft_printf_get_params(char **str, int *total_char, va_list *list)
+t_param	*ft_printf_param_get(char **str, int *total_char, va_list *list)
 {
 	ft_printf_param_find(str, total_char);
 	if (str && *str && **str)

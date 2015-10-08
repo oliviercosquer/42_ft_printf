@@ -6,13 +6,17 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/05 11:37:06 by olivier           #+#    #+#             */
-/*   Updated: 2015/10/05 14:24:01 by olivier          ###   ########.fr       */
+/*   Updated: 2015/10/08 14:33:20 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_CONVERT_H
 # define FT_PRINTF_CONVERT_H
-# include <ft_printf.h>
+# include <stdarg.h>
+# include <stdlib.h>
+# include <libft.h>
+
+#include <stdio.h> //TO DELETE
 
 char	*ft_printf_convert_short_integer(va_list *list);
 char	*ft_printf_convert_integer(va_list *list);

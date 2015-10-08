@@ -2,7 +2,8 @@ NAME = libftprintf.a
 INCLUDE_PATH = -I./include/ -I./libft/includes
 LIBFT_DIR = ./libft
 SRC_PATH = ./src/
-SRC_FILES =	call/ft_printf_call_flag.c \
+SRC_FILES =	ft_printf.c \
+			call/ft_printf_call_flag.c \
 			call/ft_printf_call_precision.c \
 			call/ft_printf_call_type.c \
 			call/ft_printf_call_width.c \
@@ -16,16 +17,15 @@ SRC_FILES =	call/ft_printf_call_flag.c \
 			param/ft_printf_param_check.c \
 			param/ft_printf_param_parse.c \
 			param/ft_printf_param_parse_specifiers.c
-BASE_FILES = $(addprefix $(SRC_PATH),$(SRC_FILES))
-SRC = $(BASE_FILES)
+SRC = $(addprefix $(SRC_PATH),$(SRC_FILES))
 FLAGS = #-Wall -Werror -Wextra
 
 all: libft_all ${NAME}
 
 ${NAME}:
 	@echo compilation of $(NAME)
-	@gcc -c $(INCLUDE_PATH) $(FLAGS)  $(SRC)
-	@ar rc ./libft/libft.a $(SRC_FILES:.c=.o)
+	gcc -c $(INCLUDE_PATH) $(FLAGS) $(SRC)
+	ar rc ./libft/libft.a $(SRC:.c=.o)
 	@cp ./libft/libft.a ./libftprintf.a
 	@echo Compilation done!
 

@@ -6,13 +6,13 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/05 13:13:53 by olivier           #+#    #+#             */
-/*   Updated: 2015/10/05 13:14:17 by olivier          ###   ########.fr       */
+/*   Updated: 2015/10/08 14:20:14 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf_param.h>
 
-t_param	*ft_printf_new_param(void)
+t_param	*ft_printf_param_new(void)
 {
 	t_param	*params;
 
@@ -30,7 +30,7 @@ t_param	*ft_printf_new_param(void)
 	return (NULL);
 }
 
-void	ft_printf_del_params(t_param **params)
+void	ft_printf_params_del(t_param **params)
 {
 	t_param	*tmp;
 
