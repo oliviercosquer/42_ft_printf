@@ -6,11 +6,12 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/05 12:07:25 by olivier           #+#    #+#             */
-/*   Updated: 2015/10/05 14:15:14 by olivier          ###   ########.fr       */
+/*   Updated: 2015/10/08 17:32:34 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf_convert.h>
+#include <ft_printf.h>
 
 char	*ft_printf_convert_hex(va_list *list)
 {
@@ -90,7 +91,7 @@ char	*ft_printf_convert_long_long_hex(va_list *list)
 char	*ft_printf_convert_short_hex(va_list *list)
 {
 	char			*str;
-	unsigned int	n;
+	//unsigned int	n;
 	unsigned int	i;
 	unsigned int	r;
 	int				j;

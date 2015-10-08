@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/05 13:13:53 by olivier           #+#    #+#             */
-/*   Updated: 2015/10/08 14:20:14 by olivier          ###   ########.fr       */
+/*   Updated: 2015/10/08 17:41:29 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_param	*ft_printf_param_new(void)
 	return (NULL);
 }
 
-void	ft_printf_params_del(t_param **params)
+void	ft_printf_param_del(t_param **params)
 {
 	t_param	*tmp;
 

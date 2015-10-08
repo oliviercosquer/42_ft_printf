@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/05 11:36:23 by olivier           #+#    #+#             */
-/*   Updated: 2015/10/08 14:40:36 by olivier          ###   ########.fr       */
+/*   Updated: 2015/10/08 17:29:40 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ t_convert_func	ft_printf_call_get_type_func(t_param *param)
 {
 	//@TODO
 	static	t_convert_func	func[256][256];
-	t_convert_func			the_function;
+	//t_convert_func			the_function;
 
 	if (!func['i'][0])
 		ft_printf_call_type_func_init((t_convert_func **)func);
-	else
-		the_function = func[param->specifier][0];
-	return (the_function);
+	/*else
+		the_function = func[param->specifier][0];*/
+	return (func[param->specifier][0]);
 }
 
 void			ft_printf_call_type_func_init(t_convert_func **function_array)

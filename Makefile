@@ -1,8 +1,9 @@
 NAME = libftprintf.a
-INCLUDE_PATH = -I./include/ -I./libft/includes
-LIBFT_DIR = ./libft
+
 SRC_PATH = ./src/
-SRC_FILES =	ft_printf.c \
+
+SRC_NAME =	ft_printf.c \
+			ft_printf_tools.c \
 			call/ft_printf_call_flag.c \
 			call/ft_printf_call_precision.c \
 			call/ft_printf_call_type.c \
@@ -17,38 +18,40 @@ SRC_FILES =	ft_printf.c \
 			param/ft_printf_param_check.c \
 			param/ft_printf_param_parse.c \
 			param/ft_printf_param_parse_specifiers.c
-SRC = $(addprefix $(SRC_PATH),$(SRC_FILES))
-FLAGS = #-Wall -Werror -Wextra
 
-all: libft_all ${NAME}
+OBJ_PATH = ./obj/
 
-${NAME}:
-	@echo compilation of $(NAME)
-	gcc -c $(INCLUDE_PATH) $(FLAGS) $(SRC)
-	ar rc ./libft/libft.a $(SRC:.c=.o)
-	@cp ./libft/libft.a ./libftprintf.a
-	@echo Compilation done!
+INC_PATH = ./include/ ./libft/includes
 
-clean: libft_clean
-	@echo Delete .o files
-	@rm -f $(SRC_FILES:.c=.o)
-	@echo Delete done!
+LIB_PATH = ./libft/
 
-fclean: libft_fclean clean
-	@echo Delete $(NAME)
-	@rm -f $(NAME)
-	@echo Delete done!
+LIB_NAME = libft.a
 
-re: libft_re fclean all
+CC = gcc
 
-libft_all:
-	@make -C $(LIBFT_DIR) all
+CFLAGS = -c -Wall -Werror -Wextra
 
-libft_clean:
-	@make -C $(LIBFT_DIR) clean
+OBJ_NAME = $(SRC_NAME:.c=.o)
+SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
+OBJ = $(SRC:.c=.o)
+#$(addprefix $(OBJ_PATH),$(OBJ_NAME))
+LIB = $(addprefix -L,$(LIB_PATH))
+INC = $(addprefix -I,$(INC_PATH))
 
-libft_fclean:
-	@make -C $(LIBFT_DIR) fclean
+all: $(NAME)
 
-libft_re:
-	@make -C $(LIBFT_DIR) re
+$(NAME): $(OBJ)
+	ar rc ./libft/libft.a $(OBJ)
+	cp ./libft/libft.a ./libftprintf.a
+
+%.o: %.c
+	$(CC) $(CFLAGS) $(LIB) $(INC) -o $@ -c $<
+
+clean:
+	rm -fv $(OBJ)
+	@rmdir $(OBJ_PATH) 2> /dev/null || echo "" > /dev/null
+
+fclean: clean
+	rm -fv $(NAME)
+
+re: fclean all

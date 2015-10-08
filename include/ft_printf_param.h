@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/05 12:09:29 by olivier           #+#    #+#             */
-/*   Updated: 2015/10/08 14:29:32 by olivier          ###   ########.fr       */
+/*   Updated: 2015/10/08 17:31:03 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct	s_param
 	char			*flag;
 	char			*width;
 	char			*precision;
-	char			specifier;
+	unsigned char	specifier;
 	char			*specifier_length;
 }				t_param;
 
