@@ -6,11 +6,12 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/05 11:36:23 by olivier           #+#    #+#             */
-/*   Updated: 2015/10/08 17:29:40 by olivier          ###   ########.fr       */
+/*   Updated: 2015/10/08 18:55:08 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf_call.h>
+#include <ft_printf_debug.h>
 
 t_convert_func	ft_printf_call_get_type_func(t_param *param)
 {
@@ -19,13 +20,13 @@ t_convert_func	ft_printf_call_get_type_func(t_param *param)
 	//t_convert_func			the_function;
 
 	if (!func['i'][0])
-		ft_printf_call_type_func_init((t_convert_func **)func);
+		ft_printf_call_type_func_init(func);
 	/*else
 		the_function = func[param->specifier][0];*/
 	return (func[param->specifier][0]);
 }
 
-void			ft_printf_call_type_func_init(t_convert_func **function_array)
+void			ft_printf_call_type_func_init(t_convert_func function_array[256][256])
 {
 	//@TODO
 	function_array['s'][0] = &ft_printf_convert_string;

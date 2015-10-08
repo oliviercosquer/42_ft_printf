@@ -6,7 +6,7 @@
 /*   By: olivier <olivier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/10/26 02:51:56 by ocosquer          #+#    #+#             */
-/*   Updated: 2015/10/08 17:41:31 by olivier          ###   ########.fr       */
+/*   Updated: 2015/10/08 18:57:33 by olivier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ int		ft_printf(const char *s, ...)
 	va_list	list;
 	t_param	*param;
 	char	*str;
+	char	*tmp;
 	int		total_char;
 
 	va_start(list, s);
 	str = ft_strdup((char *)s);
+	tmp = str;
 	total_char = 0;
 	while ((param = ft_printf_param_get(&str, &total_char, &list)))
 	{
@@ -41,8 +43,8 @@ int		ft_printf(const char *s, ...)
 		ft_printf_param_del(&param);
 	}
 	ft_putstr(str);
-	if (str)
-		ft_strdel(&str);
+	if (tmp)
+		ft_strdel(&tmp);
 	va_end(list);
 	return (total_char);
 }
@@ -56,7 +58,8 @@ int		ft_printf_do(t_param *param, va_list *list)
 	str = NULL;
 	length = 0;
 	convert = ft_printf_call_get_type_func(param);
-	str = convert(list);
+	if (convert)
+		str = convert(list);
 
 	/*
 	* @TODO
@@ -64,7 +67,6 @@ int		ft_printf_do(t_param *param, va_list *list)
 	* precision
 	* width
 	*/
-
 	if (str)
 	{
 		ft_putstr(str);

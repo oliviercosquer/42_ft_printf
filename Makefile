@@ -38,20 +38,28 @@ OBJ = $(SRC:.c=.o)
 LIB = $(addprefix -L,$(LIB_PATH))
 INC = $(addprefix -I,$(INC_PATH))
 
-all: $(NAME)
+all: lib_all $(NAME)
 
 $(NAME): $(OBJ)
-	ar rc ./libft/libft.a $(OBJ)
-	cp ./libft/libft.a ./libftprintf.a
+	@ar rc ./libft/libft.a $(OBJ)
+	@cp ./libft/libft.a ./libftprintf.a
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(LIB) $(INC) -o $@ -c $<
+	@$(CC) $(CFLAGS) $(LIB) $(INC) -o $@ -c $<
 
-clean:
-	rm -fv $(OBJ)
+clean: lib_clean
+	@rm -f $(OBJ)
 	@rmdir $(OBJ_PATH) 2> /dev/null || echo "" > /dev/null
 
-fclean: clean
-	rm -fv $(NAME)
+fclean: lib_fclean clean
+	@rm -f $(NAME)
 
 re: fclean all
+
+lib_all:
+	@make -C $(LIB_PATH) all
+lib_clean:
+	@make -C $(LIB_PATH) clean
+
+lib_fclean: lib_clean
+	@make -C $(LIB_PATH) fclean
